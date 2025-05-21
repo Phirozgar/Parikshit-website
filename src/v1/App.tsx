@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Rocket,
   Satellite,
@@ -27,6 +27,12 @@ import ResearchPage from "./ResearchPage.tsx";
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [menuWasOpen, setMenuWasOpen] = useState(false);
+
+  // Keep menu mounted for exit animation
+  useEffect(() => {
+    if (isMenuOpen) setMenuWasOpen(true);
+  }, [isMenuOpen]);
 
   return (
     <Router>
@@ -41,7 +47,7 @@ function App() {
                   <span className="ml-2 text-xl font-bold">PARIKSHIT</span>
                 </Link>
               </div>
-              <div className="hidden lg:block">
+              <div className="hidden lg:block ">
                 <div className="flex items-center space-x-6">
                   <Link to="/" className="hover:text-white transition-colors">
                     HOME
@@ -89,10 +95,11 @@ function App() {
               </div>
               <div className="lg:hidden">
                 <button
-                  onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className={`hamburger ${
-                    isMenuOpen ? "active" : ""
+                  onClick={() => setIsMenuOpen((open) => !open)}
+                  className={`hamburger${
+                    isMenuOpen ? " active" : ""
                   } w-8 h-8 flex flex-col justify-between items-center bg-transparent border-none cursor-pointer`}
+                  aria-label="Toggle menu"
                 >
                   <span className="bar w-6 h-0.3 bg-[#7AECEC] transition-all duration-300 ease-in-out"></span>
                   <span className="bar w-6 h-0.3 bg-[#7AECEC] transition-all duration-300 ease-in-out"></span>
@@ -102,8 +109,15 @@ function App() {
             </div>
           </div>
           {/* Mobile menu */}
-          {isMenuOpen && (
-            <div className="lg:hidden mobile-nav-slide">
+          {(isMenuOpen || menuWasOpen) && (
+            <div
+              className={`nav-links lg:hidden ${
+                isMenuOpen ? "mobile-nav-slide-in" : "mobile-nav-slide-out"
+              }`}
+              onAnimationEnd={() => {
+                if (!isMenuOpen) setMenuWasOpen(false);
+              }}
+            >
               <div className="px-2 pt-2 pb-3 space-y-1 bg-[#0A0A0A] border-b border-[#7AECEC]/20">
                 <Link
                   to="/"
