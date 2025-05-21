@@ -1,0 +1,51 @@
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 60;
+  transition: all 0.3s ease;
+}
+
+.hamburger .bar {
+  display: block;
+  width: 1.5rem;
+  height: 0.2rem;
+  background: #7aecf4;
+  border-radius: 0.125rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) ease-in-out;
+  margin: 0.18rem 0;
+}
+
+.hamburger.active .bar:nth-child(1) {
+  transform: translateY(0.4rem) rotate(45deg);
+}
+
+.hamburger.active .bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.hamburger.active .bar:nth-child(3) {
+  transform: translateY(-0.4rem) rotate(-45deg);
+}
+
+/* Slide-in animation for mobile nav */
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.mobile-nav-slide {
+  animation: slideInLeft 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}

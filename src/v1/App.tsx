@@ -19,125 +19,158 @@ import {
   Building2,
 } from "lucide-react";
 import "./styles.css";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import SubsystemsPage from "./SubsystemsPage.tsx";
+import TeamPage from "./TeamPage.tsx";
+import ProjectsPage from "./ProjectsPage.tsx";
+import ResearchPage from "./ResearchPage.tsx";
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] text-[#7AECEC] font-mono">
-      {/* Navigation */}
-      <nav className="fixed w-full bg-[#0A0A0A]/90 backdrop-blur-sm border-b border-[#7AECEC]/20 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center">
-              <Satellite className="w-8 h-8" />
-              <span className="ml-2 text-xl font-bold">PARIKSHIT</span>
+    <Router>
+      <div className="min-h-screen bg-[#0A0A0A] text-[#7AECEC] font-mono">
+        {/* Navigation */}
+        <nav className="fixed w-full bg-[#0A0A0A]/90 backdrop-blur-sm border-b border-[#7AECEC]/20 z-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between h-16">
+              <div className="flex items-center">
+                <Link to="/" className="flex items-center">
+                  <Satellite className="w-8 h-8" />
+                  <span className="ml-2 text-xl font-bold">PARIKSHIT</span>
+                </Link>
+              </div>
+              <div className="hidden lg:block">
+                <div className="flex items-center space-x-6">
+                  <Link to="/" className="hover:text-white transition-colors">
+                    HOME
+                  </Link>
+                  <a
+                    href="#about"
+                    className="hover:text-white transition-colors"
+                  >
+                    ABOUT US
+                  </a>
+                  <Link
+                    to="/subsystems"
+                    className="hover:text-white transition-colors"
+                  >
+                    SUBSYSTEMS
+                  </Link>
+                  <Link
+                    to="/projects"
+                    className="hover:text-white transition-colors"
+                  >
+                    PROJECTS
+                  </Link>
+                  <Link
+                    to="/research"
+                    className="hover:text-white transition-colors"
+                  >
+                    RESEARCH
+                  </Link>
+                  <a
+                    href="#faqs"
+                    className="hover:text-white transition-colors"
+                  >
+                    FAQs
+                  </a>
+                  <Link
+                    to="/team"
+                    className="hover:text-white transition-colors"
+                  >
+                    TEAM
+                  </Link>
+                  <button className="bg-[#7AECEC] text-black px-4 py-2 rounded-full font-bold hover:bg-white transition-colors">
+                    JOIN US
+                  </button>
+                </div>
+              </div>
+              <div className="lg:hidden">
+                <button
+                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  className={`hamburger ${
+                    isMenuOpen ? "active" : ""
+                  } w-8 h-8 flex flex-col justify-between items-center bg-transparent border-none cursor-pointer`}
+                >
+                  <span className="bar w-6 h-0.3 bg-[#7AECEC] transition-all duration-300 ease-in-out"></span>
+                  <span className="bar w-6 h-0.3 bg-[#7AECEC] transition-all duration-300 ease-in-out"></span>
+                  <span className="bar w-6 h-0.3 bg-[#7AECEC] transition-all duration-300 ease-in-out"></span>
+                </button>
+              </div>
             </div>
-            <div className="hidden lg:block">
-              <div className="flex items-center space-x-6">
-                <a href="#home" className="hover:text-white transition-colors">
+          </div>
+          {/* Mobile menu */}
+          {isMenuOpen && (
+            <div className="lg:hidden mobile-nav-slide">
+              <div className="px-2 pt-2 pb-3 space-y-1 bg-[#0A0A0A] border-b border-[#7AECEC]/20">
+                <Link
+                  to="/"
+                  className="block px-3 py-2 hover:text-white transition-colors"
+                >
                   HOME
-                </a>
-                <a href="#about" className="hover:text-white transition-colors">
+                </Link>
+                <a
+                  href="#about"
+                  className="block px-3 py-2 hover:text-white transition-colors"
+                >
                   ABOUT US
                 </a>
-                <a
-                  href="#subsystems"
-                  className="hover:text-white transition-colors"
+                <Link
+                  to="/subsystems"
+                  className="block px-3 py-2 hover:text-white transition-colors"
                 >
                   SUBSYSTEMS
-                </a>
-                <a
-                  href="#projects"
-                  className="hover:text-white transition-colors"
+                </Link>
+                <Link
+                  to="/projects"
+                  className="block px-3 py-2 hover:text-white transition-colors"
                 >
                   PROJECTS
-                </a>
-                <a
-                  href="#research"
-                  className="hover:text-white transition-colors"
+                </Link>
+                <Link
+                  to="/research"
+                  className="block px-3 py-2 hover:text-white transition-colors"
                 >
                   RESEARCH
-                </a>
-                <a href="#faqs" className="hover:text-white transition-colors">
+                </Link>
+                <a
+                  href="#faqs"
+                  className="block px-3 py-2 hover:text-white transition-colors"
+                >
                   FAQs
                 </a>
-                <a href="#team" className="hover:text-white transition-colors">
+                <Link
+                  to="/team"
+                  className="block px-3 py-2 hover:text-white transition-colors"
+                >
                   TEAM
-                </a>
-                <button className="bg-[#7AECEC] text-black px-4 py-2 rounded-full font-bold hover:bg-white transition-colors">
+                </Link>
+                <button className="w-full text-left px-3 py-2 bg-[#7AECEC] text-black rounded-full font-bold hover:bg-white transition-colors">
                   JOIN US
                 </button>
               </div>
             </div>
-            <div className="lg:hidden">
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className={`hamburger ${
-                  isMenuOpen ? "active" : ""
-                } w-8 h-8 flex flex-col justify-between items-center bg-transparent border-none cursor-pointer`}
-              >
-                <span className="bar w-6 h-0.3 bg-[#7AECEC] transition-all duration-300 ease-in-out"></span>
-                <span className="bar w-6 h-0.3 bg-[#7AECEC] transition-all duration-300 ease-in-out"></span>
-                <span className="bar w-6 h-0.3 bg-[#7AECEC] transition-all duration-300 ease-in-out"></span>
-              </button>
-            </div>
-          </div>
-        </div>
-        {/* Mobile menu */}
-        {isMenuOpen && (
-          <div className="lg:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-[#0A0A0A] border-b border-[#7AECEC]/20">
-              <a
-                href="#home"
-                className="block px-3 py-2 hover:text-white transition-colors"
-              >
-                HOME
-              </a>
-              <a
-                href="#about"
-                className="block px-3 py-2 hover:text-white transition-colors"
-              >
-                ABOUT US
-              </a>
-              <a
-                href="#subsystems"
-                className="block px-3 py-2 hover:text-white transition-colors"
-              >
-                SUBSYSTEMS
-              </a>
-              <a
-                href="#projects"
-                className="block px-3 py-2 hover:text-white transition-colors"
-              >
-                PROJECTS
-              </a>
-              <a
-                href="#research"
-                className="block px-3 py-2 hover:text-white transition-colors"
-              >
-                RESEARCH
-              </a>
-              <a
-                href="#faqs"
-                className="block px-3 py-2 hover:text-white transition-colors"
-              >
-                FAQs
-              </a>
-              <a
-                href="#team"
-                className="block px-3 py-2 hover:text-white transition-colors"
-              >
-                TEAM
-              </a>
-              <button className="w-full text-left px-3 py-2 bg-[#7AECEC] text-black rounded-full font-bold hover:bg-white transition-colors">
-                JOIN US
-              </button>
-            </div>
-          </div>
-        )}
-      </nav>
+          )}
+        </nav>
 
+        {/* Main Content */}
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/subsystems" element={<SubsystemsPage />} />
+          <Route path="/team" element={<TeamPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/research" element={<ResearchPage />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+}
+
+function HomePage() {
+  return (
+    <>
       {/* Hero Section */}
       <section id="home" className="pt-32 pb-20 px-4">
         <div className="max-w-7xl mx-auto">
@@ -407,7 +440,7 @@ function App() {
           <p>© 2025 PARIKSHIT. All rights reserved.</p>
         </div>
       </footer>
-    </div>
+    </>
   );
 }
 
