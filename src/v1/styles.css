@@ -10,6 +10,7 @@
   z-index: 60;
   transition: all 0.3s ease;
   margin-right: 1rem;
+  padding: 0.25rem;
 }
 .hamburger .bar {
   display: block;
@@ -19,18 +20,21 @@
   border-radius: 0.125rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) ease-in-out;
   margin: 0.18rem 0;
+  transform-origin: center;
+}
+.hamburger.active .bar {
+  width: 2rem;
+  margin: 0;
 }
 .hamburger.active .bar:nth-child(1) {
-  transform: translateY(0.4rem) rotate(45deg);
+  transform: translateY(0.65rem) rotate(45deg);
 }
-
 .hamburger.active .bar:nth-child(2) {
   opacity: 0;
   transform: scaleX(0);
 }
-
 .hamburger.active .bar:nth-child(3) {
-  transform: translateY(-0.4rem) rotate(-45deg);
+  transform: translateY(-0.65rem) rotate(-45deg);
 }
 
 /* Slide-in animation for mobile nav */
