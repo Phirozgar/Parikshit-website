@@ -17,12 +17,42 @@ import {
   Building2,
 } from "lucide-react";
 import "./styles.css";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import SubsystemsPage from "./SubsystemsPage.tsx";
-import TeamPage from "./TeamPage.tsx";
-import ProjectsPage from "./ProjectsPage.tsx";
-import ResearchPage from "./ResearchPage.tsx";
-import TeamPageV2 from "../v2/TeamPage.tsx";
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
+import SubsystemsPage from "./SubsystemsPage";
+import TeamPage from "./TeamPage";
+import ProjectsPage from "./ProjectsPage";
+import ResearchPage from "./ResearchPage";
+import TeamPageV2 from "../v2/TeamPage";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+
+// Add global smooth scroll behavior
+if (typeof window !== 'undefined') {
+  document.documentElement.style.scrollBehavior = 'smooth';
+}
+
+function AnimatedRoutes() {
+  const location = useLocation();
+  useEffect(() => {
+    // Always scroll to top on route change
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [location.pathname, location.search]);
+  return (
+    <TransitionGroup>
+      <CSSTransition key={location.pathname + location.search} classNames="fade" timeout={400}>
+        <div className="fade-route">
+          <Routes location={location}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/subsystems" element={<SubsystemsPage />} />
+            <Route path="/team" element={<TeamPage />} />
+            <Route path="/team-v2" element={<TeamPageV2 />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/research" element={<ResearchPage />} />
+          </Routes>
+        </div>
+      </CSSTransition>
+    </TransitionGroup>
+  );
+}
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -170,14 +200,7 @@ function App() {
         </nav>
 
         {/* Main Content */}
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/subsystems" element={<SubsystemsPage />} />
-          <Route path="/team" element={<TeamPage />} />
-          <Route path="/team-v2" element={<TeamPageV2 />} />
-          <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/research" element={<ResearchPage />} />
-        </Routes>
+        <AnimatedRoutes />
       </div>
     </Router>
   );
@@ -248,62 +271,62 @@ function HomePage() {
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold mb-12 text-center">SUBSYSTEMS</h2>
           <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-8">
-            <div className="p-6 border border-[#7AECEC]/20 rounded-lg hover:bg-[#111111] transition-colors group">
+            <Link to="/subsystems?subsystem=odhs" className="p-6 border border-[#7AECEC]/20 rounded-lg hover:bg-[#111111] transition-colors group cursor-pointer block">
               <Cpu className="w-12 h-12 mb-4 group-hover:text-white transition-colors" />
               <h3 className="text-xl font-bold mb-2">ODHS</h3>
               <p className="text-[#7AECEC]/80">
                 Onboard Data Handling System for satellite command processing
                 and data management.
               </p>
-            </div>
-            <div className="p-6 border border-[#7AECEC]/20 rounded-lg hover:bg-[#111111] transition-colors group">
+            </Link>
+            <Link to="/subsystems?subsystem=adcs" className="p-6 border border-[#7AECEC]/20 rounded-lg hover:bg-[#111111] transition-colors group cursor-pointer block">
               <Compass className="w-12 h-12 mb-4 group-hover:text-white transition-colors" />
               <h3 className="text-xl font-bold mb-2">ADCS</h3>
               <p className="text-[#7AECEC]/80">
                 Attitude Determination & Control System for precise satellite
                 orientation.
               </p>
-            </div>
-            <div className="p-6 border border-[#7AECEC]/20 rounded-lg hover:bg-[#111111] transition-colors group">
+            </Link>
+            <Link to="/subsystems?subsystem=eps" className="p-6 border border-[#7AECEC]/20 rounded-lg hover:bg-[#111111] transition-colors group cursor-pointer block">
               <Battery className="w-12 h-12 mb-4 group-hover:text-white transition-colors" />
               <h3 className="text-xl font-bold mb-2">EPS</h3>
               <p className="text-[#7AECEC]/80">
                 Electrical & Power System ensuring continuous power supply and
                 distribution.
               </p>
-            </div>
-            <div className="p-6 border border-[#7AECEC]/20 rounded-lg hover:bg-[#111111] transition-colors group">
+            </Link>
+            <Link to="/subsystems?subsystem=payload" className="p-6 border border-[#7AECEC]/20 rounded-lg hover:bg-[#111111] transition-colors group cursor-pointer block">
               <Rocket className="w-12 h-12 mb-4 group-hover:text-white transition-colors" />
               <h3 className="text-xl font-bold mb-2">PAYLOAD</h3>
               <p className="text-[#7AECEC]/80">
                 Scientific instruments and experimental equipment for mission
                 objectives.
               </p>
-            </div>
-            <div className="p-6 border border-[#7AECEC]/20 rounded-lg hover:bg-[#111111] transition-colors group">
+            </Link>
+            <Link to="/subsystems?subsystem=comms" className="p-6 border border-[#7AECEC]/20 rounded-lg hover:bg-[#111111] transition-colors group cursor-pointer block">
               <Radio className="w-12 h-12 mb-4 group-hover:text-white transition-colors" />
               <h3 className="text-xl font-bold mb-2">COMMS</h3>
               <p className="text-[#7AECEC]/80">
                 Communications Systems for reliable data transmission and ground
                 station links.
               </p>
-            </div>
-            <div className="p-6 border border-[#7AECEC]/20 rounded-lg hover:bg-[#111111] transition-colors group">
+            </Link>
+            <Link to="/subsystems?subsystem=stms" className="p-6 border border-[#7AECEC]/20 rounded-lg hover:bg-[#111111] transition-colors group cursor-pointer block">
               <Boxes className="w-12 h-12 mb-4 group-hover:text-white transition-colors" />
               <h3 className="text-xl font-bold mb-2">STMS</h3>
               <p className="text-[#7AECEC]/80">
                 Structures, Thermal & Mechanics System for satellite integrity
                 and temperature control.
               </p>
-            </div>
-            <div className="p-6 border border-[#7AECEC]/20 rounded-lg hover:bg-[#111111] transition-colors group">
+            </Link>
+            <Link to="/subsystems?subsystem=admin" className="p-6 border border-[#7AECEC]/20 rounded-lg hover:bg-[#111111] transition-colors group cursor-pointer block">
               <Building2 className="w-12 h-12 mb-4 group-hover:text-white transition-colors" />
               <h3 className="text-xl font-bold mb-2">ADMIN & Ops</h3>
               <p className="text-[#7AECEC]/80">
                 Administration and Operations managing project logistics and
                 team coordination.
               </p>
-            </div>
+            </Link>
           </div>
         </div>
       </section>
