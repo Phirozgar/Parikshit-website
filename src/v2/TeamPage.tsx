@@ -1,7 +1,6 @@
-import React from 'react';
 import { Users, Award, ChevronRight, Building2 } from 'lucide-react';
 
-const TeamPage = () => {
+const TeamPageV2 = () => {
   // Team hierarchy data
   const teamHierarchy = [
     {
@@ -85,7 +84,7 @@ const TeamPage = () => {
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-8 text-indigo-900">Team Overview</h2>
           <div className="bg-white rounded-lg shadow-lg p-8 mb-12">
-            <p className="text-lg mb-6">
+            <p className="text-lg mb-6 text-indigo-950">
               Parikshit is powered by dedicated undergraduate students across multiple engineering disciplines, including Mechanical, Electrical, Software, Physics, and Data Science, supported by faculty mentors and industry advisors.
             </p>
             
@@ -94,7 +93,7 @@ const TeamPage = () => {
                 <h3 className="text-xl font-bold mb-3 text-indigo-800 flex items-center">
                   <Users className="mr-2" /> Team Composition
                 </h3>
-                <p>Our team consists of over 40 undergraduate students from various engineering disciplines working across 6 technical subsystems and administrative roles.</p>
+                <p className='text-indigo-950'>Our team consists of over 40 undergraduate students from various engineering disciplines working across 6 technical subsystems and administrative roles.</p>
               </div>
               
               <div className="bg-indigo-50 rounded-lg p-6 flex-1">
@@ -192,7 +191,7 @@ const TeamPage = () => {
           <h2 className="text-3xl font-bold mb-8 text-indigo-900">Faculty Advisors</h2>
                       
             <div className="bg-white rounded-lg shadow-lg p-6">
-              <h3 className="text-xl font-bold mb-4 text-indigo-800">{teamHierarchy[5].role}</h3>
+              <h3 className="text-xl font-bold mb-4 text-indigo-800">{teamHierarchy[3].role}</h3>
               <ul className="space-y-4">
                 {teamHierarchy[3]?.members?.map((advisor, index) => (
                   <li key={index} className="border-b border-gray-100 pb-3">
@@ -220,4 +219,4 @@ const TeamPage = () => {
   );
 };
 
-export default TeamPage;
+export default TeamPageV2;
