@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Code, FlaskRound as Flask, Cpu, Radio, Battery, Boxes } from 'lucide-react';
+import { Code, FlaskRound as Flask, Cpu, Radio, Battery, Boxes, Settings } from 'lucide-react';
 
 
 function SubsystemsPage() {
@@ -92,25 +92,25 @@ function SubsystemsPage() {
       imageSrc: 'https://example.com/images/comms.jpg'
     },
     {
-      id: 'scientific',
-      name: 'Scientific Instruments',
+      id: 'payload',
+      name: 'Payload System',
       icon: <Flask size={24} />,
-      description: 'Specialized equipment for conducting experiments and gathering scientific data.',
+      description: 'Core mission equipment for data collection, experiments, and scientific observations.',
       details: [
-        'Collects atmospheric composition data at various altitudes',
-        'Monitors radiation levels in the upper atmosphere',
-        'Captures imagery for climate pattern analysis',
-        'Conducts technology demonstration experiments',
-        'Gathers data for student-led research papers'
+        'Manages primary mission instrumentation and sensors',
+        'Processes and stores scientific data collection',
+        'Controls experiment scheduling and execution',
+        'Monitors payload health and performance metrics',
+        'Maintains calibration of scientific instruments'
       ],
       components: [
-        'Atmospheric Spectrometer',
-        'Radiation Dosimeter',
-        'Multispectral Camera System',
-        'Temperature and Pressure Sensors',
-        'Custom Experimental Payloads'
+        'Primary Mission Sensors',
+        'Data Processing Unit',
+        'Experiment Control System',
+        'Payload Storage Module',
+        'Instrument Calibration System'
       ],
-      imageSrc: 'https://example.com/images/scientific.jpg'
+      imageSrc: 'https://example.com/images/payload.jpg'
     },
     {
       id: 'stms',
@@ -132,6 +132,27 @@ function SubsystemsPage() {
         'Structural Reinforcements'
       ],
       imageSrc: 'https://example.com/images/stms.jpg'
+    },
+    {
+      id: 'admin',
+      name: 'Admin & Operations',
+      icon: <Settings size={24} />,
+      description: 'Manages mission operations, ground control, and administrative functions of the satellite program.',
+      details: [
+        'Coordinates mission planning and scheduling',
+        'Manages ground station operations and tracking',
+        'Handles satellite configuration and state management',
+        'Implements contingency and recovery procedures',
+        'Maintains mission documentation and operational logs'
+      ],
+      components: [
+        'Mission Control Software',
+        'Ground Station Interface System',
+        'Configuration Management Tools',
+        'Operations Documentation System',
+        'Emergency Response Protocols'
+      ],
+      imageSrc: 'https://example.com/images/admin.jpg'
     }
   ];
   
@@ -141,7 +162,7 @@ function SubsystemsPage() {
     <div className="min-h-screen bg-[#0A0A0A]">
       <header className="bg-[#111111] text-[#7AECEC] py-16">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-4">Satellite Subsystems</h1>
+          <h1 className="text-4xl font-bold mb-4 p-10">Satellite Subsystems</h1>
           <p className="text-xl max-w-3xl text-[rgba(122,236,236,0.8)]">
             Explore the technical subsystems that power our Parikshit satellite mission, each designed and built by student teams.
           </p>
