@@ -1,6 +1,55 @@
-import { Users, Award, ChevronRight, Building2 } from "lucide-react";
+import { Github, Linkedin, ChevronRight } from "lucide-react";
+
+// Add type for team member data
+interface TeamMember {
+  name: string;
+  role: string;
+  department?: string;
+  image: string;
+  github?: string;
+  linkedin?: string;
+}
 
 function TeamPage() {
+  // Team member data with social links and images
+  const executiveBoard: TeamMember[] = [
+    {
+      name: "Srishti Singh",
+      role: "System Engineer",
+      image: "/team/srishti.jpg", // You'll need to add these images
+      github: "srishti-singh",
+      linkedin: "srishti-singh",
+    },
+    {
+      name: "Shashwat Harsh",
+      role: "System Engineer",
+      image: "/team/shashwat.jpg",
+      github: "shashwat-harsh",
+      linkedin: "shashwat-harsh",
+    },
+    {
+      name: "Ankit Mishra",
+      role: "System Engineer",
+      image: "/team/ankit.jpg",
+      github: "ankit-mishra",
+      linkedin: "ankit-mishra",
+    },
+    {
+      name: "Nidhi Hegde",
+      role: "System Engineer",
+      image: "/team/nidhi.jpg",
+      github: "nidhi-hegde",
+      linkedin: "nidhi-hegde",
+    },
+    {
+      name: "Swetha M R",
+      role: "System Admin",
+      image: "/team/swetha.jpg",
+      github: "swetha-m-r",
+      linkedin: "swetha-m-r",
+    },
+  ];
+
   // Team hierarchy data
   const teamHierarchy = [
     {
@@ -30,6 +79,7 @@ function TeamPage() {
         {
           name: "ODHS Team",
           members: [
+            "Rachit Takate",
             "Rithika Salimath",
             "Aanya Shantaram",
             "Soham Singh",
@@ -41,6 +91,7 @@ function TeamPage() {
         {
           name: "ADCS Team",
           members: [
+            "Ankit Mishra",
             "Visalakshi S",
             "Sudeeksha Battacharya",
             "Nischal Nori",
@@ -50,15 +101,21 @@ function TeamPage() {
         },
         {
           name: "EPS Team",
-          members: ["Jayanth", "Prakhar"],
+          members: ["Akshay Sai", "Jayanth", "Prakhar"],
         },
         {
           name: "COMMS Team",
-          members: ["Om", "Nithish Khumaran"],
+          members: ["Jayant Sharma", "Nidhi Hegde", "Om", "Nithish Khumaran"],
         },
         {
           name: "Payload Team",
-          members: ["Asna Kidvai", "Siddharta Chhauda", "Rushat"],
+          members: [
+            "Shrihar Pande",
+            "Roselin Maria",
+            "Asna Kidvai",
+            "Siddharta Chhauda",
+            "Rushat",
+          ],
         },
         {
           name: "STMS Team",
@@ -86,62 +143,131 @@ function TeamPage() {
   return (
     <div className="pt-16">
       <div className="min-h-screen bg-[#0A0A0A]">
-        <header className="bg-[#0A0A0A] text-[#7AECEC] py-16">
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl font-bold mb-4 flex items-center">
-              <Users className="mr-3" size={36} /> Our Team (pic in the bg)
-            </h1>
+        {/* Hero Section with Background Image */}
+        <header
+          className="relative bg-cover bg-center h-[60vh] flex items-center"
+          style={{
+            backgroundImage: "url('/team/team-photo.jpg')", // Add your team photo
+            backgroundPosition: "center 30%",
+          }}
+        >
+          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+          <div className="container mx-auto px-4 relative z-10">
+            <h1 className="text-6xl font-bold text-white mb-4">Our Team</h1>
+            <p className="text-xl text-[#7AECEC] max-w-2xl">
+              Meet the brilliant minds behind Parikshit - a diverse team of
+              engineers, researchers, and innovators working together to push
+              the boundaries of space technology.
+            </p>
           </div>
         </header>
 
-        <main className="container mx-auto px-4 py-12">
-          <section className="mb-16">
-            <h2 className="text-3xl font-bold mb-8 text-[#7AECEC]">
-              Team Overview
+        <main className="container mx-auto px-4 py-16">
+          {/* Meet Our Team Section */}
+          <section className="mb-20">
+            <h2 className="text-4xl font-bold mb-12 text-[#7AECEC] text-center">
+              Meet Our Team
             </h2>
-            <div className="bg-[rgb(30,30,30)] rounded-lg shadow-lg p-8 mb-12 border border-[#7AECEC]">
-              <p className="text-lg mb-6 text-[#7AECEC]">
-                Parikshit is powered by dedicated undergraduate students across
-                multiple engineering disciplines, including Mechanical,
-                Electrical, Software, Physics, and Data Science, supported by
-                faculty mentors and industry advisors.
-              </p>
 
-              <div className="flex flex-col md:flex-row gap-8 mt-8">
-                <div className="bg-[#0A0A0A] rounded-lg p-6 flex-1 border border-[#7AECEC]">
-                  <h3 className="text-xl font-bold mb-3 text-[#7AECEC] flex items-center">
-                    <Users className="mr-2" /> Team Composition
-                  </h3>
-                  <p className="text-[#7AECEC]">
-                    Our team consists of over 40 undergraduate students from
-                    various engineering disciplines working across 6 technical
-                    subsystems and administrative roles.
-                  </p>
-                </div>
-
-                <div className="bg-[#0A0A0A] rounded-lg p-6 flex-1 border border-[#7AECEC]">
-                  <h3 className="text-xl font-bold mb-3 text-[#7AECEC] flex items-center">
-                    <Award className="mr-2" /> Core Values
-                  </h3>
-                  <p className="text-[#7AECEC]">
-                    Innovation, collaboration, hands-on learning, and mentorship
-                    form the foundation of our team culture, driving our mission
-                    forward.
-                  </p>
-                </div>
-
-                <div className="bg-[#0A0A0A] rounded-lg p-6 flex-1 border border-[#7AECEC]">
-                  <h3 className="text-xl font-bold mb-3 text-[#7AECEC] flex items-center">
-                    <Building2 className="mr-2" /> Structure
-                  </h3>
-                  <p className="text-[#7AECEC]">
-                    Our team operates with a hierarchical structure led by
-                    student project directors and technical leads, with faculty
-                    advisors providing guidance.
-                  </p>
-                </div>
+            {/* Executive Board */}
+            <div className="mb-16">
+              <h3 className="text-2xl font-bold mb-8 text-[#7AECEC] border-b border-[#7AECEC] pb-2">
+                Executive Board
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                {executiveBoard.map((member, index) => (
+                  <div
+                    key={index}
+                    className="bg-[#0A0A0A] rounded-lg overflow-hidden border border-[#7AECEC] group hover:border-white transition-all duration-300"
+                  >
+                    <div className="aspect-square overflow-hidden">
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                    <div className="p-4">
+                      <h4 className="text-[#7AECEC] font-bold text-lg mb-1">
+                        {member.name}
+                      </h4>
+                      <p className="text-gray-400 text-sm mb-3">
+                        {member.role}
+                      </p>
+                      <div className="flex gap-3">
+                        {member.github && (
+                          <a
+                            href={`https://github.com/${member.github}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#7AECEC] hover:text-white transition-colors"
+                          >
+                            <Github size={20} />
+                          </a>
+                        )}
+                        {member.linkedin && (
+                          <a
+                            href={`https://linkedin.com/in/${member.linkedin}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#7AECEC] hover:text-white transition-colors"
+                          >
+                            <Linkedin size={20} />
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
+
+            {/* Individual Teams */}
+            {teamHierarchy[2]?.departments?.map((dept, index) => (
+              <div key={index} className="mb-16">
+                <h3 className="text-2xl font-bold mb-8 text-[#7AECEC] border-b border-[#7AECEC] pb-2">
+                  {dept.name}
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                  {dept.members.map((member, idx) => (
+                    <div
+                      key={idx}
+                      className="bg-[#0A0A0A] rounded-lg overflow-hidden border border-[#7AECEC] group hover:border-white transition-all duration-300"
+                    >
+                      <div className="aspect-square overflow-hidden bg-gray-800">
+                        <img
+                          src={`/team/placeholder.jpg`} // Add placeholder image
+                          alt={member}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                      <div className="p-4">
+                        <h4 className="text-[#7AECEC] font-bold text-lg mb-1">
+                          {member}
+                        </h4>
+                        <p className="text-gray-400 text-sm mb-3">
+                          {dept.name} Member
+                        </p>
+                        <div className="flex gap-3">
+                          <a
+                            href="#"
+                            className="text-[#7AECEC] hover:text-white transition-colors"
+                          >
+                            <Github size={20} />
+                          </a>
+                          <a
+                            href="#"
+                            className="text-[#7AECEC] hover:text-white transition-colors"
+                          >
+                            <Linkedin size={20} />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
           </section>
 
           <section className="mb-16">
@@ -209,13 +335,19 @@ function TeamPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {teamHierarchy[2]?.departments?.map((dept, index) => (
-                <div key={index} className="bg-[#0A0A0A] rounded-lg shadow-lg p-6 border border-[#7AECEC]">
+                <div
+                  key={index}
+                  className="bg-[#0A0A0A] rounded-lg shadow-lg p-6 border border-[#7AECEC]"
+                >
                   <h3 className="text-xl font-bold mb-4 text-[#7AECEC]">
                     {dept.name}
                   </h3>
                   <ul className="space-y-2">
                     {dept.members.map((member, idx) => (
-                      <li key={idx} className="flex items-center text-[#7AECEC]">
+                      <li
+                        key={idx}
+                        className="flex items-center text-[#7AECEC]"
+                      >
                         <ChevronRight
                           size={16}
                           className="text-[#7AECEC] mr-2"
