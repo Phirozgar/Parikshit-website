@@ -1,11 +1,28 @@
-import React, { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Code, FlaskRound as Flask, Cpu, Radio, Battery, Boxes, Settings } from 'lucide-react';
 
 
 function SubsystemsPage() {
-
+  const location = useLocation();
   const [activeSubsystem, setActiveSubsystem] = useState('odhs');
-  
+  // Explicitly type the refs object
+  const cardRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const sub = params.get('subsystem');
+    if (sub) setActiveSubsystem(sub);
+  }, [location.search]);
+
+  // Smooth scroll to the active subsystem card on mount or when activeSubsystem changes
+  useEffect(() => {
+    const ref = cardRefs.current[activeSubsystem];
+    if (ref && typeof ref.scrollIntoView === 'function') {
+      ref.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+    }
+  }, [activeSubsystem]);
+
   const subsystems = [
     {
       id: 'odhs',
@@ -180,6 +197,7 @@ function SubsystemsPage() {
             {subsystems.map(system => (
               <button
                 key={system.id}
+                ref={el => { cardRefs.current[system.id] = el; }}
                 className={`p-4 rounded-lg flex flex-col items-center text-center transition ${
                   activeSubsystem === system.id 
                     ? 'bg-[#7AECEC] text-[#0A0A0A] shadow-[0_0_10px_rgba(122,236,236,0.5)]' 
