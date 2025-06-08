@@ -6,7 +6,7 @@ export function ProjectsSection() {
       <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl font-bold mb-12 text-center">PROJECTS</h2>
         <div className="grid md:grid-cols-2 gap-8">
-          <div className="p-6 border border-[#7AECEC]/20 rounded-lg bg-[#0A0A0A] flex flex-col">
+          <Link to="/projects?project=cubesat" className="p-6 border border-[#7AECEC]/20 rounded-lg bg-[#0A0A0A] flex flex-col hover:shadow-lg transition-shadow">
             <img
               src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&q=80"
               alt="CubeSat project"
@@ -22,8 +22,8 @@ export function ProjectsSection() {
               <li>Hands-on experience with space-grade hardware and software</li>
               <li>Collaboration with ISRO and academic mentors</li>
             </ul>
-          </div>
-          <div className="p-6 border border-[#7AECEC]/20 rounded-lg bg-[#0A0A0A] flex flex-col">
+          </Link>
+          <Link to="/projects?project=cansat" className="p-6 border border-[#7AECEC]/20 rounded-lg bg-[#0A0A0A] flex flex-col hover:shadow-lg transition-shadow">
             <img
               src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&q=80"
               alt="Cansat project"
@@ -39,8 +39,8 @@ export function ProjectsSection() {
               <li>Training ground for new team members</li>
               <li>Data collection and telemetry experiments</li>
             </ul>
-          </div>
-          <div className="p-6 border border-[#7AECEC]/20 rounded-lg bg-[#0A0A0A] flex flex-col md:col-span-2">
+          </Link>
+          <Link to="/projects?project=pagos" className="p-6 border border-[#7AECEC]/20 rounded-lg bg-[#0A0A0A] flex flex-col md:col-span-2 hover:shadow-lg transition-shadow">
             <img
               src="https://images.unsplash.com/photo-1470219556762-1771e7f9427d?auto=format&fit=crop&q=80"
               alt="PAGOS ground station"
@@ -56,7 +56,7 @@ export function ProjectsSection() {
               <li>Remote command uplink and telemetry monitoring</li>
               <li>Supports both CubeSat and Cansat missions</li>
             </ul>
-          </div>
+          </Link>
         </div>
       </div>
     </section>

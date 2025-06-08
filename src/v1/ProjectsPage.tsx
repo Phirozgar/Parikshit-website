@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
 
 const projects = [
   {
@@ -46,7 +47,23 @@ const projects = [
 ];
 
 function ProjectsPage() {
-  const [activeProject, setActiveProject] = useState(projects[0].id);
+  const location = useLocation();
+  const query = new URLSearchParams(location.search);
+  const initialProject = query.get("project") || projects[0].id;
+  const [activeProject, setActiveProject] = useState(initialProject);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // If query param changes, update active project
+    setActiveProject(query.get("project") || projects[0].id);
+  }, [location.search]);
+
+  useEffect(() => {
+    // Scroll to the project section on mount if navigated with query param
+    if (location.search && sectionRef.current) {
+      sectionRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [location.search]);
 
   // Detailed content for each project
   const projectDetails: { [key: string]: {
@@ -127,7 +144,7 @@ function ProjectsPage() {
   const detail = projectDetails[activeProject];
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] py-16 px-4">
+    <div ref={sectionRef} className="min-h-screen bg-[#0A0A0A] py-16 px-4">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-4xl font-bold text-center text-[#7AECEC] mb-8">Our Projects</h1>
         <div className="flex justify-center mb-10 gap-4">
