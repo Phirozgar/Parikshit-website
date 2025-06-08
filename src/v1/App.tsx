@@ -8,14 +8,15 @@ import ProjectsPage from "./ProjectsPage";
 import ResearchPage from "./ResearchPage";
 import TeamPageV2 from "../v2/TeamPage";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { HeroSection } from "./components/HeroSection";
-import { AboutSection } from "./components/AboutSection";
-import { SubsystemsSection } from "./components/SubsystemsSection";
-import { ProjectsSection } from "./components/ProjectsSection";
-import { ResearchHighlightsSection } from "./components/ResearchHighlightsSection";
-import { FAQsSection } from "./components/FAQsSection";
-import { TeamStatsSection } from "./components/TeamStatsSection";
-import { JoinUsSection } from "./components/JoinUsSection";
+import { HeroSection } from "./HomePageComponents/HeroSection";
+import { AboutSection } from "./HomePageComponents/AboutSection";
+import { SubsystemsSection } from "./HomePageComponents/SubsystemsSection";
+import { ProjectsSection } from "./HomePageComponents/ProjectsSection";
+import { ResearchHighlightsSection } from "./HomePageComponents/ResearchHighlightsSection";
+import { FAQsSection } from "./HomePageComponents/FAQsSection";
+import { TeamStatsSection } from "./HomePageComponents/TeamStatsSection";
+import { JoinUsSection } from "./HomePageComponents/JoinUsSection";
+import { JoinUsModal } from "./HomePageComponents/JoinUsModal";
 
 // Add global smooth scroll behavior
 if (typeof window !== 'undefined') {
@@ -49,6 +50,7 @@ function AnimatedRoutes() {
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [menuWasOpen, setMenuWasOpen] = useState(false);
+  const [showJoinModal, setShowJoinModal] = useState(false);
 
   // Keep menu mounted for exit animation
   useEffect(() => {
@@ -110,7 +112,10 @@ function App() {
                     FAQs
                   </a>
 
-                  <button className="bg-[#7AECEC] text-black px-4 py-2 rounded-full font-bold hover:bg-white transition-colors">
+                  <button
+                    className="bg-[#7AECEC] text-black px-4 py-2 rounded-full font-bold hover:bg-white transition-colors"
+                    onClick={() => setShowJoinModal(true)}
+                  >
                     JOIN US
                   </button>
                 </div>
@@ -193,6 +198,7 @@ function App() {
 
         {/* Main Content */}
         <AnimatedRoutes />
+        <JoinUsModal open={showJoinModal} onClose={() => setShowJoinModal(false)} />
       </div>
     </Router>
   );
@@ -209,7 +215,6 @@ function HomePage() {
       <FAQsSection />
       <TeamStatsSection />
       <JoinUsSection />
-      {/* Footer remains inline for now */}
       <footer className="py-8 px-4 border-t border-[#7AECEC]/20">
         <div className="max-w-7xl mx-auto text-center text-[#7AECEC]/60">
           <p>© 2025 PARIKSHIT. All rights reserved.</p>
