@@ -23,34 +23,67 @@ if (typeof window !== 'undefined') {
   document.documentElement.style.scrollBehavior = 'smooth';
 }
 
-function AnimatedRoutes() {
-  const location = useLocation();
-  useEffect(() => {
-    // Always scroll to top on route change
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [location.pathname, location.search]);
-  return (
-    <TransitionGroup>
-      <CSSTransition key={location.pathname + location.search} classNames="fade" timeout={400}>
-        <div className="fade-route">
-          <Routes location={location}>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/subsystems" element={<SubsystemsPage />} />
-            <Route path="/team" element={<TeamPage />} />
-            <Route path="/team-v2" element={<TeamPageV2 />} />
-            <Route path="/projects" element={<ProjectsPage />} />
-            <Route path="/research" element={<ResearchPage />} />
-          </Routes>
-        </div>
-      </CSSTransition>
-    </TransitionGroup>
-  );
-}
-
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [menuWasOpen, setMenuWasOpen] = useState(false);
   const [showJoinModal, setShowJoinModal] = useState(false);
+
+  // Scroll to HomePage section by id from any route
+  function scrollToSection(sectionId: string) {
+    if (window.location.pathname !== "/") {
+      window.location.href = `/#${sectionId}`;
+      return;
+    }
+    const el = document.getElementById(sectionId);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+
+  // HomePage must be defined here so it can access setShowJoinModal
+  function HomePage() {
+    return (
+      <>
+        <HeroSection />
+        <AboutSection />
+        <SubsystemsSection />
+        <ProjectsSection />
+        <ResearchHighlightsSection />
+        <FAQsSection />
+        <TeamStatsSection />
+        <JoinUsSection onJoinUs={() => setShowJoinModal(true)} />
+        <footer className="py-8 px-4 border-t border-[#7AECEC]/20">
+          <div className="max-w-7xl mx-auto text-center text-[#7AECEC]/60">
+            <p>© 2025 PARIKSHIT. All rights reserved.</p>
+          </div>
+        </footer>
+      </>
+    );
+  }
+
+  function AnimatedRoutes() {
+    const location = useLocation();
+    useEffect(() => {
+      // Always scroll to top on route change
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, [location.pathname, location.search]);
+    return (
+      <TransitionGroup>
+        <CSSTransition key={location.pathname + location.search} classNames="fade" timeout={400}>
+          <div className="fade-route">
+            <Routes location={location}>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/subsystems" element={<SubsystemsPage />} />
+              <Route path="/team" element={<TeamPage />} />
+              <Route path="/team-v2" element={<TeamPageV2 />} />
+              <Route path="/projects" element={<ProjectsPage />} />
+              <Route path="/research" element={<ResearchPage />} />
+            </Routes>
+          </div>
+        </CSSTransition>
+      </TransitionGroup>
+    );
+  }
 
   // Keep menu mounted for exit animation
   useEffect(() => {
@@ -81,12 +114,13 @@ function App() {
                   >
                     TEAM
                   </Link>
-                  <a
-                    href="/#about"
-                    className="hover:text-white transition-colors"
+                  <button
+                    className="hover:text-white transition-colors bg-transparent"
+                    style={{ padding: 0, border: "none", background: "none" }}
+                    onClick={() => scrollToSection("about")}
                   >
                     ABOUT US
-                  </a>
+                  </button>
                   <Link
                     to="/subsystems"
                     className="hover:text-white transition-colors"
@@ -105,13 +139,13 @@ function App() {
                   >
                     RESEARCH
                   </Link>
-                  <a
-                    href="/#faqs"
-                    className="hover:text-white transition-colors"
+                  <button
+                    className="hover:text-white transition-colors bg-transparent"
+                    style={{ padding: 0, border: "none", background: "none" }}
+                    onClick={() => scrollToSection("faqs")}
                   >
                     FAQs
-                  </a>
-
+                  </button>
                   <button
                     className="bg-[#7AECEC] text-black px-4 py-2 rounded-full font-bold hover:bg-white transition-colors"
                     onClick={() => setShowJoinModal(true)}
@@ -158,12 +192,13 @@ function App() {
                 >
                   TEAM
                 </Link>
-                <a
-                  href="#about"
-                  className="block px-3 py-2 hover:text-white transition-colors"
+                <button
+                  className="block px-3 py-2 hover:text-white transition-colors w-full text-left bg-transparent"
+                  style={{ padding: 0, border: "none", background: "none" }}
+                  onClick={() => { setIsMenuOpen(false); scrollToSection("about"); }}
                 >
                   ABOUT US
-                </a>
+                </button>
                 <Link
                   to="/subsystems"
                   className="block px-3 py-2 hover:text-white transition-colors"
@@ -182,13 +217,14 @@ function App() {
                 >
                   RESEARCH
                 </Link>
-                <a
-                  href="#faqs"
-                  className="block px-3 py-2 hover:text-white transition-colors"
+                <button
+                  className="block px-3 py-2 hover:text-white transition-colors w-full text-left bg-transparent"
+                  style={{ padding: 0, border: "none", background: "none" }}
+                  onClick={() => { setIsMenuOpen(false); scrollToSection("faqs"); }}
                 >
                   FAQs
-                </a>
-                <button className="w-full text-left px-3 py-2 bg-[#7AECEC] text-black rounded-full font-bold hover:bg-white transition-colors">
+                </button>
+                <button className="w-full text-left px-3 py-2 bg-[#7AECEC] text-black rounded-full font-bold hover:bg-white transition-colors" onClick={() => { setIsMenuOpen(false); setShowJoinModal(true); }}>
                   JOIN US
                 </button>
               </div>
@@ -201,26 +237,6 @@ function App() {
         <JoinUsModal open={showJoinModal} onClose={() => setShowJoinModal(false)} />
       </div>
     </Router>
-  );
-}
-
-function HomePage() {
-  return (
-    <>
-      <HeroSection />
-      <AboutSection />
-      <SubsystemsSection />
-      <ProjectsSection />
-      <ResearchHighlightsSection />
-      <FAQsSection />
-      <TeamStatsSection />
-      <JoinUsSection />
-      <footer className="py-8 px-4 border-t border-[#7AECEC]/20">
-        <div className="max-w-7xl mx-auto text-center text-[#7AECEC]/60">
-          <p>© 2025 PARIKSHIT. All rights reserved.</p>
-        </div>
-      </footer>
-    </>
   );
 }
 
