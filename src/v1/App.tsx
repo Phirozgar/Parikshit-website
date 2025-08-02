@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Satellite } from "lucide-react";
+{/* import { Satellite } from "lucide-react"; */}
 import "./styles.css";
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
 import SubsystemsPage from "./SubsystemsPage";
@@ -99,8 +99,9 @@ function App() {
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center">
                 <Link to="/" className="flex items-center">
-                  <Satellite className="w-8 h-8" />
-                  <span className="ml-2 text-xl font-bold">PARIKSHIT</span>
+                  {/*<Satellite className="w-8 h-8" />*/}
+                  <img src="/assets/icons/favicon.png" alt="Parikshit Logo" className="w-12 h-12" />
+                  <span className="ml-2 text-3xl font-bold">PARIKSHIT</span>
                 </Link>
               </div>
               <div className="hidden lg:block ">
