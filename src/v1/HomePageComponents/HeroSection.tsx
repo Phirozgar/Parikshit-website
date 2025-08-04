@@ -18,7 +18,7 @@ export function HeroSection() {
 
       {/* Content Overlay */}
       <div className="relative z-10 w-full h-full">
-        <div className="absolute top-[200px] left-1/2 -translate-x-1/2 text-center">
+        <div className="absolute top-[225px] left-1/2 -translate-x-1/2 text-center">
           <h1 className="md:text-6xl tracking-wider font-bold text-white" 
               style={{ fontFamily: 'Orbitron' }}>
             <div className="text-6xl text-[rgb(6,131,189)]">PARIKSHIT</div>
