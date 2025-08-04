@@ -2,7 +2,7 @@ import { ChevronRight } from "lucide-react";
 
 export function HeroSection() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center">
+    <section id="home" className="relative min-h-screen">
       {/* Background Video */}
       <div className="absolute inset-0 w-full h-full z-0">
         <video
@@ -10,23 +10,24 @@ export function HeroSection() {
           loop
           muted
           className="w-full h-full object-cover"
-          style={{ filter: 'brightness(0.4)' }} // Darkens the video to make text more readable
+          style={{ filter: 'brightness(0.4)' }}
         >
           <source src="/assets/Background_video.mp4" type="video/mp4" />
         </video>
       </div>
 
       {/* Content Overlay */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4">
-        <div className="items-center">
-          <div>
-            <h1 className="text-5xl md:text-6xl mb-6 tracking-wider font-bold text-white" 
-                style={{ fontFamily: 'Orbitron' }}>
-              PARIKSHIT | STUDENT SATELLITE
-            </h1>
-            <button className="bg-[#7AECEC] text-black px-8 py-3 rounded-full font-bold 
-                             hover:bg-white transition-colors flex items-center">
-              JOIN US <ChevronRight className="ml-2" />
+      <div className="relative z-10 w-full h-full">
+        <div className="absolute top-[200px] left-1/2 -translate-x-1/2 text-center">
+          <h1 className="md:text-6xl tracking-wider font-bold text-white" 
+              style={{ fontFamily: 'Orbitron' }}>
+            <div className="text-6xl text-[rgb(6,131,189)]">PARIKSHIT</div>
+            <div className="text-4xl mt-4 text-[rgb(213,185,41)]">STUDENT SATELLITE</div>
+          </h1>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 mt-32">
+            <button className="bg-[#7AECEC] text-black px-6 py-3 rounded-full font-bold
+                              hover:bg-white transition-colors flex items-center">
+              JOIN US<ChevronRight className="ml-0.5" />
             </button>
           </div>
         </div>
