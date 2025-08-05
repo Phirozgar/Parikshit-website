@@ -5,6 +5,7 @@ export default {
     extend: {
       fontFamily: {
         orbitron: ['Orbitron', 'sans-serif'],
+        sans: ['Noto Kufi Arabic', 'sans-serif'],
       },
     },
   },

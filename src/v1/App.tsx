@@ -92,7 +92,7 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-[#0A0A0A] text-[#7AECEC] font-mono">
+      <div className="min-h-screen bg-[#0A0A0A] text-[#7AECEC] font-sans">
         {/* Navigation */}
         <nav className="fixed w-full bg-[#0A0A0A]/90 backdrop-blur-sm border-b border-[#7AECEC]/20 z-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

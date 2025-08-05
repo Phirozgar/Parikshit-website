@@ -40,7 +40,7 @@ export function SubsystemsSection() {
           <Link to="/subsystems?subsystem=admin" className="p-6 border border-[#7AECEC]/20 rounded-lg hover:bg-[#111111] transition-colors group cursor-pointer block">
             <Building2 className="w-12 h-12 mb-4 group-hover:text-white transition-colors" />
             <h3 className="text-xl font-bold mb-2">ADMIN</h3>
-            <p className="text-[#7AECEC]/80">Administration and Operations managing Subsystem</p>
+            <p className="text-[#7AECEC]/80">Administration and Operations Subsystem</p>
           </Link>
         </div>
       </div>

@@ -123,7 +123,11 @@ function TeamPage() {
         },
         {
           name: "Administration Team",
-          members: ["Phirozgar Irani"],
+          members: ["Phirozgar Irani",
+            "Nandini Sah",
+            "Rishitha Kantevari"
+
+          ],
         },
       ],
     },
