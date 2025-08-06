@@ -169,46 +169,46 @@ function ProjectsPage() {
 
             {/* Intro Section */}
             <div className="flex flex-col md:flex-row items-center gap-0">
-              <div className="md:w-1/2 w-full h-80 md:h-[28rem] flex items-center justify-center bg-[#0A0A0A]">
+              <div className="md:w-1/2 w-full h-64 xs:h-72 sm:h-80 md:h-[28rem] flex items-center justify-center bg-[#0A0A0A]">
                 <img
                   src={detail.image}
                   alt={detail.title}
                   className="rounded-none w-full h-full object-cover border-0"
                 />
               </div>
-              <div className="md:w-1/2 w-full p-10 flex flex-col justify-center">
-                <h2 className="text-4xl font-extrabold mb-4 bg-gradient-to-r from-[#7AECEC] via-cyan-400 to-[#7AECEC] text-transparent bg-clip-text drop-shadow-[0_0_12px_#7AECEC99] animate-pulse-slow">{detail.title}</h2>
-                <p className="text-[#7AECEC]/80 mb-4 text-lg">{detail.summary}</p>
+              <div className="md:w-1/2 w-full p-5 xs:p-6 sm:p-8 md:p-10 flex flex-col justify-center">
+                <h2 className="text-2xl xs:text-3xl md:text-4xl font-extrabold mb-4 bg-gradient-to-r from-[#7AECEC] via-cyan-400 to-[#7AECEC] text-transparent bg-clip-text drop-shadow-[0_0_12px_#7AECEC99] animate-pulse-slow">{detail.title}</h2>
+                <p className="text-[#7AECEC]/80 mb-4 text-base xs:text-lg">{detail.summary}</p>
               </div>
             </div>
 
             {/* Mission Requirements Section (text left, image right) */}
             <div className="flex flex-col md:flex-row-reverse items-center gap-0 border-t border-[#7AECEC]/10">
-              <div className="md:w-1/2 w-full h-80 md:h-[22rem] flex items-center justify-center bg-[#0A0A0A]">
+              <div className="md:w-1/2 w-full h-64 xs:h-72 sm:h-80 md:h-[22rem] flex items-center justify-center bg-[#0A0A0A]">
                 <img
                   src={detail.image}
                   alt={detail.title + ' mission'}
                   className="rounded-none w-full h-full object-cover border-0 opacity-80"
                 />
               </div>
-              <div className="md:w-1/2 w-full p-10 flex flex-col justify-center">
-                <h3 className="text-3xl font-extrabold mb-2 bg-gradient-to-r from-[#7AECEC] via-cyan-400 to-[#7AECEC] text-transparent bg-clip-text drop-shadow-[0_0_8px_#7AECEC99]">Mission Requirements</h3>
-                <p className="text-[#7AECEC]/80 mb-4">{detail.mission}</p>
+              <div className="md:w-1/2 w-full p-5 xs:p-6 sm:p-8 md:p-10 flex flex-col justify-center">
+                <h3 className="text-xl xs:text-2xl md:text-3xl font-extrabold mb-2 bg-gradient-to-r from-[#7AECEC] via-cyan-400 to-[#7AECEC] text-transparent bg-clip-text drop-shadow-[0_0_8px_#7AECEC99]">Mission Requirements</h3>
+                <p className="text-[#7AECEC]/80 mb-4 text-base xs:text-lg">{detail.mission}</p>
               </div>
             </div>
 
             {/* Project Specifications Section (image left, text right) */}
             <div className="flex flex-col md:flex-row items-center gap-0 border-t border-[#7AECEC]/10">
-              <div className="md:w-1/2 w-full h-80 md:h-[22rem] flex items-center justify-center bg-[#0A0A0A]">
+              <div className="md:w-1/2 w-full h-64 xs:h-72 sm:h-80 md:h-[22rem] flex items-center justify-center bg-[#0A0A0A]">
                 <img
                   src={detail.image}
                   alt={detail.title + ' specs'}
                   className="rounded-none w-full h-full object-cover border-0 opacity-80"
                 />
               </div>
-              <div className="md:w-1/2 w-full p-10 flex flex-col justify-center">
-                <h3 className="text-3xl font-extrabold mb-2 bg-gradient-to-r from-[#7AECEC] via-cyan-400 to-[#7AECEC] text-transparent bg-clip-text drop-shadow-[0_0_8px_#7AECEC99]">Project Specifications</h3>
-                <ul className="list-disc pl-5 text-[#7AECEC]/70 space-y-1 mb-4">
+              <div className="md:w-1/2 w-full p-5 xs:p-6 sm:p-8 md:p-10 flex flex-col justify-center">
+                <h3 className="text-xl xs:text-2xl md:text-3xl font-extrabold mb-2 bg-gradient-to-r from-[#7AECEC] via-cyan-400 to-[#7AECEC] text-transparent bg-clip-text drop-shadow-[0_0_8px_#7AECEC99]">Project Specifications</h3>
+                <ul className="list-disc pl-5 text-[#7AECEC]/70 space-y-1 mb-4 text-base xs:text-lg">
                   {detail.specs.map((spec: string, idx: number) => (
                     <li key={idx}>{spec}</li>
                   ))}
@@ -218,16 +218,16 @@ function ProjectsPage() {
 
             {/* Success/Highlights Section (text left, image right) */}
             <div className="flex flex-col md:flex-row-reverse items-center gap-0 border-t border-[#7AECEC]/10">
-              <div className="md:w-1/2 w-full h-80 md:h-[22rem] flex items-center justify-center bg-[#0A0A0A]">
+              <div className="md:w-1/2 w-full h-64 xs:h-72 sm:h-80 md:h-[22rem] flex items-center justify-center bg-[#0A0A0A]">
                 <img
                   src={detail.image}
                   alt={detail.title + ' highlights'}
                   className="rounded-none w-full h-full object-cover border-0 opacity-80"
                 />
               </div>
-              <div className="md:w-1/2 w-full p-10 flex flex-col justify-center">
-                <h3 className="text-3xl font-extrabold mb-2 bg-gradient-to-r from-[#7AECEC] via-cyan-400 to-[#7AECEC] text-transparent bg-clip-text drop-shadow-[0_0_8px_#7AECEC99]">Success & Highlights</h3>
-                <ul className="list-disc pl-5 text-[#7AECEC]/70 space-y-1 mb-4">
+              <div className="md:w-1/2 w-full p-5 xs:p-6 sm:p-8 md:p-10 flex flex-col justify-center">
+                <h3 className="text-xl xs:text-2xl md:text-3xl font-extrabold mb-2 bg-gradient-to-r from-[#7AECEC] via-cyan-400 to-[#7AECEC] text-transparent bg-clip-text drop-shadow-[0_0_8px_#7AECEC99]">Success & Highlights</h3>
+                <ul className="list-disc pl-5 text-[#7AECEC]/70 space-y-1 mb-4 text-base xs:text-lg">
                   {detail.achievements.map((ach: string, idx: number) => (
                     <li key={idx}>{ach}</li>
                   ))}
@@ -243,7 +243,7 @@ function ProjectsPage() {
               </div>
             </div>
 
-            {/* Animation keyframes for gradient border */}
+            {/* Animation keyframes for gradient border and responsive utilities */}
             <style>{`
               @keyframes gradient-x {
                 0% { background-position: 0% 50%; }
@@ -255,6 +255,16 @@ function ProjectsPage() {
               }
               .animate-pulse-slow {
                 animation: pulse 2.5s cubic-bezier(0.4,0,0.6,1) infinite;
+              }
+              @media (max-width: 480px) {
+                .xs\\:h-72 { height: 18rem !important; }
+                .xs\\:text-3xl { font-size: 1.875rem !important; }
+                .xs\\:p-6 { padding: 1.5rem !important; }
+              }
+              @media (max-width: 640px) {
+                .sm\\:h-80 { height: 20rem !important; }
+                .sm\\:p-8 { padding: 2rem !important; }
+                .sm\\:text-lg { font-size: 1.125rem !important; }
               }
             `}</style>
           </section>
