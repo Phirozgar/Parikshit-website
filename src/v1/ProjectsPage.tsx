@@ -163,38 +163,100 @@ function ProjectsPage() {
           ))}
         </div>
         {detail && (
-          <section className="bg-[#111111] border border-[#7AECEC]/20 rounded-lg shadow-lg p-12 flex flex-col md:flex-row gap-12 items-center w-full">
-            <img
-              src={detail.image}
-              alt={detail.title}
-              className="rounded-lg mb-8 md:mb-0 w-full md:w-1/2 h-96 object-cover border border-[#7AECEC]/10"
-            />
-            <div className="flex-1">
-              <h2 className="text-3xl font-bold text-[#7AECEC] mb-4">{detail.title}</h2>
-              <p className="text-[#7AECEC]/80 mb-4 text-lg">{detail.summary}</p>
-              <h3 className="text-xl font-bold text-[#7AECEC] mt-6 mb-2">Mission</h3>
-              <p className="text-[#7AECEC]/80 mb-4">{detail.mission}</p>
-              <h3 className="text-xl font-bold text-[#7AECEC] mt-6 mb-2">Key Specifications</h3>
-              <ul className="list-disc pl-5 text-[#7AECEC]/70 space-y-1 mb-4">
-                {detail.specs.map((spec: string, idx: number) => (
-                  <li key={idx}>{spec}</li>
-                ))}
-              </ul>
-              <h3 className="text-xl font-bold text-[#7AECEC] mt-6 mb-2">Achievements & Highlights</h3>
-              <ul className="list-disc pl-5 text-[#7AECEC]/70 space-y-1 mb-4">
-                {detail.achievements.map((ach: string, idx: number) => (
-                  <li key={idx}>{ach}</li>
-                ))}
-              </ul>
-              <a
-                href={detail.learnMore}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block mt-6 px-6 py-2 bg-[#7AECEC] text-[#0A0A0A] font-bold rounded-full shadow hover:bg-white transition-colors"
-              >
-                Learn More
-              </a>
+          <section className="bg-[#111111] border border-[#7AECEC]/20 rounded-2xl shadow-lg p-0 overflow-hidden w-full relative">
+            {/* Animated Gradient Border */}
+            <div className="absolute top-0 left-0 w-full h-2 animate-gradient-x bg-gradient-to-r from-[#7AECEC] via-[#0A0A0A] to-[#7AECEC] opacity-80 blur-[2px] z-10" style={{backgroundSize:'200% 100%'}} />
+
+            {/* Intro Section */}
+            <div className="flex flex-col md:flex-row items-center gap-0">
+              <div className="md:w-1/2 w-full h-80 md:h-[28rem] flex items-center justify-center bg-[#0A0A0A]">
+                <img
+                  src={detail.image}
+                  alt={detail.title}
+                  className="rounded-none w-full h-full object-cover border-0"
+                />
+              </div>
+              <div className="md:w-1/2 w-full p-10 flex flex-col justify-center">
+                <h2 className="text-4xl font-extrabold mb-4 bg-gradient-to-r from-[#7AECEC] via-cyan-400 to-[#7AECEC] text-transparent bg-clip-text drop-shadow-[0_0_12px_#7AECEC99] animate-pulse-slow">{detail.title}</h2>
+                <p className="text-[#7AECEC]/80 mb-4 text-lg">{detail.summary}</p>
+              </div>
             </div>
+
+            {/* Mission Requirements Section (text left, image right) */}
+            <div className="flex flex-col md:flex-row-reverse items-center gap-0 border-t border-[#7AECEC]/10">
+              <div className="md:w-1/2 w-full h-80 md:h-[22rem] flex items-center justify-center bg-[#0A0A0A]">
+                <img
+                  src={detail.image}
+                  alt={detail.title + ' mission'}
+                  className="rounded-none w-full h-full object-cover border-0 opacity-80"
+                />
+              </div>
+              <div className="md:w-1/2 w-full p-10 flex flex-col justify-center">
+                <h3 className="text-3xl font-extrabold mb-2 bg-gradient-to-r from-[#7AECEC] via-cyan-400 to-[#7AECEC] text-transparent bg-clip-text drop-shadow-[0_0_8px_#7AECEC99]">Mission Requirements</h3>
+                <p className="text-[#7AECEC]/80 mb-4">{detail.mission}</p>
+              </div>
+            </div>
+
+            {/* Project Specifications Section (image left, text right) */}
+            <div className="flex flex-col md:flex-row items-center gap-0 border-t border-[#7AECEC]/10">
+              <div className="md:w-1/2 w-full h-80 md:h-[22rem] flex items-center justify-center bg-[#0A0A0A]">
+                <img
+                  src={detail.image}
+                  alt={detail.title + ' specs'}
+                  className="rounded-none w-full h-full object-cover border-0 opacity-80"
+                />
+              </div>
+              <div className="md:w-1/2 w-full p-10 flex flex-col justify-center">
+                <h3 className="text-3xl font-extrabold mb-2 bg-gradient-to-r from-[#7AECEC] via-cyan-400 to-[#7AECEC] text-transparent bg-clip-text drop-shadow-[0_0_8px_#7AECEC99]">Project Specifications</h3>
+                <ul className="list-disc pl-5 text-[#7AECEC]/70 space-y-1 mb-4">
+                  {detail.specs.map((spec: string, idx: number) => (
+                    <li key={idx}>{spec}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Success/Highlights Section (text left, image right) */}
+            <div className="flex flex-col md:flex-row-reverse items-center gap-0 border-t border-[#7AECEC]/10">
+              <div className="md:w-1/2 w-full h-80 md:h-[22rem] flex items-center justify-center bg-[#0A0A0A]">
+                <img
+                  src={detail.image}
+                  alt={detail.title + ' highlights'}
+                  className="rounded-none w-full h-full object-cover border-0 opacity-80"
+                />
+              </div>
+              <div className="md:w-1/2 w-full p-10 flex flex-col justify-center">
+                <h3 className="text-3xl font-extrabold mb-2 bg-gradient-to-r from-[#7AECEC] via-cyan-400 to-[#7AECEC] text-transparent bg-clip-text drop-shadow-[0_0_8px_#7AECEC99]">Success & Highlights</h3>
+                <ul className="list-disc pl-5 text-[#7AECEC]/70 space-y-1 mb-4">
+                  {detail.achievements.map((ach: string, idx: number) => (
+                    <li key={idx}>{ach}</li>
+                  ))}
+                </ul>
+                <a
+                  href={detail.learnMore}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block mt-6 px-6 py-2 bg-[#7AECEC] text-[#0A0A0A] font-bold rounded-full shadow hover:bg-white transition-colors"
+                >
+                  Learn More
+                </a>
+              </div>
+            </div>
+
+            {/* Animation keyframes for gradient border */}
+            <style>{`
+              @keyframes gradient-x {
+                0% { background-position: 0% 50%; }
+                100% { background-position: 100% 50%; }
+              }
+              .animate-gradient-x {
+                animation: gradient-x 3s linear infinite alternate;
+                background-size: 200% 100%;
+              }
+              .animate-pulse-slow {
+                animation: pulse 2.5s cubic-bezier(0.4,0,0.6,1) infinite;
+              }
+            `}</style>
           </section>
         )}
       </div>
