@@ -6,7 +6,7 @@ export function SubsystemsSection() {
     <section id="subsystems" className="py-20 px-4">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl font-bold mb-12 text-center">SUBSYSTEMS</h2>
-        <div className="grid md:grid-cols-3 lg:grid-cols-7 gap-8">
+        <div className="grid md:grid-cols-3 lg:grid-cols-8 gap-5">
           <Link to="/subsystems?subsystem=odhs" className="p-6 border border-[#7AECEC]/20 rounded-lg hover:bg-[#111111] transition-colors group cursor-pointer block">
             <Cpu className="w-12 h-12 mb-4 group-hover:text-white transition-colors" />
             <h3 className="text-xl font-bold mb-2">ODHS</h3>
@@ -41,6 +41,11 @@ export function SubsystemsSection() {
             <Building2 className="w-12 h-12 mb-4 group-hover:text-white transition-colors" />
             <h3 className="text-xl font-bold mb-2">ADMIN</h3>
             <p className="text-[#7AECEC]/80">Administration and Operations Subsystem</p>
+          </Link>
+          <Link to="/subsystems?subsystem=admin" className="p-6 border border-[#7AECEC]/20 rounded-lg hover:bg-[#111111] transition-colors group cursor-pointer block">
+            <Building2 className="w-12 h-12 mb-4 group-hover:text-white transition-colors" />
+            <h3 className="text-xl font-bold mb-2">RESEARCH</h3>
+            <p className="text-[#7AECEC]/80">Research Subsystem</p>
           </Link>
         </div>
       </div>
