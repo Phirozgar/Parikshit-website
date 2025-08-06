@@ -126,6 +126,7 @@ function TeamPage() {
           members: ["Phirozgar Irani",
             "Nandini Sah",
             "Rishitha Kantevari"
+          
 
           ],
         },

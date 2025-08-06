@@ -190,7 +190,7 @@ function SubsystemsPage() {
         <section className="mb-12">
           <h2 className="text-3xl font-bold mb-8 text-[#7AECEC]">Subsystem Overview</h2>
           <p className="text-lg mb-8 text-[rgba(122,236,236,0.8)]">
-            Our 3U CubeSat is comprised of six primary subsystems, each responsible for critical functions that ensure mission success. These subsystems work together seamlessly to enable our satellite to operate in the harsh environment of space.
+            Our 2U CubeSat is comprised of seven primary subsystems, each responsible for critical functions that ensure mission success. These subsystems work together seamlessly to enable our satellite to operate in the harsh environment of space.
           </p>
           
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
