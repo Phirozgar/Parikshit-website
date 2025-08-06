@@ -61,13 +61,13 @@ const allTeamMembers: TeamMember[] = [
     role: "ODHS Lead",
     image: getImagePath("Rachit Takate"),
   },
-  {
-    name: "Ankit Mishra",
-    role: "ADCS Lead",
-    image: getImagePath("Ankit Mishra"),
-    github: "ankit-mishra",
-    linkedin: "ankit-mishra",
-  },
+  // {
+  //   name: "Ankit Mishra",
+  //   role: "ADCS Lead Member",
+  //   image: getImagePath("Ankit Mishra"),
+  //   github: "ankit-mishra",
+  //   linkedin: "ankit-mishra",
+  // },
   { name: "Akshay Sai", role: "EPS Lead", image: getImagePath("Akshay Sai") },
   {
     name: "Jayant Sharma",
@@ -75,115 +75,139 @@ const allTeamMembers: TeamMember[] = [
     image: getImagePath("Jayant Sharma"),
   },
   {
-    name: "Swetha M R",
-    role: "Administration Lead",
-    image: getImagePath("Swetha M R"),
-    github: "swetha-m-r",
-    linkedin: "swetha-m-r",
+    name: "Shrihar Pande",
+    role: "Payload Lead",
+    image: getImagePath("Shrihar Pande"),
+    github: "Shrihar Pande",
+    linkedin: "Shrihar Pande",
   },
+  {
+    name: "Roselin Maria",
+    role: "Payload Lead",
+    image: getImagePath("Roselin Maria"),
+    github: "Roselin Maria",
+    linkedin: "Roselin Maria",
+  },
+  // {
+  //   name: "Swetha M R",
+  //   role: "Administration Lead Member",
+  //   image: getImagePath("Swetha M R"),
+  //   github: "swetha-m-r",
+  //   linkedin: "swetha-m-r",
+  // },
 
   // ODHS Team
+  { name: "Rachit Takate", role: "ODHS Team Member", image: getImagePath("Rachit") },
   {
     name: "Rithika Salimath",
-    role: "ODHS Team",
+    role: "ODHS Team Member",
     image: getImagePath("Rithika Salimath"),
   },
   {
     name: "Aanya Shantaram",
-    role: "ODHS Team",
+    role: "ODHS Team Member",
     image: getImagePath("Aanya Shantaram"),
   },
   {
     name: "Soham Singh",
-    role: "ODHS Team",
+    role: "ODHS Team Member",
     image: getImagePath("Soham Singh"),
   },
-  { name: "Nishitha", role: "ODHS Team", image: getImagePath("Nishitha") },
-  { name: "Prathamesh", role: "ODHS Team", image: getImagePath("Prathamesh") },
-  { name: "Saloni", role: "ODHS Team", image: getImagePath("Saloni") },
+  { name: "Nishitha", role: "ODHS Team Member", image: getImagePath("Nishitha") },
+  { name: "Prathamesh", role: "ODHS Team Member", image: getImagePath("Prathamesh") },
+  { name: "Saloni", role: "ODHS Team Member", image: getImagePath("Saloni") },
+  {
+    name: "Harshit Srivastava",
+    role: "ODHS Team Member",
+    image: getImagePath("Harshit"),
+  },
+  { name: "Krishang Jain", role: "ODHS Team Member", image: getImagePath("Krishang") },
 
   // ADCS Team
   {
     name: "Visalakshi S",
-    role: "ADCS Team",
+    role: "ADCS Team Member",
     image: getImagePath("Visalakshi S"),
   },
   {
     name: "Sudeeksha Battacharya",
-    role: "ADCS Team",
+    role: "ADCS Team Member",
     image: getImagePath("Sudeeksha Battacharya"),
   },
   {
     name: "Nischal Nori",
-    role: "ADCS Team",
+    role: "ADCS Team Member",
     image: getImagePath("Nischal Nori"),
   },
-  { name: "Samika", role: "ADCS Team", image: getImagePath("Samika") },
-  { name: "Ardra", role: "ADCS Team", image: getImagePath("Ardra") },
+  { name: "Samika", role: "ADCS Team Member", image: getImagePath("Samika") },
+  { name: "Ardra", role: "ADCS Team Member", image: getImagePath("Ardra") },
 
   // EPS Team
-  { name: "Jay", role: "EPS Team", image: getImagePath("Jay") },
-  { name: "Prakhar", role: "EPS Team", image: getImagePath("Prakhar") },
+  { name: "Jay", role: "EPS Team Member", image: getImagePath("Jay") },
+  { name: "Prakhar", role: "EPS Team Member", image: getImagePath("Prakhar") },
 
   // COMMS Team
   {
     name: "Nidhi Hegde",
-    role: "COMMS Team",
+    role: "COMMS Team Member",
     image: getImagePath("Nidhi Hegde"),
     github: "nidhi-hegde",
     linkedin: "nidhi-hegde",
   },
-  { name: "Om", role: "COMMS Team", image: getImagePath("Om") },
+  { name: "Om Kale", role: "COMMS Team Member", image: getImagePath("Om") },
   {
     name: "Nithish Khumaran",
-    role: "COMMS Team",
+    role: "COMMS Team Member",
     image: getImagePath("Nithish Khumaran"),
   },
 
   // Payload Team
   {
     name: "Shrihar Pande",
-    role: "Payload Team",
+    role: "Payload Team Member",
     image: getImagePath("Shrihar Pande"),
   },
   {
     name: "Roselin Maria",
-    role: "Payload Team",
+    role: "Payload Team Member",
     image: getImagePath("Roselin Maria"),
   },
   {
     name: "Asna Kidvai",
-    role: "Payload Team",
+    role: "Payload Team Member",
     image: getImagePath("Asna Kidvai"),
   },
   {
     name: "Siddharta Chhauda",
-    role: "Payload Team",
+    role: "Payload Team Member",
     image: getImagePath("Siddharta Chhauda"),
   },
-  { name: "Rushat", role: "Payload Team", image: getImagePath("Rushat") },
+  { name: "Rushat", role: "Payload Team Member", image: getImagePath("Rushat") },
+  { name: "Dev", role: "Payload Team Member", image: getImagePath("Dev") },
+  { name: "Anshika", role: "Payload Team Member", image: getImagePath("Anshika") },
+
 
   // STMS Team
   {
     name: "Radhika Sasindran",
-    role: "STMS Team",
+    role: "STMS Team Member",
     image: getImagePath("Radhika Sasindran"),
   },
 
   // Administration Team
   {
     name: "Phirozgar Irani",
-    role: "Administration Team",
+    role: "Administration Team Member",
     image: getImagePath("Phirozgar Irani"),
   },
   {
     name: "Nandini Sah",
-    role: "Administration Team",
+    role: "Administration Team Member",
     image: getImagePath("Nandini Sah"),
   },
   {
     name: "Rishitha Kantevari",
-    role: "Administration Team",
+    role: "Administration Team Member",
     image: getImagePath("Rishitha Kantevari"),
   },
 
@@ -221,31 +245,31 @@ function TeamPage() {
   const teamGroups = [
     {
       name: "ODHS Team",
-      members: allTeamMembers.filter((m) => m.role === "ODHS Team"),
+      members: allTeamMembers.filter((m) => m.role === "ODHS Team Member"),
     },
     {
       name: "ADCS Team",
-      members: allTeamMembers.filter((m) => m.role === "ADCS Team"),
+      members: allTeamMembers.filter((m) => m.role === "ADCS Team Member"),
     },
     {
       name: "EPS Team",
-      members: allTeamMembers.filter((m) => m.role === "EPS Team"),
+      members: allTeamMembers.filter((m) => m.role === "EPS Team Member"),
     },
     {
       name: "COMMS Team",
-      members: allTeamMembers.filter((m) => m.role === "COMMS Team"),
+      members: allTeamMembers.filter((m) => m.role === "COMMS Team Member"),
     },
     {
       name: "Payload Team",
-      members: allTeamMembers.filter((m) => m.role === "Payload Team"),
+      members: allTeamMembers.filter((m) =>m.role === "Payload Team Member"),
     },
     {
       name: "STMS Team",
-      members: allTeamMembers.filter((m) => m.role === "STMS Team"),
+      members: allTeamMembers.filter((m) => m.role === "STMS Team Member"),
     },
     {
       name: "Administration Team",
-      members: allTeamMembers.filter((m) => m.role === "Administration Team"),
+      members: allTeamMembers.filter((m) => m.role === "Administration Team Member"),
     },
   ];
 
@@ -277,7 +301,7 @@ function TeamPage() {
             <h2 className="text-4xl font-bold mb-12 text-[#7AECEC] text-center">
               Executive Board
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
               {executiveBoard.map((member, index) => (
                 <div
                   key={index}
@@ -328,7 +352,7 @@ function TeamPage() {
             <h2 className="text-4xl font-bold mb-12 text-[#7AECEC] text-center">
               Subsystem Leads
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
               {subsystemLeads.map((member, index) => (
                 <div
                   key={index}
@@ -362,7 +386,7 @@ function TeamPage() {
                 <h3 className="text-2xl font-bold mb-8 text-[#7AECEC] border-b border-[#7AECEC] pb-2">
                   {group.name}
                 </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                   {group.members.map((member, index) => (
                     <div
                       key={index}
