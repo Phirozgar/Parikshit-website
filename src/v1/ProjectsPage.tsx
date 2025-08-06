@@ -144,7 +144,7 @@ function ProjectsPage() {
   const detail = projectDetails[activeProject];
 
   return (
-    <div ref={sectionRef} className="min-h-screen bg-[#0A0A0A] py-16 px-4">
+    <div ref={sectionRef} className="min-h-screen bg-[#0A0A0A] py-24 px-4">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-4xl font-bold text-center text-[#7AECEC] mb-8">Our Projects</h1>
         <div className="flex justify-center mb-10 gap-4">
