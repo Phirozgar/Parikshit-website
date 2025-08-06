@@ -191,7 +191,7 @@ function ResearchPage() {
 	});
 
 	return (
-		<div className="min-h-screen bg-[#0A0A0A] py-16 px-4">
+		<div className="min-h-screen bg-[#0A0A0A] py-24 px-4">
 			<div className="max-w-6xl mx-auto">
 				<h1 className="text-4xl font-bold text-center text-[#7AECEC] mb-6 tracking-widest drop-shadow-glow">Research & Publications</h1>
 				<p className="text-lg text-[#7AECEC]/80 text-center mb-10 max-w-3xl mx-auto">
@@ -242,43 +242,49 @@ function ResearchPage() {
 					</div>
 				</div>
 				{/* Results */}
-				<div className="grid md:grid-cols-2 gap-8">
-					{filtered.length === 0 && (
-						<div className="col-span-2 text-center text-[#7AECEC]/60 text-xl py-12">
-							<span className="inline-block animate-pulse">No papers found 🚀</span>
-						</div>
-					)}
-					{filtered.map((paper, idx) => (
-						<div
-							key={idx}
-							className="bg-[#111111] border border-[#7AECEC]/20 rounded-lg shadow-lg p-8 flex flex-col justify-between hover:shadow-[0_0_20px_rgba(122,236,236,0.2)] transition-shadow backdrop-blur-md"
-						>
-							<div>
-								<h2 className="text-xl font-bold text-[#7AECEC] mb-2 tracking-wide flex items-center gap-2">
-									<span className="inline-block w-2 h-2 bg-[#7AECEC] rounded-full animate-pulse"></span>
-									{paper.title}
-								</h2>
-								<p className="text-[#7AECEC]/70 mb-2 text-sm font-mono">{paper.authors}</p>
-								<div className="flex flex-wrap items-center gap-2 mb-4">
-									<span className="bg-[#7AECEC]/10 text-[#7AECEC] px-3 py-1 rounded-full text-xs font-semibold">
-										{paper.venue}
-									</span>
-									<span className="bg-[#7AECEC]/10 text-[#7AECEC] px-3 py-1 rounded-full text-xs font-semibold">
-										{paper.year}
-									</span>
-								</div>
-							</div>
-							<a
-								href={paper.link}
-								target="_blank"
-								rel="noopener noreferrer"
-								className="mt-4 px-5 py-2 bg-[#7AECEC] text-[#0A0A0A] font-bold rounded-full shadow hover:bg-white transition-colors text-center w-fit self-end"
-							>
-								View Paper
-							</a>
-						</div>
-					))}
-				</div>
+			  <div className="grid md:grid-cols-2 gap-8">
+				{filtered.length === 0 && (
+				  <div className="col-span-2 text-center text-[#7AECEC]/60 text-xl py-12">
+					<span className="inline-block animate-pulse">No papers found 🚀</span>
+				  </div>
+				)}
+				{filtered.map((paper, idx) => (
+				  <div
+					key={idx}
+					className="relative group bg-[#0A0A0A]/70 border border-[#7AECEC]/30 rounded-2xl shadow-xl p-0 overflow-hidden flex flex-col min-h-[260px] transition-transform duration-300 ease-out hover:scale-[1.03] hover:shadow-[0_0_24px_2px_rgba(122,236,236,0.10)] hover:border-[#7AECEC] before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#7AECEC]/10 before:to-[#0A0A0A]/60 before:opacity-80 before:pointer-events-none"
+					style={{ perspective: 1000 }}
+				  >
+					{/* Floating Title */}
+					<div className="absolute top-0 left-0 w-full z-10 flex items-center px-8 pt-7 pb-3 bg-transparent pointer-events-none">
+					  <h2 className="text-lg md:text-xl font-bold text-[#7AECEC] tracking-wide drop-shadow-glow group-hover:drop-shadow-[0_0_4px_#7AECEC99] transition-all duration-300 whitespace-normal break-words">
+						{paper.title}
+					  </h2>
+					</div>
+					{/* Card Content */}
+					<div className="flex-1 flex flex-col justify-end px-8 pb-8 pt-28">
+					  <p className="text-[#7AECEC]/80 mb-2 text-sm font-mono line-clamp-2">{paper.authors}</p>
+					  <div className="flex flex-wrap items-center gap-2 mb-4">
+						<span className="bg-[#7AECEC]/10 text-[#7AECEC] px-3 py-1 rounded-full text-xs font-semibold">
+						  {paper.venue}
+						</span>
+						<span className="bg-[#7AECEC]/10 text-[#7AECEC] px-3 py-1 rounded-full text-xs font-semibold">
+						  {paper.year}
+						</span>
+					  </div>
+					  <a
+						href={paper.link}
+						target="_blank"
+						rel="noopener noreferrer"
+						className="mt-2 px-5 py-2 bg-[#7AECEC] text-[#0A0A0A] font-bold rounded-full shadow hover:bg-white transition-colors text-center w-fit self-end group-hover:scale-105 group-hover:shadow-[0_0_8px_#7AECEC99] duration-300"
+					  >
+						View Paper
+					  </a>
+					</div>
+					{/* Softer Animated Glow Border */}
+					<div className="pointer-events-none absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-[#7AECEC] group-hover:shadow-[0_0_16px_4px_#7AECEC33] transition-all duration-300"></div>
+				  </div>
+				))}
+			  </div>
 			</div>
 		</div>
 	);
