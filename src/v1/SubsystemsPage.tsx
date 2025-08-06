@@ -263,85 +263,9 @@ function SubsystemsPage() {
                 </div>
               </div>
             </div>
-            
-            <div className="mt-8 pt-8 border-t border-[rgba(122,236,236,0.2)]">
-              <h3 className="text-xl font-bold mb-4 text-[#7AECEC]">Development Status</h3>
-              <div className="bg-[#0A0A0A] p-6 rounded-lg border border-[rgba(122,236,236,0.2)]">
-                <div className="mb-4">
-                  <div className="flex justify-between mb-2">
-                    <span className="font-medium text-[#7AECEC]">Design Phase</span>
-                    <span className="text-[rgba(122,236,236,0.8)]">Completed</span>
-                  </div>
-                  <div className="w-full bg-[#111111] rounded-full h-2.5">
-                    <div className="bg-[#7AECEC] h-2.5 rounded-full" style={{ width: '100%' }}></div>
-                  </div>
-                </div>
-                
-                <div className="mb-4">
-                  <div className="flex justify-between mb-2">
-                    <span className="font-medium text-[#7AECEC]">Prototype Development</span>
-                    <span className="text-[rgba(122,236,236,0.8)]">In Progress</span>
-                  </div>
-                  <div className="w-full bg-[#111111] rounded-full h-2.5">
-                    <div className="bg-[#7AECEC] h-2.5 rounded-full" style={{ width: '75%' }}></div>
-                  </div>
-                </div>
-                
-                <div className="mb-4">
-                  <div className="flex justify-between mb-2">
-                    <span className="font-medium text-[#7AECEC]">Testing & Validation</span>
-                    <span className="text-[rgba(122,236,236,0.8)]">In Progress</span>
-                  </div>
-                  <div className="w-full bg-[#111111] rounded-full h-2.5">
-                    <div className="bg-[#7AECEC] h-2.5 rounded-full" style={{ width: '50%' }}></div>
-                  </div>
-                </div>
-                
-                <div>
-                  <div className="flex justify-between mb-2">
-                    <span className="font-medium text-[#7AECEC]">Flight Readiness</span>
-                    <span className="text-[rgba(122,236,236,0.8)]">Pending</span>
-                  </div>
-                  <div className="w-full bg-[#111111] rounded-full h-2.5">
-                    <div className="bg-[rgba(122,236,236,0.4)] h-2.5 rounded-full" style={{ width: '25%' }}></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+
           </section>
         )}
-        
-        <section>
-          <h2 className="text-3xl font-bold mb-8 text-[#7AECEC]">System Integration</h2>
-          <div className="bg-[#111111] rounded-lg shadow-[0_0_10px_rgba(122,236,236,0.2)] border border-[rgba(122,236,236,0.2)] p-8">
-            <p className="text-lg mb-6 text-[rgba(122,236,236,0.8)]">
-              All subsystems are designed to work together seamlessly, with standardized interfaces and communication protocols. Our system integration approach ensures that each component functions both independently and as part of the complete satellite system.
-            </p>
-            
-            <div className="bg-[#0A0A0A] p-6 rounded-lg border border-[rgba(122,236,236,0.2)] mb-8">
-              <h3 className="text-xl font-bold mb-4 text-[#7AECEC]">Integration Testing</h3>
-              <p className="text-[rgba(122,236,236,0.8)]">
-                Regular integration tests are conducted to verify subsystem compatibility and overall system performance. These tests simulate various mission scenarios to ensure the satellite can handle all expected operational conditions.
-              </p>
-            </div>
-            
-            <div className="flex flex-col md:flex-row gap-6">
-              <div className="flex-1 border border-[rgba(122,236,236,0.2)] rounded-lg p-6 bg-[#0A0A0A]">
-                <h4 className="font-bold text-lg mb-3 text-[#7AECEC]">Technical Documentation</h4>
-                <p className="text-[rgba(122,236,236,0.8)]">
-                  Each subsystem team maintains detailed technical documentation, including interface control documents (ICDs) that specify how subsystems interact with each other.
-                </p>
-              </div>
-              
-              <div className="flex-1 border border-[rgba(122,236,236,0.2)] rounded-lg p-6 bg-[#0A0A0A]">
-                <h4 className="font-bold text-lg mb-3 text-[#7AECEC]">Weekly Integration Meetings</h4>
-                <p className="text-[rgba(122,236,236,0.8)]">
-                  Subsystem leads meet weekly to discuss integration challenges, resolve interface issues, and coordinate development timelines across teams.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
     </div>
   );
