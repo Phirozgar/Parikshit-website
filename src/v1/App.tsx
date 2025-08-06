@@ -1,3 +1,4 @@
+import RecruitmentsPage from "./RecruitmentsPage";
 import { useState, useEffect } from "react";
 {/* import { Satellite } from "lucide-react"; */}
 import "./styles.css";
@@ -6,7 +7,6 @@ import SubsystemsPage from "./SubsystemsPage";
 import TeamPage from "./TeamPage";
 import ProjectsPage from "./ProjectsPage";
 import ResearchPage from "./ResearchPage";
-import TeamPageV2 from "../v2/TeamPage";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { HeroSection } from "./HomePageComponents/HeroSection";
 import { AboutSection } from "./HomePageComponents/AboutSection";
@@ -75,9 +75,9 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/subsystems" element={<SubsystemsPage />} />
               <Route path="/team" element={<TeamPage />} />
-              <Route path="/team-v2" element={<TeamPageV2 />} />
               <Route path="/projects" element={<ProjectsPage />} />
               <Route path="/research" element={<ResearchPage />} />
+              <Route path="/recruitments" element={<RecruitmentsPage />} />
             </Routes>
           </div>
         </CSSTransition>
@@ -101,7 +101,6 @@ function App() {
                 <Link to="/" className="flex items-center">
                   {/*<Satellite className="w-8 h-8" />*/}
                   <img src="/assets/icons/favicon.png" alt="Parikshit Logo" className="w-12 h-12" />
-                  <span className="ml-2 text-3xl font-bold">PARIKSHIT</span>
                 </Link>
               </div>
               <div className="hidden lg:block ">
@@ -139,6 +138,12 @@ function App() {
                     className="hover:text-white transition-colors"
                   >
                     RESEARCH
+                  </Link>
+                  <Link
+                    to="/recruitments"
+                    className="hover:text-white transition-colors"
+                  >
+                    RECRUITMENTS
                   </Link>
                   <button
                     className="hover:text-white transition-colors bg-transparent"
@@ -217,6 +222,12 @@ function App() {
                   className="block px-3 py-2 hover:text-white transition-colors"
                 >
                   RESEARCH
+                </Link>
+                <Link
+                  to="/recruitments"
+                  className="block px-3 py-2 hover:text-white transition-colors"
+                >
+                  RECRUITMENTS
                 </Link>
                 <button
                   className="block px-3 py-2 hover:text-white transition-colors w-full text-left bg-transparent"
