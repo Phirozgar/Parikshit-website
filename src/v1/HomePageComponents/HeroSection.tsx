@@ -1,31 +1,44 @@
 import { ChevronRight } from "lucide-react";
+import { JoinUsModal } from "./JoinUsModal";
+import { useState } from "react";
 
 export function HeroSection() {
+  const [showJoinModal, setShowJoinModal ] =useState(false);
+
   return (
-    <section id="home" className="pt-32 pb-20 px-4">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              PARIKSHIT STUDENT SATELLITE
-            </h1>
-            <p className="text-lg mb-8 text-[#7AECEC]/80">
-              Pioneering space exploration through student-led innovation and research.
-            </p>
-            <button className="bg-[#7AECEC] text-black px-8 py-3 rounded-full font-bold hover:bg-white transition-colors flex items-center">
-              JOIN US <ChevronRight className="ml-2" />
+    <section id="home" className="relative min-h-screen">
+      {/* Background Video */}
+      <div className="absolute inset-0 w-full h-full z-0">
+        <video
+          autoPlay
+          loop
+          muted
+          className="w-full h-full object-cover"
+          style={{ filter: 'brightness(0.4)' }}
+        >
+          <source src="/assets/Background_video.mp4" type="video/mp4" />
+        </video>
+      </div>
+
+      {/* Content Overlay */}
+      <div className="relative z-10 w-full h-full">
+        <div className="absolute top-[225px] left-1/2 -translate-x-1/2 text-center">
+          <h1 className="md:text-6xl tracking-wider font-bold text-white font-orbitron">
+            <div className="text-[5.3rem] tracking-[0.35rem] text-bold">PARIKSHIT</div>
+            <div className="text-4xl mt-4 text-[rgba(218,193,66,1)]">STUDENT SATELLITE</div>
+          </h1>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 mt-32">
+            <button className="bg-[#7AECEC] text-black px-6 py-3 rounded-full font-bold
+                              hover:bg-white transition-colors flex items-center"
+                              onClick={() => setShowJoinModal(true)}
+                              >
+              JOIN US<ChevronRight className="ml-0.5" />
             </button>
-          </div>
-          <div className="relative">
-            <img
-              src="https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?auto=format&fit=crop&q=80"
-              alt="Satellite in space"
-              className="rounded-lg shadow-2xl shadow-[#7AECEC]/20"
-            />
-            <div className="absolute inset-0 border-2 border-[#7AECEC]/20 rounded-lg -translate-x-4 -translate-y-4 -z-10"></div>
           </div>
         </div>
       </div>
+
+      <JoinUsModal open={showJoinModal} onClose={() => setShowJoinModal(false)} />
     </section>
   );
 }
