@@ -46,6 +46,30 @@ function SubsystemsPage() {
       imageSrc: 'https://example.com/images/odhs.jpg'
     },
     {
+      id: 'research',
+      name: 'Research & Development Subsystem',
+      icon: <Flask size={24} />,
+      description: 'The Research Subsystem is dedicated to advancing the frontiers of student-led space research, driving innovation and technical excellence across all mission domains.',
+      details: [
+        'Conducts original research in satellite engineering, space systems, and mission operations',
+        'Publishes peer-reviewed papers in international conferences and journals',
+        'Develops and tests novel algorithms for attitude control, communications, and data handling',
+        'Designs and validates new payload concepts and experimental platforms',
+        'Promotes a culture of scientific inquiry and technical documentation within the team',
+        'Collaborates with academic and industry partners for joint research initiatives',
+        'Mentors students in research methodology and technical writing'
+      ],
+      components: [
+        'Research Paper Authoring & Review Group',
+        'Algorithm Development Team',
+        'Payload Experimentation Unit',
+        'Technical Documentation & Knowledge Base',
+        'Conference & Publication Outreach',
+        'Student Research Mentorship Program'
+      ],
+      imageSrc: 'https://example.com/images/research.jpg'
+    },
+    {
       id: 'adcs',
       name: 'Attitude Determination & Control System (ADCS)',
       icon: <Cpu size={24} />,
