@@ -28,7 +28,7 @@ export function AboutSection() {
           </div>
           <div className="relative">
             <img
-              src="/assets/gimages/gimages/image3.jpg"
+              src="/assets/gimages/image3.jpg"
               alt="Team working on satellite"
               className="rounded-lg shadow-xl"
             />
