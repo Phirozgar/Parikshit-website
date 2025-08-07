@@ -1,4 +1,4 @@
-import { Github, Linkedin, ChevronRight } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 
 // Add type for team member data
 interface TeamMember {
