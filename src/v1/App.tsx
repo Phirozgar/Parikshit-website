@@ -61,6 +61,78 @@ function App() {
     );
   }
 
+  // Navigation component that uses useLocation
+  function Navigation() {
+    const location = useLocation();
+    
+    // Helper function to determine if a link is active
+    const isActive = (path: string) => location.pathname === path;
+    
+    // Active link styles
+    const getNavLinkClass = (path: string, baseClasses = "hover:text-white transition-colors") => {
+      return isActive(path) 
+        ? `${baseClasses} text-white font-bold border-b-2 border-[#7AECEC] pb-1` 
+        : baseClasses;
+    };
+
+    const getMobileNavLinkClass = (path: string, baseClasses = "block px-3 py-2 hover:text-white transition-colors") => {
+      return isActive(path) 
+        ? `${baseClasses} text-white font-bold bg-[#7AECEC]/10 rounded` 
+        : baseClasses;
+    };
+
+    return (
+      <nav className="fixed w-full bg-[#0A0A0A]/90 backdrop-blur-sm border-b border-[#7AECEC]/20 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center">
+              <Link to="/" className="flex items-center">
+                <img src="/assets/icons/favicon.png" alt="Parikshit Logo" 
+                  className="w-16 h-16 transition-transform duration-300 ease-in-out transform hover:scale-125 hover:rotate-12" 
+                />
+              </Link>
+            </div>
+            <div className="hidden lg:block ">
+              <div className="flex items-center space-x-6">
+                <Link to="/team" className={getNavLinkClass("/team")}>TEAM</Link>
+                <Link to="/about-us" className={getNavLinkClass("/about-us")}>ABOUT US</Link>
+                <Link to="/subsystems" className={getNavLinkClass("/subsystems")}>SUBSYSTEMS</Link>
+                <Link to="/projects" className={getNavLinkClass("/projects")}>PROJECTS</Link>
+                <Link to="/research" className={getNavLinkClass("/research")}>RESEARCH</Link>
+                <Link to="/recruitments" className={getNavLinkClass("/recruitments")}>RECRUITMENTS</Link>
+                <button className="hover:text-white transition-colors bg-transparent" style={{ padding: 0, border: "none", background: "none" }} onClick={() => scrollToSection("faqs")}>FAQs</button>
+                <button className="bg-[#7AECEC] text-black px-4 py-2 rounded-full font-bold hover:bg-white transition-colors" onClick={() => setShowJoinModal(true)}>JOIN US</button>
+              </div>
+            </div>
+            <div className="lg:hidden">
+              <button onClick={() => setIsMenuOpen((open) => !open)} className={`hamburger${isMenuOpen ? " active" : ""} w-8 h-8 flex flex-col justify-between items-center bg-transparent border-none cursor-pointer`} aria-label="Toggle menu">
+                <span className="bar w-6 h-0.3 bg-[#7AECEC] transition-all duration-300 ease-in-out"></span>
+                <span className="bar w-6 h-0.3 bg-[#7AECEC] transition-all duration-300 ease-in-out"></span>
+                <span className="bar w-6 h-0.3 bg-[#7AECEC] transition-all duration-300 ease-in-out"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+        {/* Mobile menu */}
+        {(isMenuOpen || menuWasOpen) && (
+          <div className={`nav-links lg:hidden ${isMenuOpen ? "mobile-nav-slide-in" : "mobile-nav-slide-out"}`} onAnimationEnd={() => { if (!isMenuOpen) setMenuWasOpen(false); }}>
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-[#0A0A0A] border-b border-[#7AECEC]/20">
+              <Link to="/" className={getMobileNavLinkClass("/")}>HOME</Link>
+              <Link to="/team" className={getMobileNavLinkClass("/team")}>TEAM</Link>
+              <Link to="/about-us" className={getMobileNavLinkClass("/about-us")} onClick={() => setIsMenuOpen(false)}>ABOUT US</Link>
+              <Link to="/subsystems" className={getMobileNavLinkClass("/subsystems")}>SUBSYSTEMS</Link>
+              <Link to="/projects" className={getMobileNavLinkClass("/projects")}>PROJECTS</Link>
+              <Link to="/research" className={getMobileNavLinkClass("/research")}>RESEARCH</Link>
+              <Link to="/recruitments" className={getMobileNavLinkClass("/recruitments")}>RECRUITMENTS</Link>
+              <button className="block px-3 py-2 hover:text-white transition-colors w-full text-left bg-transparent" style={{ padding: 0, border: "none", background: "none" }} onClick={() => { setIsMenuOpen(false); scrollToSection("faqs"); }}>FAQs</button>
+              <button className="w-full text-left px-3 py-2 bg-[#7AECEC] text-black rounded-full font-bold hover:bg-white transition-colors" onClick={() => { setIsMenuOpen(false); setShowJoinModal(true); }}>JOIN US</button>
+            </div>
+          </div>
+        )}
+      </nav>
+    );
+  }
+
   function AnimatedRoutes() {
     const location = useLocation();
     useEffect(() => {
@@ -94,55 +166,7 @@ function App() {
   return (
     <Router>
       <div className="min-h-screen bg-[#0A0A0A] text-[#7AECEC] font-sans">
-        {/* Navigation */}
-        <nav className="fixed w-full bg-[#0A0A0A]/90 backdrop-blur-sm border-b border-[#7AECEC]/20 z-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between h-16">
-              <div className="flex items-center">
-                <Link to="/" className="flex items-center">
-                  <img src="/assets/icons/favicon.png" alt="Parikshit Logo" 
-                    className="w-16 h-16 transition-transform duration-300 ease-in-out transform hover:scale-125 hover:rotate-12" 
-                  />
-                </Link>
-              </div>
-              <div className="hidden lg:block ">
-                <div className="flex items-center space-x-6">
-                  <Link to="/team" className="hover:text-white transition-colors">TEAM</Link>
-                  <Link to="/about-us" className="hover:text-white transition-colors">ABOUT US</Link>
-                  <Link to="/subsystems" className="hover:text-white transition-colors">SUBSYSTEMS</Link>
-                  <Link to="/projects" className="hover:text-white transition-colors">PROJECTS</Link>
-                  <Link to="/research" className="hover:text-white transition-colors">RESEARCH</Link>
-                  <Link to="/recruitments" className="hover:text-white transition-colors">RECRUITMENTS</Link>
-                  <button className="hover:text-white transition-colors bg-transparent" style={{ padding: 0, border: "none", background: "none" }} onClick={() => scrollToSection("faqs")}>FAQs</button>
-                  <button className="bg-[#7AECEC] text-black px-4 py-2 rounded-full font-bold hover:bg-white transition-colors" onClick={() => setShowJoinModal(true)}>JOIN US</button>
-                </div>
-              </div>
-              <div className="lg:hidden">
-                <button onClick={() => setIsMenuOpen((open) => !open)} className={`hamburger${isMenuOpen ? " active" : ""} w-8 h-8 flex flex-col justify-between items-center bg-transparent border-none cursor-pointer`} aria-label="Toggle menu">
-                  <span className="bar w-6 h-0.3 bg-[#7AECEC] transition-all duration-300 ease-in-out"></span>
-                  <span className="bar w-6 h-0.3 bg-[#7AECEC] transition-all duration-300 ease-in-out"></span>
-                  <span className="bar w-6 h-0.3 bg-[#7AECEC] transition-all duration-300 ease-in-out"></span>
-                </button>
-              </div>
-            </div>
-          </div>
-          {/* Mobile menu */}
-          {(isMenuOpen || menuWasOpen) && (
-            <div className={`nav-links lg:hidden ${isMenuOpen ? "mobile-nav-slide-in" : "mobile-nav-slide-out"}`} onAnimationEnd={() => { if (!isMenuOpen) setMenuWasOpen(false); }}>
-              <div className="px-2 pt-2 pb-3 space-y-1 bg-[#0A0A0A] border-b border-[#7AECEC]/20">
-                <Link to="/" className="block px-3 py-2 hover:text-white transition-colors">HOME</Link>
-                <Link to="/team" className="block px-3 py-2 hover:text-white transition-colors">TEAM</Link>
-                <Link to="/about-us" className="block px-3 py-2 hover:text-white transition-colors" onClick={() => setIsMenuOpen(false)}>ABOUT US</Link>
-                <Link to="/subsystems" className="block px-3 py-2 hover:text-white transition-colors">SUBSYSTEMS</Link>
-                <Link to="/projects" className="block px-3 py-2 hover:text-white transition-colors">PROJECTS</Link>
-                <Link to="/research" className="block px-3 py-2 hover:text-white transition-colors">RESEARCH</Link>
-                <Link to="/recruitments" className="block px-3 py-2 hover:text-white transition-colors">RECRUITMENTS</Link>
-                <button className="block px-3 py-2 hover:text-white transition-colors w-full text-left bg-transparent" style={{ padding: 0, border: "none", background: "none" }} onClick={() => { setIsMenuOpen(false); scrollToSection("faqs"); }}>FAQs</button>
-                <button className="w-full text-left px-3 py-2 bg-[#7AECEC] text-black rounded-full font-bold hover:bg-white transition-colors" onClick={() => { setIsMenuOpen(false); setShowJoinModal(true); }}>JOIN US</button>
-              </div>
-            </div>
-          )}
-        </nav>
+        <Navigation />
         {/* Main Content */}
         <AnimatedRoutes />
         <JoinUsModal open={showJoinModal} onClose={() => setShowJoinModal(false)} />
