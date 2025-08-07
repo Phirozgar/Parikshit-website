@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Code, FlaskRound as Flask, Cpu, Radio, Battery, Boxes, Settings } from 'lucide-react';
-
+import { Code, FlaskRound as Flask, Cpu, Radio, Battery, Boxes, Settings, Satellite, ChevronDown } from 'lucide-react';
 
 function SubsystemsPage() {
   const location = useLocation();
   const [activeSubsystem, setActiveSubsystem] = useState('odhs');
-  // Explicitly type the refs object
+  const [isScrolled, setIsScrolled] = useState(false);
   const cardRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+  const heroRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -15,7 +15,14 @@ function SubsystemsPage() {
     if (sub) setActiveSubsystem(sub);
   }, [location.search]);
 
-  // Smooth scroll to the active subsystem card on mount or when activeSubsystem changes
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   useEffect(() => {
     const ref = cardRefs.current[activeSubsystem];
     if (ref && typeof ref.scrollIntoView === 'function') {
@@ -23,7 +30,56 @@ function SubsystemsPage() {
     }
   }, [activeSubsystem]);
 
+  const scrollToContent = () => {
+    const heroHeight = heroRef.current?.offsetHeight || 0;
+    window.scrollTo({
+      top: heroHeight - 100,
+      behavior: 'smooth'
+    });
+  };
+
   const subsystems = [
+    {
+      id: 'adcs',
+      name: 'Attitude Determination & Control System (ADCS)',
+      icon: <Cpu size={24} />,
+      description: 'Responsible for determining and controlling the satellite\'s orientation in space.',
+      details: [
+        'Utilizes sensors to determine the satellite\'s current orientation',
+        'Implements control algorithms to maintain desired orientation',
+        'Controls reaction wheels and magnetorquers for precise positioning',
+        'Stabilizes the satellite after deployment from the launch vehicle'
+      ],
+      components: [
+        'Sun Sensors',
+        'Magnetometers and IMU',
+        'Reaction Wheels (3-axis control)',
+        'Magnetorquers for detumbling',
+        'ADCS Control Software'
+      ],
+      imageSrc: 'https://example.com/images/adcs.jpg'
+    },
+    {
+      id: 'comms',
+      name: 'Communications Systems',
+      icon: <Radio size={24} />,
+      description: 'Enables reliable data transmission between the satellite and ground stations.',
+      details: [
+        'Establishes and maintains RF links with ground stations',
+        'Implements data encoding and error correction protocols',
+        'Manages uplink command reception and verification',
+        'Handles downlink telemetry and mission data transmission',
+        'Optimizes bandwidth usage for efficient communication'
+      ],
+      components: [
+        'UHF/VHF Transceiver',
+        'S-Band Transmitter for high-speed downlink',
+        'RF Amplifiers and Filters',
+        'Communication Antennas',
+        'Modulation/Demodulation Systems'
+      ],
+      imageSrc: 'https://example.com/images/comms.jpg'
+    },
     {
       id: 'odhs',
       name: 'Onboard Data Handling System (ODHS)',
@@ -69,27 +125,6 @@ function SubsystemsPage() {
       imageSrc: 'https://example.com/images/research.jpg'
     },
     {
-      id: 'adcs',
-      name: 'Attitude Determination & Control System (ADCS)',
-      icon: <Cpu size={24} />,
-      description: 'Responsible for determining and controlling the satellite\'s orientation in space.',
-      details: [
-        'Utilizes sensors to determine the satellite\'s current orientation',
-        'Implements control algorithms to maintain desired orientation',
-        'Controls reaction wheels and magnetorquers for precise positioning',
-        
-        'Stabilizes the satellite after deployment from the launch vehicle'
-      ],
-      components: [
-        'Sun Sensors',
-        'Magnetometers and IMU',
-        'Reaction Wheels (3-axis control)',
-        'Magnetorquers for detumbling',
-        'ADCS Control Software'
-      ],
-      imageSrc: 'https://example.com/images/adcs.jpg'
-    },
-    {
       id: 'eps',
       name: 'Electrical & Power System (EPS)',
       icon: <Battery size={24} />,
@@ -111,27 +146,6 @@ function SubsystemsPage() {
       imageSrc: 'https://example.com/images/eps.jpg'
     },
     {
-      id: 'comms',
-      name: 'Communications Systems',
-      icon: <Radio size={24} />,
-      description: 'Enables reliable data transmission between the satellite and ground stations.',
-      details: [
-        'Establishes and maintains RF links with ground stations',
-        'Implements data encoding and error correction protocols',
-        'Manages uplink command reception and verification',
-        'Handles downlink telemetry and mission data transmission',
-        'Optimizes bandwidth usage for efficient communication'
-      ],
-      components: [
-        'UHF/VHF Transceiver',
-        'S-Band Transmitter for high-speed downlink',
-        'RF Amplifiers and Filters',
-        'Communication Antennas',
-        'Modulation/Demodulation Systems'
-      ],
-      imageSrc: 'https://example.com/images/comms.jpg'
-    },
-    {
       id: 'payload',
       name: 'Payload Subsystem',
       icon: <Flask size={24} />,
@@ -146,7 +160,6 @@ function SubsystemsPage() {
       components: [
         'A Thermal Camera (Primary payload) ',
         'Electrodynamic Tether (Secondary payload)'
-        
       ],
       imageSrc: 'https://example.com/images/payload.jpg'
     },
@@ -198,15 +211,77 @@ function SubsystemsPage() {
 
   return (
     <div className="min-h-screen bg-[#0A0A0A]">
-      <header className="bg-[#111111] text-[#7AECEC] py-16 pt-16">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-4 p-10">Satellite Subsystems</h1>
-          <p className="text-xl max-w-3xl text-[rgba(122,236,236,0.8)]">
-            Explore the technical subsystems that power our Parikshit satellite mission, each designed and built by student teams.
-          </p>
+      {/* Hero Section */}
+      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img 
+            src="/assets/Backgorund_subsystemspage.jpeg"
+            alt="Space background"
+            className="w-full h-full object-cover"
+          />
+          {/* Dark overlay for text readability */}
+          <div className="absolute inset-0 bg-black/60" />
         </div>
-      </header>
 
+        {/* Main Hero Content */}
+        <div className="relative z-10 container mx-auto px-4 text-center">
+          {/* Main heading with gradient text */}
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#7AECEC] via-white to-[#7AECEC] bg-clip-text text-transparent leading-tight">
+            Satellite Subsystems
+          </h1>
+          
+          {/* Subtitle */}
+          <p className="text-xl md:text-2xl mb-8 text-[#7AECEC]/80 max-w-4xl mx-auto font-light">
+            Engineering Excellence in Space
+          </p>
+          
+          {/* Description */}
+          <p className="text-lg md:text-xl mb-12 text-[#7AECEC]/60 max-w-3xl mx-auto leading-relaxed">
+            Explore the technical subsystems that power our Parikshit satellite mission, each designed and built by student teams pushing the boundaries of space technology.
+          </p>
+
+          {/* CTA Button */}
+          <button
+            onClick={scrollToContent}
+            className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#7AECEC] to-[#5BCBCB] text-[#0A0A0A] font-semibold rounded-full hover:shadow-[0_0_30px_rgba(122,236,236,0.5)] transition-all duration-300 transform hover:scale-105"
+          >
+            Explore Subsystems
+            <ChevronDown size={20} className="ml-2 group-hover:animate-bounce" />
+          </button>
+
+          {/* Stats/Numbers */}
+          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-[#7AECEC] mb-2">8</div>
+              <div className="text-[#7AECEC]/60 text-sm uppercase tracking-wider">Subsystems</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-[#7AECEC] mb-2">2U</div>
+              <div className="text-[#7AECEC]/60 text-sm uppercase tracking-wider">CubeSat</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-[#7AECEC] mb-2">25+</div>
+              <div className="text-[#7AECEC]/60 text-sm uppercase tracking-wider">Students</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-[#7AECEC] mb-2">∞</div>
+              <div className="text-[#7AECEC]/60 text-sm uppercase tracking-wider">Innovation</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <ChevronDown size={32} className="text-[#7AECEC]/60" />
+        </div>
+
+        {/* Side decorative elements */}
+        <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-px h-32 bg-gradient-to-b from-transparent via-[#7AECEC] to-transparent" />
+        <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-px h-32 bg-gradient-to-b from-transparent via-[#7AECEC] to-transparent" />
+      </section>
+
+      {/* Rest of the page content */}
       <main className="container mx-auto px-4 py-12">
         <section className="mb-12">
           <h2 className="text-3xl font-bold mb-8 text-[#7AECEC]">Subsystem Overview</h2>
@@ -284,7 +359,6 @@ function SubsystemsPage() {
                 </div>
               </div>
             </div>
-
           </section>
         )}
       </main>
