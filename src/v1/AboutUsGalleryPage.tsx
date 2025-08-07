@@ -17,7 +17,8 @@ const galleryImages = [
   { src: "/assets/gallery/image13.jpg", alt: "Unveiling the system’s backbone" },
   { src: "/assets/gallery/image14.jpg", alt: "Presenting engineering modules to celebrate space innovation" },
   { src: "/assets/gallery/image15.jpg", alt: "Details from the lab bench" },
-  { src: "/assets/gallery/image16.jpg", alt: "A snapshot of shared effort" }
+  { src: "/assets/gallery/image16.jpg", alt: "A snapshot of shared effort" },
+  { src: "/assets/gallery/IITR.jpg", alt: "Team at the IPSC Conference at IIT Roorkee" }
 ];
 
 // Distribute images evenly across 3 columns

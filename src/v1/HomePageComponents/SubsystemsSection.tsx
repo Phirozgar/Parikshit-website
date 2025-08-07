@@ -1,4 +1,3 @@
-import { Cpu, Compass, Battery, Rocket, Radio, Boxes, Building2 } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export function SubsystemsSection() { 
