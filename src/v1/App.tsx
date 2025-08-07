@@ -107,7 +107,6 @@ function App() {
               </div>
               <div className="hidden lg:block ">
                 <div className="flex items-center space-x-6">
-                  <Link to="/" className="hover:text-white transition-colors">HOME</Link>
                   <Link to="/team" className="hover:text-white transition-colors">TEAM</Link>
                   <Link to="/about-us" className="hover:text-white transition-colors">ABOUT US</Link>
                   <Link to="/subsystems" className="hover:text-white transition-colors">SUBSYSTEMS</Link>

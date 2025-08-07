@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 
 // All images from assets/gallery
 const galleryImages = [
@@ -31,8 +31,8 @@ function AboutUsGalleryPage() {
   const [selectedImage, setSelectedImage] = useState<{src: string, alt: string} | null>(null);
   const images = [imagesCol1, imagesCol2, imagesCol3];
   
-  // Glass effect overlay
-  const glassClass = hovered !== null ? "fixed inset-0 bg-[#0A0A0A]/60 backdrop-blur-lg z-40" : "";
+  // Glass effect overlay - reduced z-index to stay below nav
+  const glassClass = hovered !== null ? "fixed inset-0 bg-[#0A0A0A]/60 backdrop-blur-lg z-30" : "";
 
   // Marquee animation duration (seconds)
   const marqueeDuration = 18;
@@ -84,7 +84,7 @@ function AboutUsGalleryPage() {
       <section className="py-20 px-4 relative">
         {hovered !== null && <div className={glassClass}></div>}
         
-        <div className="max-w-7xl mx-auto relative z-50">
+        <div className="max-w-7xl mx-auto relative z-40">
           <h2 className="text-4xl font-bold text-center text-[#7AECEC] mb-6">Gallery</h2>
           <p className="text-[#7AECEC]/80 text-center mb-12 text-lg max-w-2xl mx-auto">
             Explore what we do at Parikshit: hands-on engineering, subsystem integration, and team collaboration. 
@@ -124,9 +124,9 @@ function AboutUsGalleryPage() {
                           onClick={() => setSelectedImage({src: img.src, alt: img.alt})}
                         />
                         
-                        {/* Hover text overlay positioned on the image */}
+                        {/* Hover text overlay positioned on the image - reduced z-index */}
                         {isHoveredImg && (
-                          <div className="absolute inset-0 flex items-center justify-center z-[60] pointer-events-none">
+                          <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
                             <div className="bg-[#111111]/95 backdrop-blur-sm px-4 py-2 rounded-lg shadow-2xl border border-[#7AECEC]/30 max-w-[90%]">
                               <p className="text-[#7AECEC] text-lg font-bold text-center">
                                 {img.alt}

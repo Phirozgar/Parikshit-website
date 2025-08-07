@@ -11,8 +11,8 @@ export function AboutSection() {
               with all subsystems designed in-house.
             </p>
             <p className="text-lg text-[#7AECEC]/80 mb-6">
-              Our satellite features a <span className="font-bold">high-accuracy thermal imaging payload</span> and an
-              <span className="font-bold">experimental deorbiting mechanism</span>, built for 
+              Our satellite features a <span className="font-bold">high-accuracy thermal imaging payload</span> and 
+              an <span className="font-bold">experimental deorbiting mechanism</span>, built for 
               a <span className="font-bold">Polar Low Earth Orbit</span>.
             </p>
             <p className="text-lg text-[#7AECEC]/80 mb-6">
