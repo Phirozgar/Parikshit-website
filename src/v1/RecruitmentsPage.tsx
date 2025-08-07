@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { ChevronRight, Users, Target, Calendar, Mail, ExternalLink } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function RecruitmentsPage() {
   const [selectedSubsystem, setSelectedSubsystem] = useState(null);
+  const navigate = useNavigate();
 
   const subsystems = [
     {
@@ -62,6 +64,27 @@ export default function RecruitmentsPage() {
       challengeLink: "#business-challenge"
     }
   ];
+
+  const handleSubsystemClick = (subsystemName: string) => {
+  const mapToId: Record<string, string> = {
+    "ADCS": "adcs",
+    "COMMS": "comms",
+    "EPS": "eps",
+    "ODHS": "odhs",
+    "PAYLOAD": "payload",
+    "RESEARCH": "research",
+    "STMS": "stms",
+    "Admin & OPS": "admin"
+  };
+
+  const id = mapToId[subsystemName];
+  if (id) {
+    navigate(`/subsystems?subsystem=${id}`);
+  } else {
+    console.warn("Unknown subsystem:", subsystemName);
+  }
+};
+
 
   return (
     <div className="min-h-screen bg-[#0A0A0A] pt-16">
@@ -184,7 +207,7 @@ export default function RecruitmentsPage() {
               <div
                 key={subsystem.id}
                 className="group bg-[#111111] rounded-xl border border-[#7AECEC]/20 hover:border-[#7AECEC]/40 transition-all duration-300 overflow-hidden cursor-pointer transform hover:scale-105"
-                onClick={() => setSelectedSubsystem(subsystem)}
+                onClick={() => handleSubsystemClick(subsystem.name)}
               >
                 <div className={`h-2 bg-gradient-to-r ${subsystem.color}`}></div>
                 <div className="p-6">
