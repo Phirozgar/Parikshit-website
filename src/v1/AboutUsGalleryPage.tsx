@@ -35,7 +35,7 @@ function AboutUsGalleryPage() {
   const glassClass = hovered !== null ? "fixed inset-0 bg-[#0A0A0A]/60 backdrop-blur-lg z-30" : "";
 
   // Marquee animation duration (seconds)
-  const marqueeDuration = 18;
+  const marqueeDuration = 30;
 
   return (
     <div className="min-h-screen bg-[#0A0A0A] relative">
@@ -58,11 +58,11 @@ function AboutUsGalleryPage() {
         </div>
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <h1 className="text-6xl md:text-8xl font-bold text-[#7AECEC] mb-8 tracking-tight">
+          <h1 className="text-5xl md:text-8xl font-bold text-[#7AECEC] mb-8 tracking-tight">
             OUR <span className="text-white">JOURNEY</span>
           </h1>
           <div className="w-24 h-1 bg-gradient-to-r from-[#7AECEC] to-white mx-auto mb-8"></div>
-          <p className="text-xl md:text-2xl text-[#7AECEC]/80 mb-12 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base md:text-lg text-[#7AECEC]/80 mb-12 max-w-3xl mx-auto leading-relaxed">
             From late-night lab sessions to international conferences, witness the passion, 
             dedication, and innovation that drives <span className="font-bold text-[#7AECEC]">Parikshit</span> forward.
           </p>
@@ -87,8 +87,7 @@ function AboutUsGalleryPage() {
         <div className="max-w-7xl mx-auto relative z-40">
           <h2 className="text-4xl font-bold text-center text-[#7AECEC] mb-6">Gallery</h2>
           <p className="text-[#7AECEC]/80 text-center mb-12 text-lg max-w-2xl mx-auto">
-            Explore what we do at Parikshit: hands-on engineering, subsystem integration, and team collaboration. 
-            Here are some highlights from our journey.
+            Explore what we do at Parikshit.
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
