@@ -198,7 +198,7 @@ function SubsystemsPage() {
 
   return (
     <div className="min-h-screen bg-[#0A0A0A]">
-      <header className="bg-[#111111] text-[#7AECEC] py-16">
+      <header className="bg-[#111111] text-[#7AECEC] py-16 pt-16">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl font-bold mb-4 p-10">Satellite Subsystems</h1>
           <p className="text-xl max-w-3xl text-[rgba(122,236,236,0.8)]">
