@@ -32,16 +32,15 @@ function SubsystemsPage() {
       details: [
         'Implements command processing and execution for satellite operations',
         'Manages data storage, processing, and transmission protocols',
-        'Handles error detection and recovery mechanisms',
-        'Provides system health monitoring and status reporting',
-        'Coordinates timing and synchronization across all subsystems'
+        'Handles system health monitoring and status reporting',
+        'Coordinates and synchronizes all subsystems\' software'
       ],
       components: [
-        'Main Flight Computer (Radiation-hardened microcontroller)',
-        'Data Storage Units (Flash memory arrays)',
-        'Command & Data Handling Software',
-        'System Monitoring Sensors',
-        'Backup Processing Units'
+        'OnBoard Computer',
+        'Real-time Operating System',
+        'Payload Data Storage',
+        'Sensor Interfaces & Firmware',
+        'Control Software'
       ],
       imageSrc: 'https://example.com/images/odhs.jpg'
     },
@@ -78,14 +77,14 @@ function SubsystemsPage() {
         'Utilizes sensors to determine the satellite\'s current orientation',
         'Implements control algorithms to maintain desired orientation',
         'Controls reaction wheels and magnetorquers for precise positioning',
-        'Ensures proper solar panel alignment for power generation',
+        
         'Stabilizes the satellite after deployment from the launch vehicle'
       ],
       components: [
-        'Sun Sensors and Star Trackers',
-        'Magnetometers and Gyroscopes',
+        'Sun Sensors',
+        'Magnetometers and IMU',
         'Reaction Wheels (3-axis control)',
-        'Magnetorquers for momentum management',
+        'Magnetorquers for detumbling',
         'ADCS Control Software'
       ],
       imageSrc: 'https://example.com/images/adcs.jpg'
@@ -134,9 +133,9 @@ function SubsystemsPage() {
     },
     {
       id: 'payload',
-      name: 'Payload System',
+      name: 'Payload Subsystem',
       icon: <Flask size={24} />,
-      description: 'Core mission equipment for data collection, experiments, and scientific observations.',
+      description: 'The payload of a satellite refers to the primary equipment or instruments it carries to perform its intended mission. It is the functional part that delivers the satellite\'s purpose, unlike support systems like power or propulsion.',
       details: [
         'Manages primary mission instrumentation and sensors',
         'Processes and stores scientific data collection',
@@ -145,11 +144,9 @@ function SubsystemsPage() {
         'Maintains calibration of scientific instruments'
       ],
       components: [
-        'Primary Mission Sensors',
-        'Data Processing Unit',
-        'Experiment Control System',
-        'Payload Storage Module',
-        'Instrument Calibration System'
+        'A Thermal Camera (Primary payload) ',
+        'Electrodynamic Tether (Secondary payload)'
+        
       ],
       imageSrc: 'https://example.com/images/payload.jpg'
     },
