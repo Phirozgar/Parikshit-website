@@ -1,4 +1,5 @@
 import RecruitmentsPage from "./RecruitmentsPage";
+import AboutUsGalleryPage from "./AboutUsGalleryPage";
 import { useState, useEffect } from "react";
 {/* import { Satellite } from "lucide-react"; */}
 import "./styles.css";
@@ -74,6 +75,7 @@ function App() {
             <Routes location={location}>
               <Route path="/" element={<HomePage />} />
               <Route path="/subsystems" element={<SubsystemsPage />} />
+              <Route path="/about-us" element={<AboutUsGalleryPage />} />
               <Route path="/team" element={<TeamPage />} />
               <Route path="/projects" element={<ProjectsPage />} />
               <Route path="/research" element={<ResearchPage />} />
@@ -105,69 +107,19 @@ function App() {
               </div>
               <div className="hidden lg:block ">
                 <div className="flex items-center space-x-6">
-                  <Link to="/" className="hover:text-white transition-colors">
-                    HOME
-                  </Link>
-                  <Link
-                    to="/team"
-                    className="hover:text-white transition-colors"
-                  >
-                    TEAM
-                  </Link>
-                  <button
-                    className="hover:text-white transition-colors bg-transparent"
-                    style={{ padding: 0, border: "none", background: "none" }}
-                    onClick={() => scrollToSection("about")}
-                  >
-                    ABOUT US
-                  </button>
-                  <Link
-                    to="/subsystems"
-                    className="hover:text-white transition-colors"
-                  >
-                    SUBSYSTEMS
-                  </Link>
-                  <Link
-                    to="/projects"
-                    className="hover:text-white transition-colors"
-                  >
-                    PROJECTS
-                  </Link>
-                  <Link
-                    to="/research"
-                    className="hover:text-white transition-colors"
-                  >
-                    RESEARCH
-                  </Link>
-                  <Link
-                    to="/recruitments"
-                    className="hover:text-white transition-colors"
-                  >
-                    RECRUITMENTS
-                  </Link>
-                  <button
-                    className="hover:text-white transition-colors bg-transparent"
-                    style={{ padding: 0, border: "none", background: "none" }}
-                    onClick={() => scrollToSection("faqs")}
-                  >
-                    FAQs
-                  </button>
-                  <button
-                    className="bg-[#7AECEC] text-black px-4 py-2 rounded-full font-bold hover:bg-white transition-colors"
-                    onClick={() => setShowJoinModal(true)}
-                  >
-                    JOIN US
-                  </button>
+                  <Link to="/" className="hover:text-white transition-colors">HOME</Link>
+                  <Link to="/team" className="hover:text-white transition-colors">TEAM</Link>
+                  <Link to="/about-us" className="hover:text-white transition-colors">ABOUT US</Link>
+                  <Link to="/subsystems" className="hover:text-white transition-colors">SUBSYSTEMS</Link>
+                  <Link to="/projects" className="hover:text-white transition-colors">PROJECTS</Link>
+                  <Link to="/research" className="hover:text-white transition-colors">RESEARCH</Link>
+                  <Link to="/recruitments" className="hover:text-white transition-colors">RECRUITMENTS</Link>
+                  <button className="hover:text-white transition-colors bg-transparent" style={{ padding: 0, border: "none", background: "none" }} onClick={() => scrollToSection("faqs")}>FAQs</button>
+                  <button className="bg-[#7AECEC] text-black px-4 py-2 rounded-full font-bold hover:bg-white transition-colors" onClick={() => setShowJoinModal(true)}>JOIN US</button>
                 </div>
               </div>
               <div className="lg:hidden">
-                <button
-                  onClick={() => setIsMenuOpen((open) => !open)}
-                  className={`hamburger${
-                    isMenuOpen ? " active" : ""
-                  } w-8 h-8 flex flex-col justify-between items-center bg-transparent border-none cursor-pointer`}
-                  aria-label="Toggle menu"
-                >
+                <button onClick={() => setIsMenuOpen((open) => !open)} className={`hamburger${isMenuOpen ? " active" : ""} w-8 h-8 flex flex-col justify-between items-center bg-transparent border-none cursor-pointer`} aria-label="Toggle menu">
                   <span className="bar w-6 h-0.3 bg-[#7AECEC] transition-all duration-300 ease-in-out"></span>
                   <span className="bar w-6 h-0.3 bg-[#7AECEC] transition-all duration-300 ease-in-out"></span>
                   <span className="bar w-6 h-0.3 bg-[#7AECEC] transition-all duration-300 ease-in-out"></span>
@@ -177,73 +129,21 @@ function App() {
           </div>
           {/* Mobile menu */}
           {(isMenuOpen || menuWasOpen) && (
-            <div
-              className={`nav-links lg:hidden ${
-                isMenuOpen ? "mobile-nav-slide-in" : "mobile-nav-slide-out"
-              }`}
-              onAnimationEnd={() => {
-                if (!isMenuOpen) setMenuWasOpen(false);
-              }}
-            >
+            <div className={`nav-links lg:hidden ${isMenuOpen ? "mobile-nav-slide-in" : "mobile-nav-slide-out"}`} onAnimationEnd={() => { if (!isMenuOpen) setMenuWasOpen(false); }}>
               <div className="px-2 pt-2 pb-3 space-y-1 bg-[#0A0A0A] border-b border-[#7AECEC]/20">
-                <Link
-                  to="/"
-                  className="block px-3 py-2 hover:text-white transition-colors"
-                >
-                  HOME
-                </Link>
-                <Link
-                  to="/team"
-                  className="block px-3 py-2 hover:text-white transition-colors"
-                >
-                  TEAM
-                </Link>
-                <button
-                  className="block px-3 py-2 hover:text-white transition-colors w-full text-left bg-transparent"
-                  style={{ padding: 0, border: "none", background: "none" }}
-                  onClick={() => { setIsMenuOpen(false); scrollToSection("about"); }}
-                >
-                  ABOUT US
-                </button>
-                <Link
-                  to="/subsystems"
-                  className="block px-3 py-2 hover:text-white transition-colors"
-                >
-                  SUBSYSTEMS
-                </Link>
-                <Link
-                  to="/projects"
-                  className="block px-3 py-2 hover:text-white transition-colors"
-                >
-                  PROJECTS
-                </Link>
-                <Link
-                  to="/research"
-                  className="block px-3 py-2 hover:text-white transition-colors"
-                >
-                  RESEARCH
-                </Link>
-                <Link
-                  to="/recruitments"
-                  className="block px-3 py-2 hover:text-white transition-colors"
-                >
-                  RECRUITMENTS
-                </Link>
-                <button
-                  className="block px-3 py-2 hover:text-white transition-colors w-full text-left bg-transparent"
-                  style={{ padding: 0, border: "none", background: "none" }}
-                  onClick={() => { setIsMenuOpen(false); scrollToSection("faqs"); }}
-                >
-                  FAQs
-                </button>
-                <button className="w-full text-left px-3 py-2 bg-[#7AECEC] text-black rounded-full font-bold hover:bg-white transition-colors" onClick={() => { setIsMenuOpen(false); setShowJoinModal(true); }}>
-                  JOIN US
-                </button>
+                <Link to="/" className="block px-3 py-2 hover:text-white transition-colors">HOME</Link>
+                <Link to="/team" className="block px-3 py-2 hover:text-white transition-colors">TEAM</Link>
+                <Link to="/about-us" className="block px-3 py-2 hover:text-white transition-colors" onClick={() => setIsMenuOpen(false)}>ABOUT US</Link>
+                <Link to="/subsystems" className="block px-3 py-2 hover:text-white transition-colors">SUBSYSTEMS</Link>
+                <Link to="/projects" className="block px-3 py-2 hover:text-white transition-colors">PROJECTS</Link>
+                <Link to="/research" className="block px-3 py-2 hover:text-white transition-colors">RESEARCH</Link>
+                <Link to="/recruitments" className="block px-3 py-2 hover:text-white transition-colors">RECRUITMENTS</Link>
+                <button className="block px-3 py-2 hover:text-white transition-colors w-full text-left bg-transparent" style={{ padding: 0, border: "none", background: "none" }} onClick={() => { setIsMenuOpen(false); scrollToSection("faqs"); }}>FAQs</button>
+                <button className="w-full text-left px-3 py-2 bg-[#7AECEC] text-black rounded-full font-bold hover:bg-white transition-colors" onClick={() => { setIsMenuOpen(false); setShowJoinModal(true); }}>JOIN US</button>
               </div>
             </div>
           )}
         </nav>
-
         {/* Main Content */}
         <AnimatedRoutes />
         <JoinUsModal open={showJoinModal} onClose={() => setShowJoinModal(false)} />
