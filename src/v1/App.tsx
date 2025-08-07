@@ -1,7 +1,6 @@
 import RecruitmentsPage from "./RecruitmentsPage";
 import AboutUsGalleryPage from "./AboutUsGalleryPage";
 import { useState, useEffect } from "react";
-{/* import { Satellite } from "lucide-react"; */}
 import "./styles.css";
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
 import SubsystemsPage from "./SubsystemsPage";
@@ -101,8 +100,9 @@ function App() {
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center">
                 <Link to="/" className="flex items-center">
-                  {/*<Satellite className="w-8 h-8" />*/}
-                  <img src="/assets/icons/favicon.png" alt="Parikshit Logo" className="w-12 h-12" />
+                  <img src="/assets/icons/favicon.png" alt="Parikshit Logo" 
+                    className="w-16 h-16 transition-transform duration-300 ease-in-out transform hover:scale-125 hover:rotate-12" 
+                  />
                 </Link>
               </div>
               <div className="hidden lg:block ">
