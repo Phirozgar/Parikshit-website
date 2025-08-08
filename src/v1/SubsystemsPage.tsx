@@ -46,7 +46,7 @@ function SubsystemsPage() {
     },
     {
       id: 'research',
-      name: 'Research & Development Subsystem',
+      name: 'Research Subsystem',
       icon: <Flask size={24} />,
       description: 'The Research Subsystem is dedicated to advancing the frontiers of student-led space research, driving innovation and technical excellence across all mission domains.',
       details: [
@@ -137,11 +137,12 @@ function SubsystemsPage() {
       icon: <Flask size={24} />,
       description: 'The payload of a satellite refers to the primary equipment or instruments it carries to perform its intended mission. It is the functional part that delivers the satellite\'s purpose, unlike support systems like power or propulsion.',
       details: [
-        'Manages primary mission instrumentation and sensors',
-        'Processes and stores scientific data collection',
-        'Controls experiment scheduling and execution',
-        'Monitors payload health and performance metrics',
-        'Maintains calibration of scientific instruments'
+        'Captures thermal Landsat images of India to study temperature and environmental patterns.',
+        'Monitors urban heat islands, climate data, and clouds using remote sensing and AI',
+        'Processes thermal images with AI-driven analysis for deeper environmental insights',
+        'Uses an electrodynamic tether to deorbit the satellite after mission completion',
+        'Aims to reduce space debris through a new, fuel-free deorbiting method'
+        
       ],
       components: [
         'A Thermal Camera (Primary payload) ',
@@ -211,7 +212,7 @@ function SubsystemsPage() {
         <section className="mb-12">
           <h2 className="text-3xl font-bold mb-8 text-[#7AECEC]">Subsystem Overview</h2>
           <p className="text-lg mb-8 text-[rgba(122,236,236,0.8)]">
-            Our 2U CubeSat is comprised of seven primary subsystems, each responsible for critical functions that ensure mission success. These subsystems work together seamlessly to enable our satellite to operate in the harsh environment of space.
+            Our 2U CubeSat is comprised of eight primary subsystems, each responsible for critical functions that ensure mission success. These subsystems work together seamlessly to enable our satellite to operate in the harsh environment of space.
           </p>
           
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">

@@ -12,8 +12,8 @@ export function TeamStatsSection() {
             <p className="text-[#7AECEC]/80">A vibrant team of innovators, engineers, and researchers</p>
           </div>
           <div className="p-6 border border-[#7AECEC]/20 rounded-lg text-center bg-[#0A0A0A] flex flex-col items-center justify-center">
-            <h3 className="text-2xl font-bold mb-2">7 Subsystems</h3>
-            <p className="text-[#7AECEC]/80">ODHS, ADCS, EPS, COMMS, STMS, Payload, Admin & Ops</p>
+            <h3 className="text-2xl font-bold mb-2">8 Subsystems</h3>
+            <p className="text-[#7AECEC]/80">ODHS, ADCS, EPS, COMMS, STMS, Payload,Research, Admin & Ops</p>
           </div>
           <div className="p-6 border border-[#7AECEC]/20 rounded-lg text-center bg-[#0A0A0A] flex flex-col items-center justify-center">
             <h3 className="text-2xl font-bold mb-2">80+ Alumni</h3>

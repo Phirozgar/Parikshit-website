@@ -45,7 +45,7 @@ export function SubsystemsSection() {
           <Link to="/subsystems?subsystem=research" className="p-6 border border-[#7AECEC]/20 rounded-lg hover:bg-[#111111] transition-colors group cursor-pointer block">
             <Rocket className="w-12 h-12 mb-4 group-hover:text-white transition-colors rotate-45" />
             <h3 className="text-xl font-bold mb-2">RESEARCH</h3>
-            <p className="text-[#7AECEC]/80">Research & Development Subsystem</p>
+            <p className="text-[#7AECEC]/80">Research Subsystem</p>
           </Link>
         </div>
       </div>
