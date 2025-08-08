@@ -155,11 +155,7 @@ function SubsystemsPage() {
     {
       id: 'research',
       name: 'Research Subsystem',
-<<<<<<< HEAD
-      icon: <Flask size={24} />,
-=======
       iconSrc: '/assets/Subsystem_Logos/RESEARCH.png',
->>>>>>> 5704900348dcaf63368ad0cec31dd3f45e01bf72
       description: 'The Research Subsystem is dedicated to advancing the frontiers of student-led space research, driving innovation and technical excellence across all mission domains.',
       details: [
         'Conducts original research in satellite engineering, space systems, and mission operations',
@@ -181,49 +177,6 @@ function SubsystemsPage() {
       imageSrc: 'https://example.com/images/research.jpg'
     },
     {
-<<<<<<< HEAD
-      id: 'eps',
-      name: 'Electrical & Power System (EPS)',
-      icon: <Battery size={24} />,
-      description: 'Generates, stores, and distributes electrical power to all satellite subsystems.',
-      details: [
-        'Generates power through high-efficiency solar panels',
-        'Stores energy in lithium-ion battery packs for eclipse periods',
-        'Regulates and distributes power to all subsystems',
-        'Implements power management algorithms to optimize usage',
-        'Provides protection against power anomalies and failures'
-      ],
-      components: [
-        'Solar Panels (Triple-junction GaAs cells)',
-        'Battery Pack (Li-ion cells with protection circuits)',
-        'Power Distribution Unit',
-        'DC-DC Converters',
-        'Power Management Controller'
-      ],
-      imageSrc: 'https://example.com/images/eps.jpg'
-    },
-    {
-      id: 'payload',
-      name: 'Payload Subsystem',
-      icon: <Flask size={24} />,
-      description: 'The payload of a satellite refers to the primary equipment or instruments it carries to perform its intended mission. It is the functional part that delivers the satellite\'s purpose, unlike support systems like power or propulsion.',
-      details: [
-        'Captures thermal Landsat images of India to study temperature and environmental patterns.',
-        'Monitors urban heat islands, climate data, and clouds using remote sensing and AI',
-        'Processes thermal images with AI-driven analysis for deeper environmental insights',
-        'Uses an electrodynamic tether to deorbit the satellite after mission completion',
-        'Aims to reduce space debris through a new, fuel-free deorbiting method'
-        
-      ],
-      components: [
-        'A Thermal Camera (Primary payload) ',
-        'Electrodynamic Tether (Secondary payload)'
-      ],
-      imageSrc: 'https://example.com/images/payload.jpg'
-    },
-    {
-=======
->>>>>>> 5704900348dcaf63368ad0cec31dd3f45e01bf72
       id: 'stms',
       name: 'Structures, Thermal & Mechanics System (STMS)',
       iconSrc: '/assets/Subsystem_Logos/STMS.png',
