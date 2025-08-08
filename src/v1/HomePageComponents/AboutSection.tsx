@@ -3,7 +3,7 @@ export function AboutSection() {
     <section id="about" className="min-h-screen flex items-center py-20 px-4 bg-[#111111]">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl font-bold mb-6 text-center">ABOUT US</h2>
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <p className="text-lg text-[#7AECEC]/80 mb-6">
               Parikshit is a student satellite team founded in 2013 at Manipal Institute of Technology, India. 
@@ -11,8 +11,8 @@ export function AboutSection() {
               with all subsystems designed in-house.
             </p>
             <p className="text-lg text-[#7AECEC]/80 mb-6">
-              Our satellite features a <span className="font-bold">high-accuracy thermal imaging payload</span> and an
-              <span className="font-bold">experimental deorbiting mechanism</span>, built for 
+              Our satellite features a <span className="font-bold">high-accuracy thermal imaging payload</span> and 
+              an <span className="font-bold">experimental deorbiting mechanism</span>, built for 
               a <span className="font-bold">Polar Low Earth Orbit</span>.
             </p>
             <p className="text-lg text-[#7AECEC]/80 mb-6">
