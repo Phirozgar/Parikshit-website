@@ -84,7 +84,7 @@ HEAD
             <h3 className="text-xl font-bold mb-2">RESEARCH</h3>
             <p className="text-[#7AECEC]/80">Research Subsystem</p>
           </Link>
-34d0ae7066bbf6fea35eb555e4e22bbff58f5069
+
         </div>
       </div>
     </section>
