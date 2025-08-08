@@ -6,6 +6,7 @@ export default {
       fontFamily: {
         orbitron: ['Orbitron', 'sans-serif'],
         sans: ['Noto Kufi Arabic', 'sans-serif'],
+        gugi: ['Gugi', 'sans-serif']
       },
     },
   },
