@@ -1,19 +1,29 @@
 import { useState, useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
-import { Code, FlaskRound as Flask, Cpu, Radio, Battery, Boxes, Settings, Satellite, ChevronDown } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 function SubsystemsPage() {
-  const location = useLocation();
   const [activeSubsystem, setActiveSubsystem] = useState('odhs');
   const [isScrolled, setIsScrolled] = useState(false);
+  const [hasUserInteracted, setHasUserInteracted] = useState(false);
   const cardRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const heroRef = useRef<HTMLElement>(null);
 
+  // Handle URL parameters for direct subsystem navigation
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const sub = params.get('subsystem');
-    if (sub) setActiveSubsystem(sub);
-  }, [location.search]);
+    const urlParams = new URLSearchParams(window.location.search);
+    const subsystemParam = urlParams.get('subsystem');
+    if (subsystemParam) {
+      setActiveSubsystem(subsystemParam);
+      setHasUserInteracted(true); // User came from external link, allow scrolling
+      // Small delay to ensure the page is loaded before scrolling
+      setTimeout(() => {
+        const ref = cardRefs.current[subsystemParam];
+        if (ref && typeof ref.scrollIntoView === 'function') {
+          ref.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+        }
+      }, 500);
+    }
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,11 +34,14 @@ function SubsystemsPage() {
   }, []);
 
   useEffect(() => {
+    // Only scroll to subsystem if user has interacted with the page
+    if (!hasUserInteracted) return;
+    
     const ref = cardRefs.current[activeSubsystem];
     if (ref && typeof ref.scrollIntoView === 'function') {
       ref.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
     }
-  }, [activeSubsystem]);
+  }, [activeSubsystem, hasUserInteracted]);
 
   const scrollToContent = () => {
     const heroHeight = heroRef.current?.offsetHeight || 0;
@@ -42,7 +55,7 @@ function SubsystemsPage() {
     {
       id: 'adcs',
       name: 'Attitude Determination & Control System (ADCS)',
-      icon: <Cpu size={24} />,
+      iconSrc: '/assets/Subsystem_Logos/ADCS.png',
       description: 'Responsible for determining and controlling the satellite\'s orientation in space.',
       details: [
         'Utilizes sensors to determine the satellite\'s current orientation',
@@ -62,7 +75,7 @@ function SubsystemsPage() {
     {
       id: 'comms',
       name: 'Communications Systems',
-      icon: <Radio size={24} />,
+      iconSrc: '/assets/Subsystem_Logos/COMMS.png',
       description: 'Enables reliable data transmission between the satellite and ground stations.',
       details: [
         'Establishes and maintains RF links with ground stations',
@@ -81,9 +94,30 @@ function SubsystemsPage() {
       imageSrc: 'https://example.com/images/comms.jpg'
     },
     {
+      id: 'eps',
+      name: 'Electrical & Power System (EPS)',
+      iconSrc: '/assets/Subsystem_Logos/EPS.png',
+      description: 'Generates, stores, and distributes electrical power to all satellite subsystems.',
+      details: [
+        'Generates power through high-efficiency solar panels',
+        'Stores energy in lithium-ion battery packs for eclipse periods',
+        'Regulates and distributes power to all subsystems',
+        'Implements power management algorithms to optimize usage',
+        'Provides protection against power anomalies and failures'
+      ],
+      components: [
+        'Solar Panels (Triple-junction GaAs cells)',
+        'Battery Pack (Li-ion cells with protection circuits)',
+        'Power Distribution Unit',
+        'DC-DC Converters',
+        'Power Management Controller'
+      ],
+      imageSrc: 'https://example.com/images/eps.jpg'
+    },
+    {
       id: 'odhs',
       name: 'Onboard Data Handling System (ODHS)',
-      icon: <Code size={24} />,
+      iconSrc: '/assets/Subsystem_Logos/ODHS.png',
       description: 'The brain of our satellite, processing commands and managing data flow between all subsystems.',
       details: [
         'Implements command processing and execution for satellite operations',
@@ -101,9 +135,31 @@ function SubsystemsPage() {
       imageSrc: 'https://example.com/images/odhs.jpg'
     },
     {
+      id: 'payload',
+      name: 'Payload Subsystem',
+      iconSrc: '/assets/Subsystem_Logos/PAYLOAD.png',
+      description: 'The payload of a satellite refers to the primary equipment or instruments it carries to perform its intended mission. It is the functional part that delivers the satellite\'s purpose, unlike support systems like power or propulsion.',
+      details: [
+        'Manages primary mission instrumentation and sensors',
+        'Processes and stores scientific data collection',
+        'Controls experiment scheduling and execution',
+        'Monitors payload health and performance metrics',
+        'Maintains calibration of scientific instruments'
+      ],
+      components: [
+        'A Thermal Camera (Primary payload) ',
+        'Electrodynamic Tether (Secondary payload)'
+      ],
+      imageSrc: 'https://example.com/images/payload.jpg'
+    },
+    {
       id: 'research',
       name: 'Research Subsystem',
+<<<<<<< HEAD
       icon: <Flask size={24} />,
+=======
+      iconSrc: '/assets/Subsystem_Logos/RESEARCH.png',
+>>>>>>> 5704900348dcaf63368ad0cec31dd3f45e01bf72
       description: 'The Research Subsystem is dedicated to advancing the frontiers of student-led space research, driving innovation and technical excellence across all mission domains.',
       details: [
         'Conducts original research in satellite engineering, space systems, and mission operations',
@@ -125,6 +181,7 @@ function SubsystemsPage() {
       imageSrc: 'https://example.com/images/research.jpg'
     },
     {
+<<<<<<< HEAD
       id: 'eps',
       name: 'Electrical & Power System (EPS)',
       icon: <Battery size={24} />,
@@ -165,9 +222,11 @@ function SubsystemsPage() {
       imageSrc: 'https://example.com/images/payload.jpg'
     },
     {
+=======
+>>>>>>> 5704900348dcaf63368ad0cec31dd3f45e01bf72
       id: 'stms',
       name: 'Structures, Thermal & Mechanics System (STMS)',
-      icon: <Boxes size={24} />,
+      iconSrc: '/assets/Subsystem_Logos/STMS.png',
       description: 'Ensures satellite structural integrity and thermal stability in the harsh space environment.',
       details: [
         'Designs and manufactures the satellite structure to withstand launch forces',
@@ -188,7 +247,7 @@ function SubsystemsPage() {
     {
       id: 'admin',
       name: 'Admin & Operations',
-      icon: <Settings size={24} />,
+      iconSrc: '/assets/Subsystem_Logos/Admin & OPS.png',
       description: 'Manages mission operations, ground control, and administrative functions of the satellite program.',
       details: [
         'Coordinates mission planning and scheduling',
@@ -290,7 +349,7 @@ function SubsystemsPage() {
             Our 2U CubeSat is comprised of eight primary subsystems, each responsible for critical functions that ensure mission success. These subsystems work together seamlessly to enable our satellite to operate in the harsh environment of space.
           </p>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
             {subsystems.map(system => (
               <button
                 key={system.id}
@@ -300,14 +359,38 @@ function SubsystemsPage() {
                     ? 'bg-[#7AECEC] text-[#0A0A0A] shadow-[0_0_10px_rgba(122,236,236,0.5)]' 
                     : 'bg-[#111111] text-[#7AECEC] border border-[rgba(122,236,236,0.2)] hover:shadow-[0_0_10px_rgba(122,236,236,0.2)] hover:border-[rgba(122,236,236,0.4)]'
                 }`}
-                onClick={() => setActiveSubsystem(system.id)}
+                onClick={() => {
+                  setHasUserInteracted(true);
+                  setActiveSubsystem(system.id);
+                }}
               >
-                <div className={`p-3 rounded-full mb-3 ${
-                  activeSubsystem === system.id ? 'bg-[#0A0A0A] text-[#7AECEC]' : 'bg-[rgba(122,236,236,0.1)]'
+                <div className={`p-3 rounded-full mb-3 flex items-center justify-center ${
+                  activeSubsystem === system.id ? 'bg-[#0A0A0A]' : 'bg-[rgba(122,236,236,0.1)]'
                 }`}>
-                  {system.icon}
+                  <img 
+                    src={system.iconSrc} 
+                    alt={`${system.name} icon`}
+                    className="w-6 h-6 object-contain filter brightness-0 invert"
+                    style={{
+                      filter: activeSubsystem === system.id 
+                        ? 'brightness(0) saturate(100%) invert(61%) sepia(53%) saturate(372%) hue-rotate(140deg) brightness(94%) contrast(91%)' 
+                        : 'brightness(0) saturate(100%) invert(61%) sepia(53%) saturate(372%) hue-rotate(140deg) brightness(94%) contrast(91%)'
+                    }}
+                    onError={(e) => {
+                      // Fallback to a simple colored div if image fails to load
+                      const target = e.currentTarget as HTMLImageElement;
+                      target.style.display = 'none';
+                      const fallback = target.parentNode?.querySelector('.icon-fallback') as HTMLElement;
+                      if (fallback) fallback.style.display = 'block';
+                    }}
+                  />
+                  <div 
+                    className={`icon-fallback w-6 h-6 rounded border-2 ${
+                      activeSubsystem === system.id ? 'border-[#7AECEC]' : 'border-current'
+                    } hidden`}
+                  />
                 </div>
-                <h3 className="font-bold text-sm">{system.name.split('(')[0]}</h3>
+                <h3 className="font-bold text-xs">{system.name.split('(')[0].trim()}</h3>
               </button>
             ))}
           </div>
@@ -316,8 +399,22 @@ function SubsystemsPage() {
         {activeSystem && (
           <section className="bg-[#111111] rounded-lg shadow-[0_0_10px_rgba(122,236,236,0.2)] border border-[rgba(122,236,236,0.2)] p-8 mb-12">
             <div className="flex items-center mb-6">
-              <div className="bg-[rgba(122,236,236,0.1)] text-[#7AECEC] p-3 rounded-full mr-4">
-                {activeSystem.icon}
+              <div className="bg-[rgba(122,236,236,0.1)] p-3 rounded-full mr-4 flex items-center justify-center">
+                <img 
+                  src={activeSystem.iconSrc} 
+                  alt={`${activeSystem.name} icon`}
+                  className="w-6 h-6 object-contain"
+                  style={{
+                    filter: 'brightness(0) saturate(100%) invert(61%) sepia(53%) saturate(372%) hue-rotate(140deg) brightness(94%) contrast(91%)'
+                  }}
+                  onError={(e) => {
+                    const target = e.currentTarget as HTMLImageElement;
+                    target.style.display = 'none';
+                    const fallback = target.parentNode?.querySelector('.icon-fallback') as HTMLElement;
+                    if (fallback) fallback.style.display = 'block';
+                  }}
+                />
+                <div className="icon-fallback w-6 h-6 rounded border-2 border-[#7AECEC] hidden" />
               </div>
               <h2 className="text-3xl font-bold text-[#7AECEC]">{activeSystem.name}</h2>
             </div>
