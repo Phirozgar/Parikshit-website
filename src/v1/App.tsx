@@ -2,7 +2,7 @@ import RecruitmentsPage from "./RecruitmentsPage";
 import AboutUsGalleryPage from "./AboutUsGalleryPage";
 import { useState, useEffect } from "react";
 import "./styles.css";
-import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link, useLocation, useNavigate } from "react-router-dom";
 import SubsystemsPage from "./SubsystemsPage";
 import TeamPage from "./TeamPage";
 import ProjectsPage from "./ProjectsPage";
@@ -28,20 +28,45 @@ function App() {
   const [menuWasOpen, setMenuWasOpen] = useState(false);
   const [showJoinModal, setShowJoinModal] = useState(false);
 
-  // Scroll to HomePage section by id from any route
-  function scrollToSection(sectionId: string) {
-    if (window.location.pathname !== "/") {
-      window.location.href = `/#${sectionId}`;
-      return;
-    }
-    const el = document.getElementById(sectionId);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  }
-
   // HomePage must be defined here so it can access setShowJoinModal
   function HomePage() {
+    const location = useLocation();
+    
+    // Handle scrolling when navigated from another route
+    useEffect(() => {
+      console.log('HomePage useEffect triggered', location.state);
+      if (location.state?.scrollTo) {
+        console.log('Attempting to scroll to:', location.state.scrollTo);
+        // Try multiple times with increasing delays to ensure DOM is ready
+        const attempts = [100, 300, 500, 1000];
+        attempts.forEach((delay, index) => {
+          setTimeout(() => {
+            const el = document.getElementById(location.state.scrollTo);
+            console.log(`Attempt ${index + 1}: Element found:`, el);
+            if (el) {
+              el.scrollIntoView({ behavior: "smooth", block: "start" });
+              // Clear the state after successful scroll
+              window.history.replaceState({}, '', '/');
+            }
+          }, delay);
+        });
+      }
+    }, [location]);
+
+    // Also handle URL hash on initial load
+    useEffect(() => {
+      const hash = window.location.hash.slice(1);
+      if (hash) {
+        console.log('Hash detected on load:', hash);
+        setTimeout(() => {
+          const el = document.getElementById(hash);
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }, 500);
+      }
+    }, []);
+
     return (
       <>
         <HeroSection />
@@ -64,6 +89,26 @@ function App() {
   // Navigation component that uses useLocation
   function Navigation() {
     const location = useLocation();
+    const navigate = useNavigate();
+    
+    // Scroll to HomePage section by id from any route
+    function scrollToSection(sectionId: string) {
+      console.log('scrollToSection called with:', sectionId);
+      console.log('Current pathname:', window.location.pathname);
+      
+      if (window.location.pathname !== "/") {
+        console.log('Navigating to home with scroll target');
+        navigate('/', { state: { scrollTo: sectionId } });
+        return;
+      }
+      
+      console.log('Already on home, scrolling directly');
+      const el = document.getElementById(sectionId);
+      console.log('Element found:', el);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
     
     // Helper function to determine if a link is active
     const isActive = (path: string) => location.pathname === path;
@@ -117,14 +162,14 @@ function App() {
         {(isMenuOpen || menuWasOpen) && (
           <div className={`nav-links lg:hidden ${isMenuOpen ? "mobile-nav-slide-in" : "mobile-nav-slide-out"}`} onAnimationEnd={() => { if (!isMenuOpen) setMenuWasOpen(false); }}>
             <div className="px-2 pt-2 pb-3 space-y-1 bg-[#0A0A0A] border-b border-[#7AECEC]/20">
-              <Link to="/" className={getMobileNavLinkClass("/")}>HOME</Link>
-              <Link to="/team" className={getMobileNavLinkClass("/team")}>TEAM</Link>
+              <Link to="/" className={getMobileNavLinkClass("/")} onClick={() => setIsMenuOpen(false)}>HOME</Link>
+              <Link to="/team" className={getMobileNavLinkClass("/team")} onClick={() => setIsMenuOpen(false)}>TEAM</Link>
               <Link to="/about-us" className={getMobileNavLinkClass("/about-us")} onClick={() => setIsMenuOpen(false)}>ABOUT US</Link>
-              <Link to="/subsystems" className={getMobileNavLinkClass("/subsystems")}>SUBSYSTEMS</Link>
-              <Link to="/projects" className={getMobileNavLinkClass("/projects")}>PROJECTS</Link>
-              <Link to="/research" className={getMobileNavLinkClass("/research")}>RESEARCH</Link>
-              <Link to="/recruitments" className={getMobileNavLinkClass("/recruitments")}>RECRUITMENTS</Link>
-              <button className="block px-3 py-2 hover:text-white transition-colors w-full text-left bg-transparent" style={{ padding: 0, border: "none", background: "none" }} onClick={() => { setIsMenuOpen(false); scrollToSection("faqs"); }}>FAQs</button>
+              <Link to="/subsystems" className={getMobileNavLinkClass("/subsystems")} onClick={() => setIsMenuOpen(false)}>SUBSYSTEMS</Link>
+              <Link to="/projects" className={getMobileNavLinkClass("/projects")} onClick={() => setIsMenuOpen(false)}>PROJECTS</Link>
+              <Link to="/research" className={getMobileNavLinkClass("/research")} onClick={() => setIsMenuOpen(false)}>RESEARCH</Link>
+              <Link to="/recruitments" className={getMobileNavLinkClass("/recruitments")} onClick={() => setIsMenuOpen(false)}>RECRUITMENTS</Link>
+              <button className="block px-3 py-2 hover:text-white transition-colors w-full text-left" style={{ border: "none", background: "transparent" }} onClick={() => { setIsMenuOpen(false); scrollToSection("faqs"); }}>FAQs</button>
               <button className="w-full text-left px-3 py-2 bg-[#7AECEC] text-black rounded-full font-bold hover:bg-white transition-colors" onClick={() => { setIsMenuOpen(false); setShowJoinModal(true); }}>JOIN US</button>
             </div>
           </div>
@@ -136,9 +181,12 @@ function App() {
   function AnimatedRoutes() {
     const location = useLocation();
     useEffect(() => {
-      // Always scroll to top on route change
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Always scroll to top on route change (but not when navigating with scroll state)
+      if (!location.state?.scrollTo) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     }, [location.pathname, location.search]);
+    
     return (
       <TransitionGroup>
         <CSSTransition key={location.pathname + location.search} classNames="fade" timeout={400}>

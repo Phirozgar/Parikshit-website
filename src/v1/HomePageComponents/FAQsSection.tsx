@@ -4,7 +4,7 @@ export function FAQsSection() {
   return (
     <section id="faqs" className="py-20 px-4 bg-[#111111]">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl font-bold mb-12 text-center">FAQs</h2>
+        <h2 className="text-4xl font-gugi mb-12 text-center">FAQs</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div className="p-6 border border-[#7AECEC]/20 rounded-lg">
             <HelpCircle className="w-8 h-8 mb-4" />

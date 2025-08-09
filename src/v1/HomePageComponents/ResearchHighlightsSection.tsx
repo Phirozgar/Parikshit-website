@@ -4,7 +4,7 @@ export function ResearchHighlightsSection() {
   return (
     <section id="research" className="py-20 px-4 bg-[#0A0A0A]">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl font-bold mb-6 text-center text-[#7AECEC] tracking-widest drop-shadow-glow">RESEARCH & PUBLICATIONS</h2>
+        <h2 className="text-4xl font-gugi mb-6 text-center text-[#7AECEC] tracking-widest drop-shadow-glow">RESEARCH & PUBLICATIONS</h2>
         <p className="text-lg text-[#7AECEC]/80 text-center mb-10 max-w-3xl mx-auto">
           Parikshit Student Satellite team contributes to global space research through peer-reviewed papers and technical innovation. Explore a selection of our latest research below.
         </p>

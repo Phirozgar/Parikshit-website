@@ -4,7 +4,7 @@ export function ProjectsSection() {
   return (
     <section id="projects" className="py-20 px-4 bg-[#111111]">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl font-bold mb-12 text-center">PROJECTS</h2>
+        <h2 className="text-4xl font-gugi mb-12 text-center">PROJECTS</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <Link to="/projects?project=cubesat" className="p-6 border border-[#7AECEC]/20 rounded-lg bg-[#0A0A0A] flex flex-col items-center hover:shadow-lg transition-shadow">
             <img
