@@ -2,11 +2,14 @@ import { useState, useEffect, useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
 
 function SubsystemsPage() {
-  const [activeSubsystem, setActiveSubsystem] = useState('odhs');
+  const [activeSubsystem, setActiveSubsystem] = useState('adcs');
   const [isScrolled, setIsScrolled] = useState(false);
   const [hasUserInteracted, setHasUserInteracted] = useState(false);
   const cardRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const heroRef = useRef<HTMLElement>(null);
+
+  // Check if device is mobile (screen width < 768px)
+  const isMobile = () => window.innerWidth < 768;
 
   // Handle URL parameters for direct subsystem navigation
   useEffect(() => {
@@ -18,7 +21,7 @@ function SubsystemsPage() {
       // Small delay to ensure the page is loaded before scrolling
       setTimeout(() => {
         const ref = cardRefs.current[subsystemParam];
-        if (ref && typeof ref.scrollIntoView === 'function') {
+        if (ref && typeof ref.scrollIntoView === 'function' && isMobile()) {
           ref.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
         }
       }, 500);
@@ -34,8 +37,8 @@ function SubsystemsPage() {
   }, []);
 
   useEffect(() => {
-    // Only scroll to subsystem if user has interacted with the page
-    if (!hasUserInteracted) return;
+    // Only scroll to subsystem if user has interacted with the page AND is on mobile
+    if (!hasUserInteracted || !isMobile()) return;
     
     const ref = cardRefs.current[activeSubsystem];
     if (ref && typeof ref.scrollIntoView === 'function') {
@@ -343,7 +346,7 @@ function SubsystemsPage() {
                     } hidden`}
                   />
                 </div>
-                <h3 className="font-bold text-xs">{system.name.split('(')[0].trim()}</h3>
+                <h3 className="hidden md:block font-bold text-xs">{system.name.split('(')[0].trim()}</h3>
               </button>
             ))}
           </div>
