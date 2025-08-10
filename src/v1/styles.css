@@ -37,28 +37,6 @@
   transform: translateY(-0.65rem) rotate(-45deg);
 }
 
-/* Slide-in animation for mobile nav */
-@keyframes slideInLeft {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-@keyframes slideOutLeft {
-  from {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-}
-
 .mobile-nav-slide-in {
   animation: slideInLeft 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
@@ -93,6 +71,7 @@
   width: 100%;
   max-width: 280px;
   margin: 0 auto;
+  text-align: left;
 }
 
 .mobile-nav-item {

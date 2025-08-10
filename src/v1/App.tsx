@@ -230,7 +230,7 @@ function App() {
                   </Link>
                   
                   <button 
-                    className="mobile-nav-item group w-full text-left" 
+                    className="mobile-nav-item group"
                     onClick={() => { setIsMenuOpen(false); scrollToSection("faqs"); }}
                   >
                     <span className="mobile-nav-indicator"></span>
