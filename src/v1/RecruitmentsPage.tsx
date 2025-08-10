@@ -1,9 +1,7 @@
-import React, { useState } from "react";
-import { ChevronRight, Users, Target, Calendar, Mail, ExternalLink } from "lucide-react";
+import { Users, Target, Calendar, Mail, ExternalLink } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export default function RecruitmentsPage() {
-  const [selectedSubsystem, setSelectedSubsystem] = useState(null);
   const navigate = useNavigate();
 
   const subsystems = [
