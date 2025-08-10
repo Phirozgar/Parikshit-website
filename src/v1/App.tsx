@@ -160,17 +160,94 @@ function App() {
         </div>
         {/* Mobile menu */}
         {(isMenuOpen || menuWasOpen) && (
-          <div className={`nav-links lg:hidden ${isMenuOpen ? "mobile-nav-slide-in" : "mobile-nav-slide-out"}`} onAnimationEnd={() => { if (!isMenuOpen) setMenuWasOpen(false); }}>
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-[#0A0A0A] border-b border-[#7AECEC]/20">
-              <Link to="/" className={getMobileNavLinkClass("/")} onClick={() => setIsMenuOpen(false)}>HOME</Link>
-              <Link to="/team" className={getMobileNavLinkClass("/team")} onClick={() => setIsMenuOpen(false)}>TEAM</Link>
-              <Link to="/about-us" className={getMobileNavLinkClass("/about-us")} onClick={() => setIsMenuOpen(false)}>ABOUT US</Link>
-              <Link to="/subsystems" className={getMobileNavLinkClass("/subsystems")} onClick={() => setIsMenuOpen(false)}>SUBSYSTEMS</Link>
-              <Link to="/projects" className={getMobileNavLinkClass("/projects")} onClick={() => setIsMenuOpen(false)}>PROJECTS</Link>
-              <Link to="/research" className={getMobileNavLinkClass("/research")} onClick={() => setIsMenuOpen(false)}>RESEARCH</Link>
-              <Link to="/recruitments" className={getMobileNavLinkClass("/recruitments")} onClick={() => setIsMenuOpen(false)}>RECRUITMENTS</Link>
-              <button className="block px-3 py-2 hover:text-white transition-colors w-full text-left" style={{ border: "none", background: "transparent" }} onClick={() => { setIsMenuOpen(false); scrollToSection("faqs"); }}>FAQs</button>
-              <button className="w-full text-left px-3 py-2 bg-[#7AECEC] text-black rounded-full font-bold hover:bg-white transition-colors" onClick={() => { setIsMenuOpen(false); setShowJoinModal(true); }}>JOIN US</button>
+          <div className={`nav-links lg:hidden ${isMenuOpen ? "mobile-nav-slide-in" : "mobile-nav-slide-out"}`} 
+              onAnimationEnd={() => { if (!isMenuOpen) setMenuWasOpen(false); }}>
+            <div className="px-4 pt-4 pb-6 bg-[#0D1117] border-b border-[#7AECEC]/20 rounded-b-lg shadow-xl">
+              {/* Navigation Menu Container */}
+              <div className="mobile-nav-container">
+                <div className="space-y-1">
+                  <Link 
+                    to="/" 
+                    className="mobile-nav-item group" 
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <span className="mobile-nav-indicator"></span>
+                    <span className="mobile-nav-text">HOME</span>
+                  </Link>
+                  
+                  <Link 
+                    to="/team" 
+                    className="mobile-nav-item group" 
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <span className="mobile-nav-indicator"></span>
+                    <span className="mobile-nav-text">TEAM</span>
+                  </Link>
+                  
+                  <Link 
+                    to="/about-us" 
+                    className="mobile-nav-item group" 
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <span className="mobile-nav-indicator"></span>
+                    <span className="mobile-nav-text">ABOUT US</span>
+                  </Link>
+                  
+                  <Link 
+                    to="/subsystems" 
+                    className="mobile-nav-item group" 
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <span className="mobile-nav-indicator"></span>
+                    <span className="mobile-nav-text">SUBSYSTEMS</span>
+                  </Link>
+                  
+                  <Link 
+                    to="/projects" 
+                    className="mobile-nav-item group" 
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <span className="mobile-nav-indicator"></span>
+                    <span className="mobile-nav-text">PROJECTS</span>
+                  </Link>
+                  
+                  <Link 
+                    to="/research" 
+                    className="mobile-nav-item group" 
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <span className="mobile-nav-indicator"></span>
+                    <span className="mobile-nav-text">RESEARCH</span>
+                  </Link>
+                  
+                  <Link 
+                    to="/recruitments" 
+                    className="mobile-nav-item group" 
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <span className="mobile-nav-indicator"></span>
+                    <span className="mobile-nav-text">RECRUITMENTS</span>
+                  </Link>
+                  
+                  <button 
+                    className="mobile-nav-item group w-full text-left" 
+                    onClick={() => { setIsMenuOpen(false); scrollToSection("faqs"); }}
+                  >
+                    <span className="mobile-nav-indicator"></span>
+                    <span className="mobile-nav-text">FAQs</span>
+                  </button>
+                </div>
+                
+                {/* Join Us Button */}
+                <div className="mt-6 pt-4 border-t border-[#21262C]">
+                  <button 
+                    className="w-full px-4 py-3 bg-gradient-to-r from-[#7AECEC] to-[#5BC5C5] text-black rounded-lg font-bold hover:from-white hover:to-[#F0F0F0] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98]" 
+                    onClick={() => { setIsMenuOpen(false); setShowJoinModal(true); }}
+                  >
+                    JOIN US
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         )}
