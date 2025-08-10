@@ -96,7 +96,7 @@ export default function RecruitmentsPage() {
       {/* Header Section */}
       <section className="py-12 px-4">
         <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-[#7AECEC] mb-4 hover:text-white transition-colors duration-300 cursor-default">
+          <h1 className="text-4xl md:text-5xl font-bold text-[#7AECEC] mb-4 transition-colors duration-300 cursor-default">
             Join Team Parikshit
           </h1>
           
@@ -132,7 +132,7 @@ export default function RecruitmentsPage() {
               <div className="bg-[#0A0A0A]/50 rounded-md p-3 mb-3">
                 <div className="flex justify-between items-center text-sm mb-1">
                   <span className="text-[#7AECEC]/80">Technical Domains</span>
-                  <span className="text-white font-medium">1 semester</span>
+                  <span className="text-white font-medium">6-7 months</span>
                 </div>
                 <div className="flex justify-between items-center text-sm">
                   <span className="text-[#7AECEC]/80">Admin & Ops</span>
