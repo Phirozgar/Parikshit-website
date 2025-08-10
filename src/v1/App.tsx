@@ -76,7 +76,7 @@ function App() {
         <ResearchHighlightsSection />
         <FAQsSection />
         <TeamStatsSection />
-        <JoinUsSection onJoinUs={() => setShowJoinModal(true)} />
+        <JoinUsSection />
         <footer className="py-8 px-4 border-t border-[#7AECEC]/20">
           <div className="max-w-7xl mx-auto text-center text-[#7AECEC]/60">
             <p>© 2025 PARIKSHIT. All rights reserved.</p>
@@ -120,14 +120,8 @@ function App() {
         : baseClasses;
     };
 
-    const getMobileNavLinkClass = (path: string, baseClasses = "block px-3 py-2 hover:text-white transition-colors") => {
-      return isActive(path) 
-        ? `${baseClasses} text-white font-bold bg-[#7AECEC]/10 rounded` 
-        : baseClasses;
-    };
-
     return (
-      <nav className="fixed w-full bg-[#0A0A0A]/90 backdrop-blur-sm border-b border-[#7AECEC]/20 z-50">
+      <nav className="fixed w-full bg-[#0A0A0A]/95 backdrop-blur-md border-b border-[#7AECEC]/20 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
@@ -144,113 +138,118 @@ function App() {
                 <Link to="/subsystems" className={getNavLinkClass("/subsystems")}>SUBSYSTEMS</Link>
                 <Link to="/projects" className={getNavLinkClass("/projects")}>PROJECTS</Link>
                 <Link to="/research" className={getNavLinkClass("/research")}>RESEARCH</Link>
-                <Link to="/recruitments" className={getNavLinkClass("/recruitments")}>RECRUITMENTS</Link>
                 <button className="hover:text-white transition-colors bg-transparent" style={{ padding: 0, border: "none", background: "none" }} onClick={() => scrollToSection("faqs")}>FAQs</button>
-                <button className="bg-[#7AECEC] text-black px-4 py-2 rounded-full font-bold hover:bg-white transition-colors" onClick={() => setShowJoinModal(true)}>JOIN US</button>
+                <Link 
+                  to="/recruitments" 
+                  className="relative inline-flex items-center px-6 py-2.5 bg-gradient-to-r from-[#7AECEC] to-[#4ECDC4] text-black font-bold rounded-full hover:from-white hover:to-[#F0F0F0] transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-[#7AECEC]/30 group overflow-hidden"
+                >
+                  <span className="relative z-10">RECRUITMENTS</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#4ECDC4] to-[#7AECEC] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </Link>
               </div>
             </div>
             <div className="lg:hidden">
-              <button onClick={() => setIsMenuOpen((open) => !open)} className={`hamburger${isMenuOpen ? " active" : ""} w-8 h-8 flex flex-col justify-between items-center bg-transparent border-none cursor-pointer`} aria-label="Toggle menu">
-                <span className="bar w-6 h-0.3 bg-[#7AECEC] transition-all duration-300 ease-in-out"></span>
-                <span className="bar w-6 h-0.3 bg-[#7AECEC] transition-all duration-300 ease-in-out"></span>
-                <span className="bar w-6 h-0.3 bg-[#7AECEC] transition-all duration-300 ease-in-out"></span>
+              <button 
+                onClick={() => setIsMenuOpen((open) => !open)} 
+                className={`hamburger${isMenuOpen ? " active" : ""} w-8 h-8 flex flex-col justify-center items-center bg-transparent border-none cursor-pointer relative transition-all duration-300 hover:scale-110`} 
+                aria-label="Toggle menu"
+              >
+                <span className={`bar w-6 h-0.5 bg-[#7AECEC] transition-all duration-300 ease-in-out absolute ${isMenuOpen ? 'rotate-45' : '-translate-y-1.5'}`}></span>
+                <span className={`bar w-6 h-0.5 bg-[#7AECEC] transition-all duration-300 ease-in-out absolute ${isMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
+                <span className={`bar w-6 h-0.5 bg-[#7AECEC] transition-all duration-300 ease-in-out absolute ${isMenuOpen ? '-rotate-45' : 'translate-y-1.5'}`}></span>
               </button>
             </div>
           </div>
         </div>
+        
+        {/* Mobile menu overlay */}
+        <div 
+          className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden transition-all duration-300 ${
+            isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+          }`}
+          onClick={() => setIsMenuOpen(false)}
+        />
+        
         {/* Mobile menu */}
-        {(isMenuOpen || menuWasOpen) && (
-          <div className={`nav-links lg:hidden ${isMenuOpen ? "mobile-nav-slide-in" : "mobile-nav-slide-out"}`} 
-              onAnimationEnd={() => { if (!isMenuOpen) setMenuWasOpen(false); }}>
-            <div className="px-4 pt-4 pb-6 bg-[#0D1117] border-b border-[#7AECEC]/20 rounded-b-lg shadow-xl">
-              {/* Navigation Menu Container */}
-              <div className="mobile-nav-container">
-                <div className="space-y-1">
-                  <Link 
-                    to="/" 
-                    className="mobile-nav-item group" 
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <span className="mobile-nav-indicator"></span>
-                    <span className="mobile-nav-text">HOME</span>
-                  </Link>
-                  
-                  <Link 
-                    to="/team" 
-                    className="mobile-nav-item group" 
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <span className="mobile-nav-indicator"></span>
-                    <span className="mobile-nav-text">TEAM</span>
-                  </Link>
-                  
-                  <Link 
-                    to="/about-us" 
-                    className="mobile-nav-item group" 
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <span className="mobile-nav-indicator"></span>
-                    <span className="mobile-nav-text">ABOUT US</span>
-                  </Link>
-                  
-                  <Link 
-                    to="/subsystems" 
-                    className="mobile-nav-item group" 
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <span className="mobile-nav-indicator"></span>
-                    <span className="mobile-nav-text">SUBSYSTEMS</span>
-                  </Link>
-                  
-                  <Link 
-                    to="/projects" 
-                    className="mobile-nav-item group" 
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <span className="mobile-nav-indicator"></span>
-                    <span className="mobile-nav-text">PROJECTS</span>
-                  </Link>
-                  
-                  <Link 
-                    to="/research" 
-                    className="mobile-nav-item group" 
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <span className="mobile-nav-indicator"></span>
-                    <span className="mobile-nav-text">RESEARCH</span>
-                  </Link>
-                  
-                  <Link 
-                    to="/recruitments" 
-                    className="mobile-nav-item group" 
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <span className="mobile-nav-indicator"></span>
-                    <span className="mobile-nav-text">RECRUITMENTS</span>
-                  </Link>
-                  
-                  <button 
-                    className="mobile-nav-item group"
-                    onClick={() => { setIsMenuOpen(false); scrollToSection("faqs"); }}
-                  >
-                    <span className="mobile-nav-indicator"></span>
-                    <span className="mobile-nav-text">FAQs</span>
-                  </button>
-                </div>
-                
-                {/* Join Us Button */}
-                <div className="mt-6 pt-4 border-t border-[#21262C]">
-                  <button 
-                    className="w-full px-4 py-3 bg-gradient-to-r from-[#7AECEC] to-[#5BC5C5] text-black rounded-lg font-bold hover:from-white hover:to-[#F0F0F0] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98]" 
-                    onClick={() => { setIsMenuOpen(false); setShowJoinModal(true); }}
-                  >
-                    JOIN US
-                  </button>
-                </div>
-              </div>
+        <div className={`fixed top-16 left-0 right-0 bg-[#0D1117]/98 backdrop-blur-lg border-b border-[#7AECEC]/20 shadow-2xl z-45 lg:hidden transition-all duration-500 ease-out transform ${
+          isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
+        }`}>
+          <div className="px-6 py-8 bg-black/30">
+            {/* Navigation Menu Container */}
+            <div className="space-y-2">
+              {[
+                { to: "/", label: "HOME", delay: "0ms", icon: "🏠" },
+                { to: "/team", label: "TEAM", delay: "50ms", icon: "👥" },
+                { to: "/about-us", label: "ABOUT US", delay: "100ms", icon: "ℹ️" },
+                { to: "/subsystems", label: "SUBSYSTEMS", delay: "150ms", icon: "⚙️" },
+                { to: "/projects", label: "PROJECTS", delay: "200ms", icon: "🚧" },
+                { to: "/research", label: "RESEARCH", delay: "250ms", icon: "🔬" }
+              ].map((item, index) => (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  className={`mobile-nav-item group flex items-center px-4 py-3 rounded-xl transition-all duration-300 ${
+                    isActive(item.to) ? 'bg-[#7AECEC]/15 text-white border-l-4 border-[#7AECEC]' : 'text-[#7AECEC]'
+                  }`}
+                  style={{
+                    animationDelay: isMenuOpen ? item.delay : '0ms',
+                    transform: isMenuOpen ? 'translateX(0)' : 'translateX(-20px)',
+                    opacity: isMenuOpen ? 1 : 0,
+                    transition: `all 0.3s ease-out ${item.delay}`
+                  }}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <span className="text-xl mr-4 transition-all duration-300">{item.icon}</span>
+                  <span className="font-semibold tracking-wide">{item.label}</span>
+                </Link>
+              ))}
+              
+              <Link
+                to="/#faqs"
+                className="mobile-nav-item group flex items-center w-full px-4 py-3 rounded-xl text-left transition-all duration-300 text-[#7AECEC]"
+                style={{
+                  animationDelay: isMenuOpen ? '300ms' : '0ms',
+                  transform: isMenuOpen ? 'translateX(0)' : 'translateX(-20px)',
+                  opacity: isMenuOpen ? 1 : 0,
+                  transition: 'all 0.3s ease-out 300ms'
+                }}
+                onClick={() => { 
+                  setIsMenuOpen(false); 
+                  // Navigate to home if not already there, then scroll to FAQs
+                  if (window.location.pathname !== "/") {
+                    navigate('/', { state: { scrollTo: 'faqs' } });
+                  } else {
+                    scrollToSection("faqs");
+                  }
+                }}
+              >
+                <span className="text-xl mr-4 transition-all duration-300">❓</span>
+                <span className="font-semibold tracking-wide">FAQs</span>
+              </Link>
+            </div>
+            
+            {/* Recruitments Button */}
+            <div className="mt-8 pt-6 border-t border-[#21262C]">
+              <Link
+                to="/recruitments"
+                className="block w-full px-6 py-4 bg-gradient-to-r from-[#7AECEC] via-[#5BC5C5] to-[#4ECDC4] text-black rounded-2xl font-bold text-center transition-all duration-500 shadow-lg transform active:scale-[0.95] relative overflow-hidden"
+                style={{
+                  animationDelay: isMenuOpen ? '350ms' : '0ms',
+                  transform: isMenuOpen ? 'translateY(0) scale(1)' : 'translateY(20px) scale(0.9)',
+                  opacity: isMenuOpen ? 1 : 0,
+                  transition: 'all 0.4s ease-out 350ms'
+                }}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <span className="flex items-center justify-center">
+                  <span className="mr-2">🚀</span>
+                  RECRUITMENTS
+                  <span className="ml-2">→</span>
+                </span>
+              </Link>
             </div>
           </div>
-        )}
+        </div>
       </nav>
     );
   }
@@ -293,7 +292,9 @@ function App() {
       <div className="min-h-screen bg-[#0A0A0A] text-[#7AECEC] font-sans">
         <Navigation />
         {/* Main Content */}
-        <AnimatedRoutes />
+        <div className={`transition-all duration-300 ${isMenuOpen ? 'blur-sm scale-95' : ''}`}>
+          <AnimatedRoutes />
+        </div>
         <JoinUsModal open={showJoinModal} onClose={() => setShowJoinModal(false)} />
       </div>
     </Router>

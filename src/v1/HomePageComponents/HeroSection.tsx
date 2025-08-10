@@ -1,9 +1,8 @@
 import { ChevronRight } from "lucide-react";
-import { JoinUsModal } from "./JoinUsModal";
-import { useState } from "react";
+import { Link } from "react-router-dom";
+
 
 export function HeroSection() {
-  const [showJoinModal, setShowJoinModal ] =useState(false);
 
   return (
     <section id="home" className="relative min-h-screen">
@@ -34,20 +33,20 @@ export function HeroSection() {
             </div>
           </h1>
           <div className="mt-6 sm:mt-8 md:mt-10">
-            <button className="bg-[#7AECEC] text-black px-4 py-2 sm:px-6 sm:py-3 
-                              rounded-full font-bold text-sm sm:text-base
-                              hover:bg-white transition-colors flex items-center 
-                              mx-auto shadow-lg hover:shadow-xl transform hover:scale-105
-                              transition-all duration-300"
-                              onClick={() => setShowJoinModal(true)}
-                              >
-              JOIN US<ChevronRight className="ml-0.5 w-4 h-4 sm:w-5 sm:h-5" />
+            <button 
+              className="bg-[#7AECEC] text-black px-4 py-2 sm:px-6 sm:py-3 
+                        rounded-full font-bold text-sm sm:text-base
+                        hover:bg-white transition-colors flex items-center 
+                        mx-auto shadow-lg hover:shadow-xl transform hover:scale-105
+                        transition-all duration-300"
+              >
+                <Link to="/recruitments">
+                  Recruitments Open
+                </Link>
             </button>
           </div>
         </div>
       </div>
-
-      <JoinUsModal open={showJoinModal} onClose={() => setShowJoinModal(false)} />
     </section>
   );
 }
