@@ -1,4 +1,4 @@
-import { Users, Target, Calendar, Mail, Download, X, Sparkles } from "lucide-react";
+import { Users, Target, Calendar, Mail, Download, X, Sparkles, Info } from "lucide-react";
 import { useState, useEffect } from "react";
 
 interface Subsystem {
@@ -9,6 +9,7 @@ interface Subsystem {
   challengeLink: string;
   subsystemId: string;
   pdfPath: string;
+  hasChallenge: boolean;
 }
 
 export default function RecruitmentsPage() {
@@ -37,7 +38,8 @@ export default function RecruitmentsPage() {
       icon: "/assets/Subsystem_Logos/ADCS.png",
       challengeLink: "#propulsion-challenge",
       subsystemId: "adcs",
-      pdfPath: "/assets/challenges/ADCS_Challenge.pdf"
+      pdfPath: "/assets/challenges/ADCS_Challenge.pdf",
+      hasChallenge: true
     },
     {
       id: 2,
@@ -46,7 +48,8 @@ export default function RecruitmentsPage() {
       icon: "/assets/Subsystem_Logos/COMMS.png",
       challengeLink: "#structures-challenge",
       subsystemId: "comms",
-      pdfPath: "/assets/challenges/COMMS_Challenge.pdf"
+      pdfPath: "/assets/challenges/COMMS_Challenge.pdf",
+      hasChallenge: true
     },
     {
       id: 3,
@@ -55,7 +58,8 @@ export default function RecruitmentsPage() {
       icon: "/assets/Subsystem_Logos/EPS.png",
       challengeLink: "#electronics-challenge",
       subsystemId: "eps",
-      pdfPath: "/assets/challenges/EPS_Challenge.pdf"
+      pdfPath: "/assets/challenges/EPS_Challenge.pdf",
+      hasChallenge: true
     },
     {
       id: 4,
@@ -64,7 +68,8 @@ export default function RecruitmentsPage() {
       icon: "/assets/Subsystem_Logos/ODHS.png",
       challengeLink: "#recovery-challenge",
       subsystemId: "odhs",
-      pdfPath: "/assets/challenges/ODHS_Challenge.pdf"
+      pdfPath: "/assets/challenges/ODHS_Challenge.pdf",
+      hasChallenge: true
     },
     {
       id: 5,
@@ -73,7 +78,8 @@ export default function RecruitmentsPage() {
       icon: "/assets/Subsystem_Logos/PAYLOAD.png",
       challengeLink: "#payload-challenge",
       subsystemId: "payload",
-      pdfPath: "/assets/challenges/PAYLOAD_Challenge.pdf"
+      pdfPath: "/assets/challenges/PAYLOAD_Challenge.pdf",
+      hasChallenge: true
     },
     {
       id: 6,
@@ -82,7 +88,8 @@ export default function RecruitmentsPage() {
       icon: "/assets/Subsystem_Logos/RESEARCH.png",
       challengeLink: "#simulation-challenge",
       subsystemId: "research",
-      pdfPath: "/assets/challenges/RESEARCH_Challenge.pdf"
+      pdfPath: "/assets/challenges/RESEARCH_Challenge.pdf",
+      hasChallenge: false
     },
     {
       id: 7,
@@ -91,7 +98,8 @@ export default function RecruitmentsPage() {
       icon: "/assets/Subsystem_Logos/STMS.png",
       challengeLink: "#manufacturing-challenge",
       subsystemId: "stms",
-      pdfPath: "/assets/challenges/STMS_Challenge.pdf"
+      pdfPath: "/assets/challenges/STMS_Challenge.pdf",
+      hasChallenge: true
     },
     {
       id: 8,
@@ -100,7 +108,8 @@ export default function RecruitmentsPage() {
       icon: "/assets/Subsystem_Logos/Admin & OPS.png",
       challengeLink: "#business-challenge",
       subsystemId: "admin",
-      pdfPath: "/assets/challenges/Admin_OPS_Challenge.pdf"
+      pdfPath: "/assets/challenges/Admin_OPS_Challenge.pdf",
+      hasChallenge: true
     }
   ];
 
@@ -408,17 +417,75 @@ export default function RecruitmentsPage() {
                     <h3 className="text-sm md:text-base font-medium text-[#7AECEC] mb-2 group-hover:text-white transition-colors text-center">
                       {subsystem.name}
                     </h3>
-                    <div 
-                      className="flex items-center justify-center gap-1 text-[#7AECEC] text-xs group-hover:gap-2 transition-all group-hover:text-white cursor-pointer hover:bg-[#7AECEC]/10 rounded-lg py-1 px-2"
-                      onClick={(e) => handleDownloadPDF(subsystem.pdfPath, subsystem.name, e)}
-                    >
-                      <span>Download Challenge</span>
-                      <Download className="w-3 h-3 group-hover:animate-bounce" />
-                    </div>
+                    
+                    {/* Challenge availability indicator */}
+                    {subsystem.hasChallenge ? (
+                      <div 
+                        className="flex items-center justify-center gap-1 text-[#7AECEC] text-xs group-hover:gap-2 transition-all group-hover:text-white cursor-pointer hover:bg-[#7AECEC]/10 rounded-lg py-1 px-2"
+                        onClick={(e) => handleDownloadPDF(subsystem.pdfPath, subsystem.name, e)}
+                      >
+                        <span>Download Challenge</span>
+                        <Download className="w-3 h-3 group-hover:animate-bounce" />
+                      </div>
+                    ) : (
+                      <div className="flex items-center justify-center gap-1 text-[#7AECEC]/60 text-xs py-1 px-2">
+                        <Info className="w-3 h-3" />
+                        <span>No Challenge Available</span>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* Challenge Submission Section */}
+        <section className="mb-12">
+          <div className="bg-gradient-to-br from-[#7AECEC]/10 via-[#7AECEC]/5 to-[#111111] rounded-xl border border-[#7AECEC]/30 p-5 md:p-6 shadow-xl backdrop-blur-sm relative overflow-hidden">
+            {/* Background accent */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#7AECEC]/20 to-transparent rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-[#7AECEC]/10 to-transparent rounded-full blur-2xl"></div>
+            
+            <div className="relative z-10">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 bg-[#7AECEC]/20 rounded-full flex items-center justify-center">
+                  <Mail className="w-5 h-5 text-[#7AECEC]" />
+                </div>
+                <h3 className="text-xl md:text-2xl font-medium text-white">Challenge Submissions</h3>
+              </div>
+              
+              <div className="bg-gradient-to-r from-[#0A0A0A]/80 to-[#111111]/60 rounded-lg p-4 border border-[#7AECEC]/20 backdrop-blur-sm">
+                <p className="text-[#7AECEC]/90 text-sm md:text-base mb-3">
+                  Ready to submit your recruitment challenge? Send your completed solutions to:
+                </p>
+                
+                <div className="flex items-center gap-3 bg-[#7AECEC]/10 rounded-lg p-3 border border-[#7AECEC]/25">
+                  <div className="w-8 h-8 bg-[#7AECEC]/20 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-4 h-4 text-[#7AECEC]" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-[#7AECEC]/80 text-xs mb-1">Submission Email:</p>
+                    <a 
+                      href="mailto:recruitments.parikshit@gmail.com?subject=Recruitment Challenge Submission - [Your Subsystem]" 
+                      className="text-[#7AECEC] hover:text-white font-medium text-sm md:text-base transition-colors hover:underline break-all"
+                    >
+                      recruitments.parikshit@gmail.com
+                    </a>
+                  </div>
+                  <div className="flex-shrink-0">
+                    <span className="bg-gradient-to-r from-[#7AECEC] to-[#7AECEC]/80 text-black text-xs px-2 py-1 rounded-full font-medium">
+                      Active
+                    </span>
+                  </div>
+                </div>
+                
+                <div className="mt-3 text-[#7AECEC]/70 text-xs">
+                  <p className="mb-1">📧 <strong>Subject format:</strong> "Recruitment Challenge Submission - [Subsystem Name]"</p>
+                  <p>📎 Include all required files and documentation as specified in the challenge document</p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -457,10 +524,10 @@ export default function RecruitmentsPage() {
           <p className="text-[#7AECEC]/80 mb-4 text-sm md:text-base">
             Have questions about the application process? Reach out to us at{" "}
             <a 
-              href="mailto:parikshitmanagement23@gmail.com" 
+              href="mailto:parikshit.musat@gmail.com" 
               className="text-[#7AECEC] hover:underline break-all font-medium transition-colors"
             >
-              parikshitmanagement23@gmail.com
+              parikshit.musat@gmail.com
             </a>
           </p>
           <p className="text-[#7AECEC]/60 text-xs md:text-sm">
@@ -494,7 +561,9 @@ export default function RecruitmentsPage() {
                   <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${hoveredSubsystem.color} shadow-md`}></div>
                   <div className="flex-1">
                     <h4 className="text-[#7AECEC] font-semibold text-lg tracking-tight">{hoveredSubsystem.name}</h4>
-                    <p className="text-[#7AECEC]/70 text-sm">Challenge Document Preview</p>
+                    <p className="text-[#7AECEC]/70 text-sm">
+                      {hoveredSubsystem.hasChallenge ? "Challenge Document Preview" : "Recruitment Information"}
+                    </p>
                   </div>
                   {isDialogPinned && (
                     <button
@@ -505,62 +574,82 @@ export default function RecruitmentsPage() {
                     </button>
                   )}
                 </div>
-                {isDialogPinned && (
+                {isDialogPinned && hoveredSubsystem.hasChallenge && (
                   <p className="text-[#7AECEC]/50 text-xs mt-2">Click and scroll to explore the document</p>
                 )}
               </div>
               
-              {/* PDF Preview Section */}
+              {/* Content Section */}
               <div className="p-4">
-                <div className="bg-gradient-to-br from-[#0A0A0A] to-[#111111] rounded-xl border border-[#7AECEC]/30 overflow-hidden shadow-lg">
-                  <div className="relative">
-                    <div className="h-64 overflow-y-auto scrollbar-thin scrollbar-track-[#111111] scrollbar-thumb-[#7AECEC]/30 hover:scrollbar-thumb-[#7AECEC]/50">
-                      <iframe
-                        src={`${hoveredSubsystem.pdfPath}#toolbar=0&navpanes=0&scrollbar=1&view=FitH`}
-                        className="w-full h-full border-0 bg-white/98 min-h-[400px]"
-                        title={`${hoveredSubsystem.name} Challenge Preview`}
-                        scrolling="auto"
-                        onError={() => {
-                          console.log("PDF failed to load, showing fallback");
+                {hoveredSubsystem.hasChallenge ? (
+                  /* PDF Preview Section */
+                  <div className="bg-gradient-to-br from-[#0A0A0A] to-[#111111] rounded-xl border border-[#7AECEC]/30 overflow-hidden shadow-lg">
+                    <div className="relative">
+                      <div className="h-64 overflow-y-auto scrollbar-thin scrollbar-track-[#111111] scrollbar-thumb-[#7AECEC]/30 hover:scrollbar-thumb-[#7AECEC]/50">
+                        <iframe
+                          src={`${hoveredSubsystem.pdfPath}#toolbar=0&navpanes=0&scrollbar=1&view=FitH`}
+                          className="w-full h-full border-0 bg-white/98 min-h-[400px]"
+                          title={`${hoveredSubsystem.name} Challenge Preview`}
+                          scrolling="auto"
+                          onError={() => {
+                            console.log("PDF failed to load, showing fallback");
+                          }}
+                        />
+                      </div>
+                      
+                      {/* Subtle gradient overlay for better readability */}
+                      <div className="absolute inset-x-0 top-0 h-6 bg-gradient-to-b from-[#0A0A0A]/30 to-transparent pointer-events-none"></div>
+                      <div className="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-[#0A0A0A]/40 to-transparent pointer-events-none"></div>
+                      
+                      {/* Document type indicator */}
+                      <div className="absolute top-3 right-3 bg-gradient-to-r from-slate-700 to-slate-600 text-white text-xs px-2.5 py-1 rounded-md font-medium shadow-lg">
+                        PDF
+                      </div>
+                      
+                      {/* Instructions based on state */}
+                      {!isDialogPinned ? (
+                        <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-[#7AECEC]/60 text-xs flex items-center gap-1 bg-[#0A0A0A]/80 px-2 py-1 rounded-md backdrop-blur-sm">
+                          <div className="w-1 h-1 bg-[#7AECEC]/60 rounded-full"></div>
+                          <span>Click card to pin & scroll</span>
+                        </div>
+                      ) : (
+                        <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-[#7AECEC]/60 text-xs flex items-center gap-1 bg-[#0A0A0A]/80 px-2 py-1 rounded-md backdrop-blur-sm">
+                          <div className="w-1 h-1 bg-[#7AECEC]/60 rounded-full animate-pulse"></div>
+                          <span>Scroll to explore document</span>
+                        </div>
+                      )}
+                      
+                      {/* Download action */}
+                      <div 
+                        className="absolute bottom-2 right-2 bg-[#7AECEC]/20 hover:bg-[#7AECEC]/30 text-[#7AECEC] text-xs px-2 py-1 rounded-md font-medium transition-colors cursor-pointer flex items-center gap-1 backdrop-blur-sm"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleDownloadPDF(hoveredSubsystem.pdfPath, hoveredSubsystem.name, e);
                         }}
-                      />
-                    </div>
-                    
-                    {/* Subtle gradient overlay for better readability */}
-                    <div className="absolute inset-x-0 top-0 h-6 bg-gradient-to-b from-[#0A0A0A]/30 to-transparent pointer-events-none"></div>
-                    <div className="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-[#0A0A0A]/40 to-transparent pointer-events-none"></div>
-                    
-                    {/* Document type indicator */}
-                    <div className="absolute top-3 right-3 bg-gradient-to-r from-slate-700 to-slate-600 text-white text-xs px-2.5 py-1 rounded-md font-medium shadow-lg">
-                      PDF
-                    </div>
-                    
-                    {/* Instructions based on state */}
-                    {!isDialogPinned ? (
-                      <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-[#7AECEC]/60 text-xs flex items-center gap-1 bg-[#0A0A0A]/80 px-2 py-1 rounded-md backdrop-blur-sm">
-                        <div className="w-1 h-1 bg-[#7AECEC]/60 rounded-full"></div>
-                        <span>Click card to pin & scroll</span>
+                      >
+                        <Download className="w-3 h-3" />
+                        <span>Download</span>
                       </div>
-                    ) : (
-                      <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-[#7AECEC]/60 text-xs flex items-center gap-1 bg-[#0A0A0A]/80 px-2 py-1 rounded-md backdrop-blur-sm">
-                        <div className="w-1 h-1 bg-[#7AECEC]/60 rounded-full animate-pulse"></div>
-                        <span>Scroll to explore document</span>
-                      </div>
-                    )}
-                    
-                    {/* Download action */}
-                    <div 
-                      className="absolute bottom-2 right-2 bg-[#7AECEC]/20 hover:bg-[#7AECEC]/30 text-[#7AECEC] text-xs px-2 py-1 rounded-md font-medium transition-colors cursor-pointer flex items-center gap-1 backdrop-blur-sm"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleDownloadPDF(hoveredSubsystem.pdfPath, hoveredSubsystem.name, e);
-                      }}
-                    >
-                      <Download className="w-3 h-3" />
-                      <span>Download</span>
                     </div>
                   </div>
-                </div>
+                ) : (
+                  /* No Challenge Message for RESEARCH */
+                  <div className="bg-gradient-to-br from-[#0A0A0A] to-[#111111] rounded-xl border border-[#7AECEC]/30 p-6 text-center">
+                    <div className="w-16 h-16 bg-[#7AECEC]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Info className="w-8 h-8 text-[#7AECEC]/60" />
+                    </div>
+                    <h4 className="text-[#7AECEC] font-semibold text-lg mb-2">No Recruitment Challenge</h4>
+                    <p className="text-[#7AECEC]/70 text-sm mb-4">
+                      The {hoveredSubsystem.name} subsystem doesn't have a recruitment challenge at this time.
+                    </p>
+                    <div className="bg-[#7AECEC]/10 rounded-lg p-4 border border-[#7AECEC]/20">
+                      <p className="text-[#7AECEC]/80 text-xs">
+                        <strong>Apply through the interview route</strong><br />
+                        Contact us for more information about joining this subsystem
+                      </p>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
