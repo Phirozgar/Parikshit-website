@@ -145,7 +145,7 @@ function TeamPage() {
         <header
           className="relative bg-cover bg-center h-[60vh] flex items-center"
           style={{
-            backgroundImage: "url('/team/team-photo.jpg')",
+            backgroundImage: "/assets/Team Photo.jpg')",
             backgroundPosition: "center 30%",
           }}
         >
@@ -307,22 +307,6 @@ function TeamPage() {
             </div>
           </section>
 
-          {/* Join Our Team */}
-          <section>
-            <h2 className="text-3xl font-bold mb-8 text-[#7AECEC]">
-              Join Our Team
-            </h2>
-            <div className="bg-[#0A0A0A] rounded-lg p-8 border border-[#7AECEC]">
-              <p className="text-lg mb-6 text-[#7AECEC]">
-                We're always looking for passionate students interested in space
-                technology, engineering, and research. Applications open each
-                semester for new team members.
-              </p>
-              <button className="bg-[#7AECEC] text-[#0A0A0A] px-6 py-3 rounded-lg font-bold hover:bg-[#69d4d4] transition">
-                Apply to Join
-              </button>
-            </div>
-          </section>
         </main>
       </div>
     </div>

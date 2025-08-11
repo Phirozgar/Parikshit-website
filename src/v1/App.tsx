@@ -17,6 +17,7 @@ import { FAQsSection } from "./HomePageComponents/FAQsSection";
 import { TeamStatsSection } from "./HomePageComponents/TeamStatsSection";
 import { JoinUsSection } from "./HomePageComponents/JoinUsSection";
 import { JoinUsModal } from "./HomePageComponents/JoinUsModal";
+import { Mail } from "lucide-react";
 
 // Add global smooth scroll behavior
 if (typeof window !== 'undefined') {
@@ -77,12 +78,41 @@ function App() {
         <FAQsSection />
         <TeamStatsSection />
         <JoinUsSection />
-        <footer className="py-8 px-4 border-t border-[#7AECEC]/20">
-          <div className="max-w-7xl mx-auto text-center text-[#7AECEC]/60">
+      </>
+    );
+  }
+
+  // Common Footer Component
+  function Footer() {
+    return (
+      <footer className="py-8 px-4 border-t border-[#7AECEC]/20">
+        <div className="max-w-7xl mx-auto">
+          {/* Questions Section Style Footer */}
+          <div className="text-center bg-gradient-to-br from-[#7AECEC]/10 via-[#7AECEC]/5 to-transparent rounded-xl border border-[#7AECEC]/20 p-5 md:p-6 shadow-xl backdrop-blur-sm mb-6">
+            <div className="w-12 h-12 md:w-14 md:h-14 bg-[#7AECEC]/20 rounded-full flex items-center justify-center mx-auto mb-3">
+              <Mail className="w-6 h-6 md:w-7 md:h-7 text-[#7AECEC]" />
+            </div>
+            <h3 className="text-xl md:text-2xl font-medium text-[#7AECEC] mb-3">Questions?</h3>
+            <p className="text-[#7AECEC]/80 mb-4 text-sm md:text-base">
+              Have questions about Team Parikshit? Reach out to us at{" "}
+              <a 
+                href="mailto:parikshit.musat@gmail.com" 
+                className="text-[#7AECEC] hover:underline break-all font-medium transition-colors"
+              >
+                parikshit.musat@gmail.com
+              </a>
+            </p>
+            <p className="text-[#7AECEC]/60 text-xs md:text-sm">
+              Stay updated with our latest projects and announcements through our social media channels
+            </p>
+          </div>
+          
+          {/* Copyright */}
+          <div className="text-center text-[#7AECEC]/60 text-sm">
             <p>© 2025 PARIKSHIT. All rights reserved.</p>
           </div>
-        </footer>
-      </>
+        </div>
+      </footer>
     );
   }
 
@@ -295,6 +325,8 @@ function App() {
         <div className={`transition-all duration-300 ${isMenuOpen ? 'blur-sm scale-95' : ''}`}>
           <AnimatedRoutes />
         </div>
+        {/* Common Footer for all pages */}
+        <Footer />
         <JoinUsModal open={showJoinModal} onClose={() => setShowJoinModal(false)} />
       </div>
     </Router>

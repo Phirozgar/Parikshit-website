@@ -16,7 +16,7 @@ export function ProjectsSection() {
           </Link>
           <Link to="/projects?project=cansat" className="p-6 border border-[#7AECEC]/20 rounded-lg bg-[#0A0A0A] flex flex-col items-center hover:shadow-lg transition-shadow">
             <img
-              src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&q=80"
+              src="/assets/Cansat.png"
               alt="Cansat project"
               className="rounded-lg mb-6 w-full h-56 object-cover border border-[#7AECEC]/10"
             />
@@ -24,7 +24,7 @@ export function ProjectsSection() {
           </Link>
           <Link to="/projects?project=pagos" className="p-6 border border-[#7AECEC]/20 rounded-lg bg-[#0A0A0A] flex flex-col items-center hover:shadow-lg transition-shadow">
             <img
-              src="https://images.unsplash.com/photo-1470219556762-1771e7f9427d?auto=format&fit=crop&q=80"
+              src="/assets/SetUp Photos/PAGOS.JPG"
               alt="PAGOS ground station"
               className="rounded-lg mb-6 w-full h-56 object-cover border border-[#7AECEC]/10"
             />

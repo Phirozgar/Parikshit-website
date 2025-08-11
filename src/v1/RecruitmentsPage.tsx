@@ -515,25 +515,6 @@ export default function RecruitmentsPage() {
           </div>
         </section>
 
-        {/* Contact Section */}
-        <section className="text-center bg-gradient-to-br from-[#7AECEC]/10 via-[#7AECEC]/5 to-transparent rounded-xl border border-[#7AECEC]/20 p-5 md:p-6 shadow-xl backdrop-blur-sm">
-          <div className="w-12 h-12 md:w-14 md:h-14 bg-[#7AECEC]/20 rounded-full flex items-center justify-center mx-auto mb-3">
-            <Mail className="w-6 h-6 md:w-7 md:h-7 text-[#7AECEC]" />
-          </div>
-          <h3 className="text-xl md:text-2xl font-medium text-[#7AECEC] mb-3">Questions?</h3>
-          <p className="text-[#7AECEC]/80 mb-4 text-sm md:text-base">
-            Have questions about the application process? Reach out to us at{" "}
-            <a 
-              href="mailto:parikshit.musat@gmail.com" 
-              className="text-[#7AECEC] hover:underline break-all font-medium transition-colors"
-            >
-              parikshit.musat@gmail.com
-            </a>
-          </p>
-          <p className="text-[#7AECEC]/60 text-xs md:text-sm">
-            Stay updated with application dates and announcements through our social media channels
-          </p>
-        </section>
       </div>
 
       {/* Enhanced PDF Preview Dialog - Only shows on desktop */}
@@ -619,17 +600,6 @@ export default function RecruitmentsPage() {
                         </div>
                       )}
                       
-                      {/* Download action */}
-                      <div 
-                        className="absolute bottom-2 right-2 bg-[#7AECEC]/20 hover:bg-[#7AECEC]/30 text-[#7AECEC] text-xs px-2 py-1 rounded-md font-medium transition-colors cursor-pointer flex items-center gap-1 backdrop-blur-sm"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleDownloadPDF(hoveredSubsystem.pdfPath, hoveredSubsystem.name, e);
-                        }}
-                      >
-                        <Download className="w-3 h-3" />
-                        <span>Download</span>
-                      </div>
                     </div>
                   </div>
                 ) : (
