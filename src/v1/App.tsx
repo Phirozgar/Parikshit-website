@@ -95,24 +95,43 @@ function App() {
             <h3 className="text-xl md:text-2xl font-medium text-[#7AECEC] mb-3">Questions?</h3>
             <p className="text-[#7AECEC]/80 mb-4 text-sm md:text-base">
               Have questions about Team Parikshit? Reach out to us at{" "}
-              <a 
-                href="mailto:parikshit.musat@gmail.com" 
+              <a
+                href="mailto:parikshit.musat@gmail.com"
                 className="text-[#7AECEC] hover:underline break-all font-medium transition-colors"
               >
                 parikshit.musat@gmail.com
               </a>
             </p>
-            <p className="text-[#7AECEC]/60 text-xs md:text-sm">
+            <p className="text-[#7AECEC]/60 text-xs md:text-sm mb-3">
               Stay updated with our latest projects and announcements through our social media channels
             </p>
+
+            {/* Instagram Follow Section */}
+            <a
+              href="https://instagram.com/parikshitsatellite"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-[#7AECEC]/20 hover:bg-[#7AECEC]/30 text-[#7AECEC] text-sm md:text-base px-4 py-2 rounded-full font-medium transition-colors"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                className="w-5 h-5"
+              >
+                <path d="M7.75 2A5.75 5.75 0 0 0 2 7.75v8.5A5.75 5.75 0 0 0 7.75 22h8.5A5.75 5.75 0 0 0 22 16.25v-8.5A5.75 5.75 0 0 0 16.25 2h-8.5ZM20.5 7.75v8.5a4.25 4.25 0 0 1-4.25 4.25h-8.5A4.25 4.25 0 0 1 3.5 16.25v-8.5A4.25 4.25 0 0 1 7.75 3.5h8.5A4.25 4.25 0 0 1 20.5 7.75ZM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 8.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm5.25-8.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+              </svg>
+              Follow us on Instagram @parikshitsatellite
+            </a>
           </div>
-          
+
           {/* Copyright */}
           <div className="text-center text-[#7AECEC]/60 text-sm">
             <p>© 2025 PARIKSHIT. All rights reserved.</p>
           </div>
         </div>
       </footer>
+
     );
   }
 
