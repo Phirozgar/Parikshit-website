@@ -24,7 +24,7 @@ export function ProjectsSection() {
           </Link>
           <Link to="/projects?project=pagos" className="p-6 border border-[#7AECEC]/20 rounded-lg bg-[#0A0A0A] flex flex-col items-center hover:shadow-lg transition-shadow">
             <img
-              src="/assets/SetUp Photos/PAGOS.JPG"
+              src="/assets/pagos.JPG"
               alt="PAGOS ground station"
               className="rounded-lg mb-6 w-full h-56 object-cover border border-[#7AECEC]/10"
             />
