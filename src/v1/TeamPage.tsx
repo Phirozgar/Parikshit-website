@@ -26,15 +26,15 @@ const allTeamMembers: TeamMember[] = [
   { name: "Ankit Mishra", role: "System Engineer", image: getImagePath("Ankit Mishra"),
     github: "ankit-mishra", linkedin: "ankit-mishra" },
   { name: "Nidhi Hegde", role: "System Engineer", image: getImagePath("Nidhi Hegde"),
-    github: "nidhi-hegde", linkedin: "nidhi-hegde" },
+    github: "nidhi-hegde", linkedin: "nidhi-mhegde" },
   { name: "Swetha M R", role: "System Admin", image: getImagePath("Swetha M R"),
     github: "swetha-m-r", linkedin: "swetha-m-r" },
 
   // Subsystem Leads
-  { name: "Rachit Takate", role: "ODHS Lead", image: getImagePath("Rachit Takate") },
+  { name: "Rachit Takate", role: "ODHS Lead", image: getImagePath("Rachit Takate"), linkedin: "bluejet", github: "bluejet007" },
   // { name: "Ankit Mishra", role: "ADCS Lead Member", image: getImagePath("Ankit Mishra"),
   //   github: "ankit-mishra", linkedin: "ankit-mishra" },
-  { name: "Akshay Sai", role: "EPS Lead", image: getImagePath("Akshay Sai") },
+  { name: "Akshay Sai", role: "EPS Lead", image: getImagePath("Akshay Sai"), linkedin: "akshay-sai-99b57a27a" },
   { name: "Jayant Sharma", role: "COMMS Lead", image: getImagePath("Jayant Sharma") },
   { name: "Shrihar Pande", role: "Payload Lead", image: getImagePath("Shrihar Pande"),
     github: "Shrihar Pande", linkedin: "Shrihar Pande" },
@@ -44,7 +44,7 @@ const allTeamMembers: TeamMember[] = [
   //   github: "swetha-m-r", linkedin: "swetha-m-r" },
 
   // ODHS Team
-  { name: "Rachit Takate", role: "ODHS Team Member", image: getImagePath("Rachit") },
+  { name: "Rachit Takate", role: "ODHS Team Member", image: getImagePath("Rachit"), linkedin: "bluejet", github: "bluejet007" },
   { name: "Rithika Salimath", role: "ODHS Team Member", image: getImagePath("Rithika Salimath") },
   { name: "Aanya Shantaram", role: "ODHS Team Member", image: getImagePath("Aanya Shantaram") },
   { name: "Soham Singh", role: "ODHS Team Member", image: getImagePath("Soham Singh") },
@@ -56,20 +56,21 @@ const allTeamMembers: TeamMember[] = [
 
   // ADCS Team
   { name: "Visalakshi S", role: "ADCS Team Member", image: getImagePath("Visalakshi S") },
-  { name: "Sudeeksha Battacharya", role: "ADCS Team Member", image: getImagePath("Sudeeksha Battacharya") },
-  { name: "Nischal Nori", role: "ADCS Team Member", image: getImagePath("Nischal Nori") },
+  { name: "Sudeeksha Bhattacharyya", role: "ADCS Team Member", image: getImagePath("Sudeeksha Bhattacharyya"), linkedin: "sudeeksha-bhattacharyya", github: "Sudeeksha008" },
+  { name: "Nischal Nori", role: "ADCS Team Member", image: getImagePath("nischal-nori"), linkedin: "nischalnori" },
   { name: "Samika", role: "ADCS Team Member", image: getImagePath("Samika") },
   { name: "Ardra", role: "ADCS Team Member", image: getImagePath("Ardra") },
 
   // EPS Team
-  { name: "Jay", role: "EPS Team Member", image: getImagePath("Jay") },
+  { name: "Akshay Sai", role: "EPS Team Member", image: getImagePath("Akshay Sai"), linkedin: "akshay-sai-99b57a27a" },
+  { name: "Jayanth Krish", role: "EPS Team Member", image: getImagePath("Jayanth-Krish"), linkedin: "jayanth-krish" },
   { name: "Prakhar ", role: "EPS Team Member", image: getImagePath("Prakhar ") },
 
   // COMMS Team
   { name: "Nidhi Hegde", role: "COMMS Team Member", image: getImagePath("Nidhi Hegde"),
-    github: "nidhi-hegde", linkedin: "nidhi-hegde" },
-  { name: "Om Kale", role: "COMMS Team Member", image: getImagePath("Om") },
-  { name: "Nithish Khumaran", role: "COMMS Team Member", image: getImagePath("Nithish Khumaran") },
+    github: "nidhi-hegde", linkedin: "nidhi-mhegde" },
+  { name: "Om Kale", role: "COMMS Team Member", image: getImagePath("om-kale"), linkedin: "om-k4le" },
+  { name: "Nedheeish Khumaran", role: "COMMS Team Member", image: getImagePath("Nedheeish Khumaran"), github: "NedheeishKhumaran" },
 
   // Payload Team
   { name: "Shrihar Pande", role: "Payload Team Member", image: getImagePath("Shrihar Pande") },
@@ -84,7 +85,7 @@ const allTeamMembers: TeamMember[] = [
   { name: "Radhika Sasindran", role: "STMS Team Member", image: getImagePath("Radhika Sasindran") },
 
   // Administration Team
-  { name: "Phirozgar Irani", role: "Administration Team Member", image: getImagePath("Phirozgar Irani") },
+  { name: "Phirozgar Irani", role: "Administration Team Member", image: getImagePath("Phirozgar Irani"), linkedin: "phirozgarirani11", github: "Phirozgar"},
   { name: "Nandini Sah", role: "Administration Team Member", image: getImagePath("Nandini Sah") },
   { name: "Rishitha Kantevari", role: "Administration Team Member", image: getImagePath("Rishitha Kantevari") },
 
@@ -185,26 +186,26 @@ function TeamPage() {
                     </h4>
                     <p className="text-gray-400 text-sm mb-3">{member.role}</p>
                     <div className="flex gap-3">
-                      {member.github && (
-                        <a
-                          href={`https://github.com/${member.github}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-[#7AECEC] hover:text-white transition-colors"
-                        >
-                          <Github size={20} />
-                        </a>
-                      )}
-                      {member.linkedin && (
-                        <a
-                          href={`https://linkedin.com/in/${member.linkedin}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-[#7AECEC] hover:text-white transition-colors"
-                        >
-                          <Linkedin size={20} />
-                        </a>
-                      )}
+                      <a
+                        href={member.github ? `https://github.com/${member.github}` : undefined}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`transition-colors ${member.github ? "text-[#7AECEC] hover:text-white" : "text-gray-600 cursor-not-allowed"}`}
+                        tabIndex={member.github ? 0 : -1}
+                        aria-disabled={!member.github}
+                      >
+                        <Github size={20} />
+                      </a>
+                      <a
+                        href={member.linkedin ? `https://linkedin.com/in/${member.linkedin}` : undefined}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`transition-colors ${member.linkedin ? "text-[#7AECEC] hover:text-white" : "text-gray-600 cursor-not-allowed"}`}
+                        tabIndex={member.linkedin ? 0 : -1}
+                        aria-disabled={!member.linkedin}
+                      >
+                        <Linkedin size={20} />
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -235,6 +236,28 @@ function TeamPage() {
                       {member.name}
                     </h4>
                     <p className="text-gray-400 text-sm mb-3">{member.role}</p>
+                    <div className="flex gap-3">
+                      <a
+                        href={member.github ? `https://github.com/${member.github}` : undefined}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`transition-colors ${member.github ? "text-[#7AECEC] hover:text-white" : "text-gray-600 cursor-not-allowed"}`}
+                        tabIndex={member.github ? 0 : -1}
+                        aria-disabled={!member.github}
+                      >
+                        <Github size={20} />
+                      </a>
+                      <a
+                        href={member.linkedin ? `https://linkedin.com/in/${member.linkedin}` : undefined}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`transition-colors ${member.linkedin ? "text-[#7AECEC] hover:text-white" : "text-gray-600 cursor-not-allowed"}`}
+                        tabIndex={member.linkedin ? 0 : -1}
+                        aria-disabled={!member.linkedin}
+                      >
+                        <Linkedin size={20} />
+                      </a>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -271,6 +294,28 @@ function TeamPage() {
                         <p className="text-gray-400 text-sm mb-3">
                           {group.name} Member
                         </p>
+                        <div className="flex gap-3">
+                          <a
+                            href={member.github ? `https://github.com/${member.github}` : undefined}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`transition-colors ${member.github ? "text-[#7AECEC] hover:text-white" : "text-gray-600 cursor-not-allowed"}`}
+                            tabIndex={member.github ? 0 : -1}
+                            aria-disabled={!member.github}
+                          >
+                            <Github size={20} />
+                          </a>
+                          <a
+                            href={member.linkedin ? `https://linkedin.com/in/${member.linkedin}` : undefined}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`transition-colors ${member.linkedin ? "text-[#7AECEC] hover:text-white" : "text-gray-600 cursor-not-allowed"}`}
+                            tabIndex={member.linkedin ? 0 : -1}
+                            aria-disabled={!member.linkedin}
+                          >
+                            <Linkedin size={20} />
+                          </a>
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -302,6 +347,28 @@ function TeamPage() {
                   {advisor.department && (
                     <p className="text-[#7AECEC]">{advisor.department}</p>
                   )}
+                  <div className="flex gap-3 mt-2">
+                    <a
+                      href={advisor.github ? `https://github.com/${advisor.github}` : undefined}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`transition-colors ${advisor.github ? "text-[#7AECEC] hover:text-white" : "text-gray-600 cursor-not-allowed"}`}
+                      tabIndex={advisor.github ? 0 : -1}
+                      aria-disabled={!advisor.github}
+                    >
+                      <Github size={20} />
+                    </a>
+                    <a
+                      href={advisor.linkedin ? `https://linkedin.com/in/${advisor.linkedin}` : undefined}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`transition-colors ${advisor.linkedin ? "text-[#7AECEC] hover:text-white" : "text-gray-600 cursor-not-allowed"}`}
+                      tabIndex={advisor.linkedin ? 0 : -1}
+                      aria-disabled={!advisor.linkedin}
+                    >
+                      <Linkedin size={20} />
+                    </a>
+                  </div>
                 </div>
               ))}
             </div>
