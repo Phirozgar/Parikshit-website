@@ -43,17 +43,6 @@ const allTeamMembers: TeamMember[] = [
   // { name: "Swetha M R", role: "Administration Lead Member", image: getImagePath("Swetha M R"),
   //   github: "swetha-m-r", linkedin: "swetha-m-r" },
 
-  // ODHS Team
-  { name: "Rachit Takate", role: "ODHS Team Member", image: getImagePath("Rachit"), linkedin: "bluejet", github: "bluejet007" },
-  { name: "Rithika Salimath", role: "ODHS Team Member", image: getImagePath("Rithika Salimath") },
-  { name: "Aanya Shantaram", role: "ODHS Team Member", image: getImagePath("Aanya Shantaram") },
-  { name: "Soham Singh", role: "ODHS Team Member", image: getImagePath("Soham Singh") },
-  { name: "Nishitha", role: "ODHS Team Member", image: getImagePath("Nishitha") },
-  { name: "Prathamesh", role: "ODHS Team Member", image: getImagePath("Prathamesh") },
-  { name: "Saloni", role: "ODHS Team Member", image: getImagePath("Saloni") },
-  { name: "Harshit Srivastava", role: "ODHS Team Member", image: getImagePath("Harshit") },
-  { name: "Krishang Jain", role: "ODHS Team Member", image: getImagePath("Krishang") },
-
   // ADCS Team
   { name: "Visalakshi S", role: "ADCS Team Member", image: getImagePath("Visalakshi S") },
   { name: "Sudeeksha Bhattacharyya", role: "ADCS Team Member", image: getImagePath("Sudeeksha Bhattacharyya"), linkedin: "sudeeksha-bhattacharyya", github: "Sudeeksha008" },
@@ -71,6 +60,18 @@ const allTeamMembers: TeamMember[] = [
     github: "nidhi-hegde", linkedin: "nidhi-mhegde" },
   { name: "Om Kale", role: "COMMS Team Member", image: getImagePath("om-kale"), linkedin: "om-k4le" },
   { name: "Nedheeish Khumaran", role: "COMMS Team Member", image: getImagePath("Nedheeish Khumaran"), github: "NedheeishKhumaran" },
+
+  // ODHS Team
+  { name: "Rachit Takate", role: "ODHS Team Member", image: getImagePath("Rachit"), linkedin: "bluejet", github: "bluejet007" },
+  { name: "Rithika Salimath", role: "ODHS Team Member", image: getImagePath("Rithika Salimath") },
+  { name: "Aanya Shantaram", role: "ODHS Team Member", image: getImagePath("Aanya Shantaram") },
+  { name: "Soham Singh", role: "ODHS Team Member", image: getImagePath("Soham Singh") },
+  { name: "Nishitha", role: "ODHS Team Member", image: getImagePath("Nishitha") },
+  { name: "Prathamesh", role: "ODHS Team Member", image: getImagePath("Prathamesh") },
+  { name: "Saloni", role: "ODHS Team Member", image: getImagePath("Saloni") },
+  { name: "Harshit Srivastava", role: "ODHS Team Member", image: getImagePath("Harshit") },
+  { name: "Krishang Jain", role: "ODHS Team Member", image: getImagePath("Krishang") },
+
 
   // Payload Team
   { name: "Shrihar Pande", role: "Payload Team Member", image: getImagePath("Shrihar Pande") },
