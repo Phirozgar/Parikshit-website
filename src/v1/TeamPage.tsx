@@ -20,7 +20,7 @@ function getImagePath(name: string) {
 const allTeamMembers: TeamMember[] = [
   // Executive Board
   { name: "Srishti Singh", role: "System Engineer", image: getImagePath("Srishti Singh"), 
-    github: "srishti-singh", linkedin: "srishti-singh" },
+    github: "flyash07", linkedin: "srishti~singh" },
   { name: "Shashwat Harsh", role: "System Engineer", image: getImagePath("Shashwat Harsh"),
     github: "shashwat-harsh", linkedin: "shashwat-harsh" },
   { name: "Ankit Mishra", role: "System Engineer", image: getImagePath("Ankit Mishra"),
