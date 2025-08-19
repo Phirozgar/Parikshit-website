@@ -108,7 +108,7 @@ export default function RecruitmentsPage() {
       icon: "/assets/Subsystem_Logos/Admin & OPS.png",
       challengeLink: "#business-challenge",
       subsystemId: "admin",
-      pdfPath: "/assets/challenges/Admin_OPS_Challenge.pdf",
+      pdfPath: "/assets/challenges/ADMIN_Challenge.docx",
       hasChallenge: true
     }
   ];
