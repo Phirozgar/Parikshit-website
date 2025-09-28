@@ -31,7 +31,7 @@ export function HeroSection() {
               STUDENT SATELLITE
             </div>
           </h1>
-          <div className="mt-6 sm:mt-8 md:mt-10">
+          {/* <div className="mt-6 sm:mt-8 md:mt-10">
             <button 
               className="bg-[#7AECEC] text-black px-4 py-2 sm:px-6 sm:py-3 
                         rounded-full font-bold text-sm sm:text-base
@@ -43,7 +43,7 @@ export function HeroSection() {
                   Recruitments Open
                 </Link>
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

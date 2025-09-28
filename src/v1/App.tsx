@@ -188,13 +188,13 @@ function App() {
                 <Link to="/projects" className={getNavLinkClass("/projects")}>PROJECTS</Link>
                 <Link to="/research" className={getNavLinkClass("/research")}>RESEARCH</Link>
                 <button className="hover:text-white transition-colors bg-transparent" style={{ padding: 0, border: "none", background: "none" }} onClick={() => scrollToSection("faqs")}>FAQs</button>
-                <Link 
+                {/* <Link 
                   to="/recruitments" 
                   className="relative inline-flex items-center px-6 py-2.5 bg-gradient-to-r from-[#7AECEC] to-[#4ECDC4] text-black font-bold rounded-full hover:from-white hover:to-[#F0F0F0] transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-[#7AECEC]/30 group overflow-hidden"
                 >
                   <span className="relative z-10">RECRUITMENTS</span>
                   <div className="absolute inset-0 bg-gradient-to-r from-[#4ECDC4] to-[#7AECEC] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </Link>
+                </Link> */}
               </div>
             </div>
             <div className="lg:hidden">
