@@ -15,7 +15,7 @@ import { ProjectsSection } from "./HomePageComponents/ProjectsSection";
 import { ResearchHighlightsSection } from "./HomePageComponents/ResearchHighlightsSection";
 import { FAQsSection } from "./HomePageComponents/FAQsSection";
 import { TeamStatsSection } from "./HomePageComponents/TeamStatsSection";
-import { JoinUsSection } from "./HomePageComponents/JoinUsSection";
+// import { JoinUsSection } from "./HomePageComponents/JoinUsSection";
 import { JoinUsModal } from "./HomePageComponents/JoinUsModal";
 import { Mail } from "lucide-react";
 
@@ -77,7 +77,7 @@ function App() {
         <ResearchHighlightsSection />
         <FAQsSection />
         <TeamStatsSection />
-        <JoinUsSection />
+        {/* <JoinUsSection /> */}
       </>
     );
   }
@@ -278,7 +278,7 @@ function App() {
             </div>
             
             {/* Recruitments Button */}
-            <div className="mt-8 pt-6 border-t border-[#21262C]">
+            {/* <div className="mt-8 pt-6 border-t border-[#21262C]">
               <Link
                 to="/recruitments"
                 className="block w-full px-6 py-4 bg-gradient-to-r from-[#7AECEC] via-[#5BC5C5] to-[#4ECDC4] text-black rounded-2xl font-bold text-center transition-all duration-500 shadow-lg transform active:scale-[0.95] relative overflow-hidden"
@@ -296,7 +296,7 @@ function App() {
                   <span className="ml-2">→</span>
                 </span>
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
       </nav>
