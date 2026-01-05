@@ -77,7 +77,7 @@ function SubsystemsPage() {
     },
     {
       id: 'comms',
-      name: 'Communications Systems',
+      name: 'Communications and Ground Station Subsystem',
       iconSrc: '/assets/Subsystem_Logos/COMMS.png',
       description: 'Enables reliable data transmission between the satellite and ground stations.',
       details: [
