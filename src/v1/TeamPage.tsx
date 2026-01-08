@@ -19,33 +19,34 @@ function getImagePath(name: string) {
 // All team members and faculty as TeamMember objects
 const allTeamMembers: TeamMember[] = [
   // Executive Board
-  { name: "Srishti Singh", role: "System Engineer", image: getImagePath("Srishti Singh"), 
-    github: "flyash07", linkedin: "srishti~singh" },
-  { name: "Shashwat Harsh", role: "System Engineer", image: getImagePath("Shashwat Harsh"),
-    github: "shashwat-harsh", linkedin: "shashwat-harsh" },
-  { name: "Ankit Mishra", role: "System Engineer", image: getImagePath("Ankit Mishra"),
-    github: "ankit-mishra", linkedin: "ankit-mishra" },
-  { name: "Nidhi Hegde", role: "System Engineer", image: getImagePath("Nidhi Hegde"),
-    github: "nidhi-hegde", linkedin: "nidhi-mhegde" },
-  { name: "Swetha M R", role: "System Admin", image: getImagePath("Swetha M R"),
-    github: "swetha-m-r", linkedin: "swetha-m-r" },
+  // { name: "Srishti Singh", role: "System Engineer", image: getImagePath("Srishti Singh"), 
+  //   github: "flyash07", linkedin: "srishti~singh" },
+  // { name: "Shashwat Harsh", role: "System Engineer", image: getImagePath("Shashwat Harsh"),
+  //   github: "shashwat-harsh", linkedin: "shashwat-harsh" },
+  // { name: "Ankit Mishra", role: "System Engineer", image: getImagePath("Ankit Mishra"),
+  //   github: "ankit-mishra", linkedin: "ankit-mishra" },
+  // { name: "Nidhi Hegde", role: "System Engineer", image: getImagePath("Nidhi Hegde"),
+  //   github: "nidhi-hegde", linkedin: "nidhi-mhegde" },
+  // { name: "Swetha M R", role: "System Admin", image: getImagePath("Swetha M R"),
+  //   github: "swetha-m-r", linkedin: "swetha-m-r" },
+  { name: "Shrihar Pande", role: "System Engineer", image: getImagePath("Shrihar Pande") },
+  { name: "Sudeeksha Bhattacharyya", role: "System Engineer", image: getImagePath("Sudeeksha Bhattacharyya"), 
+    linkedin: "sudeeksha-bhattacharyya", github: "Sudeeksha008" },
+  { name: "Roselin Maria", role: "System Admin", image: getImagePath("Roselin Maria") },
+
 
   // Subsystem Leads
   { name: "Rachit Takate", role: "ODHS Lead", image: getImagePath("Rachit Takate"), linkedin: "bluejet", github: "bluejet007" },
-  // { name: "Ankit Mishra", role: "ADCS Lead Member", image: getImagePath("Ankit Mishra"),
-  //   github: "ankit-mishra", linkedin: "ankit-mishra" },
   { name: "Akshay Sai", role: "EPS Lead", image: getImagePath("Akshay Sai"), linkedin: "akshay-sai-99b57a27a" },
   { name: "Jayant Sharma", role: "COMMS Lead", image: getImagePath("Jayant Sharma") },
   { name: "Shrihar Pande", role: "Payload Lead", image: getImagePath("Shrihar Pande"),
     github: "Shrihar Pande", linkedin: "Shrihar Pande" },
   { name: "Roselin Maria", role: "Payload Lead", image: getImagePath("Roselin Maria"),
     github: "Roselin Maria", linkedin: "Roselin Maria" },
-  // { name: "Swetha M R", role: "Administration Lead Member", image: getImagePath("Swetha M R"),
-  //   github: "swetha-m-r", linkedin: "swetha-m-r" },
 
   // ADCS Team
   { name: "Visalakshi S", role: "ADCS Team Member", image: getImagePath("Visalakshi S") },
-  { name: "Sudeeksha Bhattacharyya", role: "ADCS Team Member", image: getImagePath("Sudeeksha Bhattacharyya"), linkedin: "sudeeksha-bhattacharyya", github: "Sudeeksha008" },
+  //{ name: "Sudeeksha Bhattacharyya", role: "ADCS Team Member", image: getImagePath("Sudeeksha Bhattacharyya"), linkedin: "sudeeksha-bhattacharyya", github: "Sudeeksha008" },
   { name: "Nischal Nori", role: "ADCS Team Member", image: getImagePath("nischal-nori"), linkedin: "nischalnori" },
   { name: "Samika", role: "ADCS Team Member", image: getImagePath("Samika") },
   { name: "Ardra", role: "ADCS Team Member", image: getImagePath("Ardra") },
@@ -74,8 +75,8 @@ const allTeamMembers: TeamMember[] = [
 
 
   // Payload Team
-  { name: "Shrihar Pande", role: "Payload Team Member", image: getImagePath("Shrihar Pande") },
-  { name: "Roselin Maria", role: "Payload Team Member", image: getImagePath("Roselin Maria") },
+  //{ name: "Shrihar Pande", role: "Payload Team Member", image: getImagePath("Shrihar Pande") },
+  //{ name: "Roselin Maria", role: "Payload Team Member", image: getImagePath("Roselin Maria") },
   { name: "Asna Kidvai", role: "Payload Team Member", image: getImagePath("Asna Kidvai") },
   { name: "Siddharta Chhauda", role: "Payload Team Member", image: getImagePath("Siddharta Chhauda") },
   { name: "Rushat", role: "Payload Team Member", image: getImagePath("Rushat") },
