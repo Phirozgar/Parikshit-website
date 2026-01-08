@@ -95,8 +95,6 @@ const allTeamMembers: TeamMember[] = [
     department: "Electrical & Instrumentation Engineering" },
   { name: "Dr. Balbir Singh", role: "Faculty Advisor", image: getImagePath("Balbir Singh"),
     department: "Aeronautical Engineering" },
-  { name: "Dr. Manikandan", role: "Faculty Advisor", image: getImagePath("Manikandan"),
-    department: "Aeronautical Engineering" },
 ];
 
 function TeamPage() {
