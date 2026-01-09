@@ -39,7 +39,7 @@ const allTeamMembers: TeamMember[] = [
   { name: "S Visalakshi", role: "ADCS Lead", image: getImagePath("Visalakshi S") },
   { name: "Nedheeish Khumaran", role: "COMMS Lead", image: getImagePath("Nedheeish Khumaran"), github: "NedheeishKhumaran" },
   { name: "Jayanth Krish Ramakrishnan", role: "EPS Lead", image: getImagePath("Jayanth-Krish"), linkedin: "jayanth-krish" },
-  { name: "Prakhar Agrawal", role: "EPS Lead", image: getImagePath("Prakhar ") },
+  { name: "Prakhar Agrawal", role: "EPS Lead", image: getImagePath("Prakhar") },
   { name: "Rachit Pradip Takate", role: "ODHS Lead", image: getImagePath("Rachit Takate"), linkedin: "bluejet", github: "bluejet007" },
   { name: "Radhika Sasindran", role: "STMS Lead", image: getImagePath("Radhika Sasindran") },
   //{ name: "Jayant Sharma", role: "COMMS Lead", image: getImagePath("Jayant Sharma") },
@@ -64,7 +64,7 @@ const allTeamMembers: TeamMember[] = [
   //{ name: "Rithika Salimath", role: "ODHS Team Member", image: getImagePath("Rithika Salimath") },
   //{ name: "Aanya Shantaram", role: "ODHS Team Member", image: getImagePath("Aanya Shantaram") },
   { name: "Prathamesh Aggarwal", role: "ODHS Team Member", image: getImagePath("Prathamesh") },
-  { name: "Saloni Bagra", role: "ODHS Team Member", image: getImagePath("Saloni") },
+  { name: "Saloni Bagra", role: "ODHS Team Member", image: getImagePath("saloni") },
   { name: "Harshit Srivastava", role: "ODHS Team Member", image: getImagePath("Harshit") },
   { name: "Krishang Jain", role: "ODHS Team Member", image: getImagePath("Krishang") },
   { name: "Soham Singh", role: "ODHS Team Member", image: getImagePath("Soham Singh") },
@@ -81,8 +81,8 @@ const allTeamMembers: TeamMember[] = [
   // STMS Team
 
   // Administration & Operations Team
-  { name: "Nandini Sah", role: "Administration Team Member", image: getImagePath("Nandini Sah") },
-  { name: "Rishitha Kantevari", role: "Administration Team Member", image: getImagePath("Rishitha Kantevari") },
+  { name: "Nandini Sah", role: "Administration Team Member", image: getImagePath("Nandini") },
+  { name: "Rishitha Kantevari", role: "Administration Team Member", image: getImagePath("Rishitha") },
 
   // Faculty Advisors
   { name: "Dr. Shreesha Chokkadi", role: "Faculty Advisor",image: getImagePath("Shreesha Chokkadi"),
