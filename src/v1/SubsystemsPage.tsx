@@ -79,17 +79,15 @@ function SubsystemsPage() {
       id: 'comms',
       name: 'Communications and Ground Station Subsystem',
       iconSrc: '/assets/Subsystem_Logos/COMMS.png',
-      description: 'Enables reliable data transmission between the satellite and ground stations.',
+      description: 'Enables reliable data transmission between the satellite and ground station.',
       details: [
-        'Establishes and maintains RF links with ground stations',
-        'Implements data encoding and error correction protocols',
+        'Establishes and maintains RF links with ground station',
         'Manages uplink command reception and verification',
         'Handles downlink telemetry and mission data transmission',
         'Optimizes bandwidth usage for efficient communication'
       ],
       components: [
         'UHF/VHF Transceiver',
-        'S-Band Transmitter for high-speed downlink',
         'RF Amplifiers and Filters',
         'Communication Antennas',
         'Modulation/Demodulation Systems'
@@ -131,7 +129,7 @@ function SubsystemsPage() {
       components: [
         'OnBoard Computer',
         'Real-time Operating System',
-        'Payload Data Storage',
+        'Payload data and telemetry storage',
         'Sensor Interfaces & Firmware',
         'Control Software'
       ],
