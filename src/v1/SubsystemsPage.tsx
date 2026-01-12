@@ -124,9 +124,9 @@ function SubsystemsPage() {
       description: 'The brain of our satellite, processing commands and managing data flow between all subsystems.',
       details: [
         'Implements command processing and execution for satellite operations',
-        'Manages data storage, processing, and transmission protocols',
+        '⁠Manages data collection, processing and storage',
         'Handles system health monitoring and status reporting',
-        'Coordinates and synchronizes all subsystems\' software'
+        'Facilitates interboard communication and coordination of all software'
       ],
       components: [
         'OnBoard Computer',
