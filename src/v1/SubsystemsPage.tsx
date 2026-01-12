@@ -61,17 +61,16 @@ function SubsystemsPage() {
       iconSrc: '/assets/Subsystem_Logos/ADCS.png',
       description: 'Responsible for determining and controlling the satellite\'s orientation in space.',
       details: [
+        'Stabilizes the satellite after deployment from the launch vehicle',
         'Utilizes sensors to determine the satellite\'s current orientation',
         'Implements control algorithms to maintain desired orientation',
-        'Controls reaction wheels and magnetorquers for precise positioning',
-        'Stabilizes the satellite after deployment from the launch vehicle'
-      ],
+        'Controls reaction wheels and magnetorquers for precise positioning'
+       ],
       components: [
-        'Sun Sensors',
-        'Magnetometers and IMU',
-        'Reaction Wheels (3-axis control)',
-        'Magnetorquers for detumbling',
-        'ADCS Control Software'
+        'Sensors - Sun sensors, Magnetometers, IMU ',
+        'Actuators : Reaction Wheel, Magnetorquers',
+        'Controllers - B-dot, PD, PID',
+        'Algorithms - QuEST, EKF'
       ],
       imageSrc: 'https://example.com/images/adcs.jpg'
     },
