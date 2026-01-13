@@ -185,8 +185,8 @@ function App() {
                 <Link to="/team" className={getNavLinkClass("/team")}>TEAM</Link>
                 <Link to="/about-us" className={getNavLinkClass("/about-us")}>ABOUT US</Link>
                 <Link to="/subsystems" className={getNavLinkClass("/subsystems")}>SUBSYSTEMS</Link>
-                <Link to="/projects" className={getNavLinkClass("/projects")}>PROJECTS</Link>
                 <Link to="/research" className={getNavLinkClass("/research")}>RESEARCH</Link>
+                <button className="hover:text-white transition-colors bg-transparent" style={{ padding: 0, border: "none", background: "none" }} onClick={() => scrollToSection("projects")}>PROJECTS</button>
                 <button className="hover:text-white transition-colors bg-transparent" style={{ padding: 0, border: "none", background: "none" }} onClick={() => scrollToSection("faqs")}>FAQs</button>
                 {/* <Link 
                   to="/recruitments" 
