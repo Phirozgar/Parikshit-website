@@ -185,16 +185,16 @@ function SubsystemsPage() {
       description: 'Ensures satellite structural integrity and thermal stability in the harsh space environment.',
       details: [
         'Designs and manufactures the satellite structure to withstand launch forces',
-        'Implements thermal control to maintain operational temperature ranges',
-        'Manages deployment mechanisms for antennas and solar panels',
-        'Conducts vibration and thermal vacuum testing',
-        'Ensures compliance with CubeSat dimensional standards'
+        'Maintains structural and thermal stability during space operations',
+        'Manages mounting and integration of antennas, solar panels and subsystems (non-deployable solar panels)',
+        'Ensures proper heat dissipation and passive thermal regulation',
+        'Ensures compliance with CubeSat dimensional and interface standards'
       ],
       components: [
         'Aluminum Alloy Frame Structure',
-        'Thermal Insulation Materials',
-        'Passive Thermal Control Elements',
-        'Deployment Mechanisms',
+        'Passive Thermal Control Elements (coatings, surface finishes & mounting layout)',
+        'Solar Panel Structural Mounts (fixed, non-deployable)',
+        'Subsystem Mounting Rails & Brackets',
         'Structural Reinforcements'
       ],
       imageSrc: 'https://example.com/images/stms.jpg'
