@@ -68,7 +68,7 @@ function SubsystemsPage() {
        ],
       components: [
         'Sensors - Sun sensors, Magnetometers, IMU ',
-        'Actuators : Reaction Wheel, Magnetorquers',
+        'Actuators - Reaction Wheel, Magnetorquers',
         'Controllers - B-dot, PD, PID',
         'Algorithms - QuEST, EKF'
       ],
