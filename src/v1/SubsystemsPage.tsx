@@ -197,7 +197,7 @@ function SubsystemsPage() {
         'Subsystem Mounting Rails & Brackets',
         'Structural Reinforcements'
       ],
-      imageSrc: 'https://example.com/images/stms.jpg'
+      imageSrc: '/assets/subsystem_images/stms.png'
     },
     {
       id: 'admin',
