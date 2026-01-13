@@ -91,7 +91,8 @@ function SubsystemsPage() {
         'Communication Antennas',
         'Modulation/Demodulation Systems'
       ],
-      imageSrc: 'https://example.com/images/comms.jpg'
+      imageSrc: '/assets/subsystem_images/comms.png'
+
     },
     {
       id: 'eps',
