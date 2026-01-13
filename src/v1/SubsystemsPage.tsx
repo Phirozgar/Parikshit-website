@@ -134,7 +134,7 @@ function SubsystemsPage() {
         'Sensor Interfaces & Firmware',
         'Control Software'
       ],
-      imageSrc: 'https://example.com/images/odhs.jpg'
+      imageSrc: '/assets/subsystem_images/odhs.png'
     },
     {
       id: 'payload',
