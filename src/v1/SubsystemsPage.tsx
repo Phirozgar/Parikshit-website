@@ -93,6 +93,7 @@ function SubsystemsPage() {
       ],
       imageSrc: '/assets/subsystem_images/comms.png'
 
+
     },
     {
       id: 'eps',
@@ -404,9 +405,12 @@ function SubsystemsPage() {
                 <div className="text-center">
                   <p className="text-[rgba(122,236,236,0.6)] mb-2">Subsystem Illustration</p>
                   <div className="bg-[#111111] p-4 rounded border border-[rgba(122,236,236,0.2)] inline-block">
-                    <div className="w-full h-64 bg-[#0A0A0A] border border-[rgba(122,236,236,0.2)] flex items-center justify-center">
-                      <p className="text-[rgba(122,236,236,0.6)]">Image of {activeSystem.name}</p>
-                    </div>
+                  <img
+                      src={activeSystem.imageSrc}
+                      alt={activeSystem.name}
+                      className="w-full h-64 object-cover rounded border border-[rgba(122,236,236,0.2)]"
+                    />
+
                   </div>
                 </div>
               </div>
