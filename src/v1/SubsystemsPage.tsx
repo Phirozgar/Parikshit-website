@@ -72,7 +72,7 @@ function SubsystemsPage() {
         'Controllers - B-dot, PD, PID',
         'Algorithms - QuEST, EKF'
       ],
-      imageSrc: 'https://example.com/images/adcs.jpg'
+      imageSrc: '/assets/subsystem_images/adcs.png'
     },
     {
       id: 'comms',
@@ -152,7 +152,7 @@ function SubsystemsPage() {
         'A Thermal Camera (Primary payload) ',
         'Electrodynamic Tether (Secondary payload)'
       ],
-      imageSrc: 'https://example.com/images/payload.jpg'
+      imageSrc: '/assets/subsystem_images/payload.png'
     },
     {
       id: 'research',
@@ -212,11 +212,11 @@ function SubsystemsPage() {
         'Maintains mission documentation and operational logs'
       ],
       components: [
-        'Mission Control Software',
-        'Ground Station Interface System',
-        'Configuration Management Tools',
-        'Operations Documentation System',
-        'Emergency Response Protocols'
+        'website maintenance and updation ',
+        'Reach out to companies and sponsors for partnerships',
+        'Do outreach for Parikshit inside and outside college',
+        '⁠Handle social media pages and graphic design',
+        'Handle permissions and negotiations with whichever organizations we are affiliated with - university, space agencies, sponsors, etc'
       ],
       imageSrc: 'https://example.com/images/admin.jpg'
     }
