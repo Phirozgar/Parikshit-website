@@ -205,18 +205,18 @@ function SubsystemsPage() {
       iconSrc: '/assets/Subsystem_Logos/Admin & OPS.png',
       description: 'Manages mission operations, ground control, and administrative functions of the satellite program.',
       details: [
-        'Coordinates mission planning and scheduling',
-        'Manages ground station operations and tracking',
-        'Handles satellite configuration and state management',
-        'Implements contingency and recovery procedures',
-        'Maintains mission documentation and operational logs'
-      ],
-      components: [
         'website maintenance and updation ',
         'Reach out to companies and sponsors for partnerships',
         'Do outreach for Parikshit inside and outside college',
         '⁠Handle social media pages and graphic design',
         'Handle permissions and negotiations with whichever organizations we are affiliated with - university, space agencies, sponsors, etc'
+      ],
+      components: [
+        'Mission Control Software',
+        'Ground Station Interface System',
+        'Configuration Management Tools',
+        'Operations Documentation System',
+        'Emergency Response Protocols'
       ],
       imageSrc: 'https://example.com/images/admin.jpg'
     }
