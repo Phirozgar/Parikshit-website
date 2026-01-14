@@ -231,7 +231,6 @@ function App() {
                 { to: "/team", label: "TEAM", delay: "50ms", icon: "👥" },
                 { to: "/about-us", label: "ABOUT US", delay: "100ms", icon: "ℹ️" },
                 { to: "/subsystems", label: "SUBSYSTEMS", delay: "150ms", icon: "⚙️" },
-                { to: "/projects", label: "PROJECTS", delay: "200ms", icon: "🚧" },
                 { to: "/research", label: "RESEARCH", delay: "250ms", icon: "🔬" }
               ].map((item, index) => (
                 <Link
@@ -252,7 +251,30 @@ function App() {
                   <span className="font-semibold tracking-wide">{item.label}</span>
                 </Link>
               ))}
-              
+
+              <Link
+                to="/#projects"
+                className="mobile-nav-item group flex items-center w-full px-4 py-3 rounded-xl text-left transition-all duration-300 text-[#7AECEC]"
+                style={{
+                  animationDelay: isMenuOpen ? '300ms' : '0ms',
+                  transform: isMenuOpen ? 'translateX(0)' : 'translateX(-20px)',
+                  opacity: isMenuOpen ? 1 : 0,
+                  transition: 'all 0.3s ease-out 300ms'
+                }}
+                onClick={() => { 
+                  setIsMenuOpen(false); 
+                  // Navigate to home if not already there, then scroll to FAQs
+                  if (window.location.pathname !== "/") {
+                    navigate('/', { state: { scrollTo: 'projects' } });
+                  } else {
+                    scrollToSection("projects");
+                  }
+                }}
+              >
+                <span className="text-xl mr-4 transition-all duration-300">🚧</span>
+                <span className="font-semibold tracking-wide">PROJECTS</span>
+              </Link>
+            
               <Link
                 to="/#faqs"
                 className="mobile-nav-item group flex items-center w-full px-4 py-3 rounded-xl text-left transition-all duration-300 text-[#7AECEC]"

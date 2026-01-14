@@ -30,20 +30,20 @@ const projects = [
       "Data collection and telemetry experiments"
     ]
   },
-  {
-    id: "pagos",
-    name: "PAGOS (Parikshit Ground Station)",
-    image:
-      "https://images.unsplash.com/photo-1470219556762-1771e7f9427d?auto=format&fit=crop&q=80",
-    description:
-      "PAGOS is our custom-built ground station for satellite communication, tracking, and mission operations.",
-    details: [
-      "UHF/VHF/S-band communication capability",
-      "Automated satellite tracking and data downlink",
-      "Remote command uplink and telemetry monitoring",
-      "Supports both CubeSat and Cansat missions"
-    ]
-  }
+  // {
+  //   id: "pagos",
+  //   name: "PAGOS (Parikshit Ground Station)",
+  //   image:
+  //     "https://images.unsplash.com/photo-1470219556762-1771e7f9427d?auto=format&fit=crop&q=80",
+  //   description:
+  //     "PAGOS is our custom-built ground station for satellite communication, tracking, and mission operations.",
+  //   details: [
+  //     "UHF/VHF/S-band communication capability",
+  //     "Automated satellite tracking and data downlink",
+  //     "Remote command uplink and telemetry monitoring",
+  //     "Supports both CubeSat and Cansat missions"
+  //   ]
+  // }
 ];
 
 function ProjectsPage() {
@@ -119,26 +119,26 @@ function ProjectsPage() {
       ],
       learnMore: "https://parikshitspace.in/CANSAT"
     },
-    pagos: {
-      title: "PAGOS (Parikshit Ground Station)",
-      image: "https://parikshitspace.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fpagos.2e2e2e2e.jpg&w=3840&q=75",
-      summary: `PAGOS is the custom-built ground station for the Parikshit mission, enabling reliable satellite communication, tracking, and mission operations. The ground station is designed and operated by students, supporting both CubeSat and Cansat missions.`,
-      mission: `PAGOS provides UHF/VHF/S-band communication capability, automated satellite tracking, and remote command/telemetry operations. It is a critical part of the mission, ensuring data downlink and command uplink for all student satellite projects.`,
-      specs: [
-        "Frequency bands: UHF, VHF, S-band",
-        "Antenna: Directional Yagi, rotator system for tracking",
-        "Software: Custom data processing and tracking software",
-        "Operations: Automated pass prediction, data logging, remote access",
-        "Supports: Parikshit CubeSat, Cansat, and future missions"
-      ],
-      achievements: [
-        "Fully student-designed and operated ground station",
-        "Successful communication with test payloads and Cansats",
-        "Integration with satellite tracking and data analysis tools",
-        "Supports educational outreach and training"
-      ],
-      learnMore: "https://parikshitspace.in/subsystems/COMMS"
-    }
+    // pagos: {
+    //   title: "PAGOS (Parikshit Ground Station)",
+    //   image: "https://parikshitspace.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fpagos.2e2e2e2e.jpg&w=3840&q=75",
+    //   summary: `PAGOS is the custom-built ground station for the Parikshit mission, enabling reliable satellite communication, tracking, and mission operations. The ground station is designed and operated by students, supporting both CubeSat and Cansat missions.`,
+    //   mission: `PAGOS provides UHF/VHF/S-band communication capability, automated satellite tracking, and remote command/telemetry operations. It is a critical part of the mission, ensuring data downlink and command uplink for all student satellite projects.`,
+    //   specs: [
+    //     "Frequency bands: UHF, VHF, S-band",
+    //     "Antenna: Directional Yagi, rotator system for tracking",
+    //     "Software: Custom data processing and tracking software",
+    //     "Operations: Automated pass prediction, data logging, remote access",
+    //     "Supports: Parikshit CubeSat, Cansat, and future missions"
+    //   ],
+    //   achievements: [
+    //     "Fully student-designed and operated ground station",
+    //     "Successful communication with test payloads and Cansats",
+    //     "Integration with satellite tracking and data analysis tools",
+    //     "Supports educational outreach and training"
+    //   ],
+    //   learnMore: "https://parikshitspace.in/subsystems/COMMS"
+    // }
   };
 
   const detail = projectDetails[activeProject];
