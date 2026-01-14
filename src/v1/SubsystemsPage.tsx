@@ -218,7 +218,7 @@ function SubsystemsPage() {
         'Operations Documentation System',
         'Emergency Response Protocols'
       ],
-      imageSrc: 'https://example.com/images/admin.jpg'
+      imageSrc: '/assets/subsystem_images/admin.png'
     }
   ];
   
