@@ -44,7 +44,6 @@ export function ProjectsSection() {
           <h2 className="text-4xl font-gugi mb-2 text-[#7AECEC]">
             PROJECTS
           </h2>
-          <div className="w-16 h-0.5 bg-[#7AECEC] mx-auto"></div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
