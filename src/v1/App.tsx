@@ -5,7 +5,7 @@ import "./styles.css";
 import { BrowserRouter as Router, Routes, Route, Link, useLocation, useNavigate } from "react-router-dom";
 import SubsystemsPage from "./SubsystemsPage";
 import TeamPage from "./TeamPage";
-import ProjectsPage from "./ProjectsPage";
+// import ProjectsPage from "./ProjectsPage";
 import ResearchPage from "./ResearchPage";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { HeroSection } from "./HomePageComponents/HeroSection";
@@ -343,7 +343,7 @@ function App() {
               <Route path="/subsystems" element={<SubsystemsPage />} />
               <Route path="/about-us" element={<AboutUsGalleryPage />} />
               <Route path="/team" element={<TeamPage />} />
-              <Route path="/projects" element={<ProjectsPage />} />
+              {/* <Route path="/projects" element={<ProjectsPage />} /> */}
               <Route path="/research" element={<ResearchPage />} />
               <Route path="/recruitments" element={<RecruitmentsPage />} />
             </Routes>
