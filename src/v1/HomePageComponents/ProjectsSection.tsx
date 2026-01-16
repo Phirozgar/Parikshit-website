@@ -72,7 +72,7 @@ export function ProjectsSection() {
               className="group relative overflow-hidden rounded-lg border border-[#7AECEC]/20 hover:border-[#7AECEC]/60 transition-all duration-500 text-left"
             >
               {/* Background Image */}
-              <div className="relative h-96">
+              <div className="relative h-96 rounded-lg overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
@@ -111,35 +111,59 @@ export function ProjectsSection() {
 
         {/* MODAL */}
         {activeProject && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
-            <div className="bg-[#0A0A0A] max-w-xl w-full rounded-2xl border border-[#7AECEC]/30 p-6 relative animate-fade-in">
+          <div 
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+            onClick={() => setActiveProject(null)}
+          >
+            <div 
+              className="bg-gradient-to-br from-[#0A0A0A] to-[#1a1a1a] max-w-2xl w-full rounded-xl border border-[#7AECEC]/40 shadow-2xl shadow-[#7AECEC]/10 relative animate-fade-in"
+              onClick={(e) => e.stopPropagation()}
+            >
               {/* Close button */}
               <button
                 onClick={() => setActiveProject(null)}
-                className="absolute top-3 right-4 text-[#7AECEC] text-2xl"
+                className="absolute top-4 right-4 text-gray-400 hover:text-[#7AECEC] transition-colors duration-200 w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#7AECEC]/10"
               >
-                ✕
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
               </button>
 
-              <img
-                src={activeProject.image}
-                alt={activeProject.title}
-                className="w-full h-48 object-cover rounded-lg mb-4"
-              />
+              <div className="p-8">
+                <img
+                  src={activeProject.image}
+                  alt={activeProject.title}
+                  className="w-full h-64 object-cover rounded-lg mb-6 border border-[#7AECEC]/20"
+                />
 
-              <h3 className="text-2xl font-bold text-[#7AECEC] mb-2">
-                {activeProject.title}
-              </h3>
+                <div className="mb-2">
+                  <span className="text-sm text-[#7AECEC]/60 font-medium uppercase tracking-wider">
+                    {activeProject.subtitle}
+                  </span>
+                </div>
 
-              <p className="text-[#7AECEC]/80 mb-4">
-                {activeProject.shortDescription}
-              </p>
+                <h3 className="text-3xl font-bold text-white mb-4">
+                  {activeProject.title}
+                </h3>
 
-              <ul className="list-disc pl-5 text-[#7AECEC]/70 space-y-1">
-                {activeProject.details.map((d, i) => (
-                  <li key={i}>{d}</li>
-                ))}
-              </ul>
+                <p className="text-gray-300 text-base leading-relaxed mb-6">
+                  {activeProject.shortDescription}
+                </p>
+
+                <div className="border-t border-[#7AECEC]/20 pt-4">
+                  <h4 className="text-sm font-semibold text-[#7AECEC] mb-3 uppercase tracking-wide">
+                    Key Features
+                  </h4>
+                  <ul className="space-y-2">
+                    {activeProject.details.map((d, i) => (
+                      <li key={i} className="flex items-start text-gray-300">
+                        <span className="text-[#7AECEC] mr-3 mt-1">•</span>
+                        <span>{d}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         )}
