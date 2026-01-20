@@ -114,7 +114,7 @@ function SubsystemsPage() {
         'DC-DC Converters',
         'Power Management Controller'
       ],
-      imageSrc: 'https://example.com/images/eps.jpg'
+      imageSrc: '/assets/subsystem_images/eps.png'
     },
     {
       id: 'odhs',
@@ -176,7 +176,7 @@ function SubsystemsPage() {
         'Conference & Publication Outreach',
         'Student Research Mentorship Program'
       ],
-      imageSrc: 'https://example.com/images/research.jpg'
+      imageSrc: '/assets/subsystem_images/research.png'
     },
     {
       id: 'stms',
@@ -212,11 +212,7 @@ function SubsystemsPage() {
         'Handle permissions and negotiations with whichever organizations we are affiliated with - university, space agencies, sponsors, etc'
       ],
       components: [
-        'Mission Control Software',
-        'Ground Station Interface System',
-        'Configuration Management Tools',
-        'Operations Documentation System',
-        'Emergency Response Protocols'
+        
       ],
       imageSrc: '/assets/subsystem_images/admin.png'
     }
@@ -390,30 +386,31 @@ function SubsystemsPage() {
                   ))}
                 </ul>
                 
-                <h3 className="text-xl font-bold mb-4 text-[#7AECEC]">Major Components</h3>
-                <ul className="space-y-2">
-                  {activeSystem.components.map((component, index) => (
-                    <li key={index} className="flex items-center">
-                      <div className="w-2 h-2 bg-[#7AECEC] rounded-full mr-3"></div>
-                      <span className="text-[rgba(122,236,236,0.8)]">{component}</span>
-                    </li>
-                  ))}
-                </ul>
+                {/* Only show Major Components if there are any */}
+                {activeSystem.components.length > 0 && (
+                  <>
+                    <h3 className="text-xl font-bold mb-4 text-[#7AECEC]">Major Components</h3>
+                    <ul className="space-y-2">
+                      {activeSystem.components.map((component, index) => (
+                        <li key={index} className="flex items-center">
+                          <div className="w-2 h-2 bg-[#7AECEC] rounded-full mr-3"></div>
+                          <span className="text-[rgba(122,236,236,0.8)]">{component}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+
               </div>
               
-              <div className="bg-[#0A0A0A] rounded-lg p-4 flex items-center justify-center border border-[rgba(122,236,236,0.2)]">
-                <div className="text-center">
-                  <p className="text-[rgba(122,236,236,0.6)] mb-2">Subsystem Illustration</p>
-                  <div className="bg-[#111111] p-4 rounded border border-[rgba(122,236,236,0.2)] inline-block">
-                  <img
-                      src={activeSystem.imageSrc}
-                      alt={activeSystem.name}
-                      className="w-full h-64 object-cover rounded border border-[rgba(122,236,236,0.2)]"
-                    />
-
-                  </div>
-                </div>
+              <div className="bg-[#0A0A0A] rounded-lg p-4 flex items-center justify-center overflow-hidden">
+                <img
+                  src={activeSystem.imageSrc}
+                  alt={activeSystem.name}
+                  className="w-full h-80 object-cover rounded border border-[rgba(122,236,236,0.2)]"
+                />
               </div>
+
             </div>
           </section>
         )}
