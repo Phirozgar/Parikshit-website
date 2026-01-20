@@ -50,9 +50,10 @@ const allTeamMembers: TeamMember[] = [
   { name: "Nandini Sah", role: "Administration Team Member", image: getImagePath("Nandini") },
   { name: "Rishitha Kantevari", role: "Administration Team Member", image: getImagePath("Rishitha") },
 
-  { name: "Dr. Shreesha Chokkadi", role: "Faculty Advisor",image: getImagePath("Shreesha Chokkadi"),
+  // Faculty Advisors
+  { name: "Dr. Shreesha Chokkadi", role: "Faculty Advisor",image: getImagePath("Shreesha"),
     department: "Electrical & Instrumentation Engineering" },
-  { name: "Dr. Balbir Singh", role: "Faculty Advisor", image: getImagePath("Balbir Singh"),
+  { name: "Dr. Balbir Singh", role: "Faculty Advisor", image: getImagePath("Balbir"),
     department: "Aeronautical Engineering" },
 ];
 
