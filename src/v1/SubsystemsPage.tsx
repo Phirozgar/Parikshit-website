@@ -110,7 +110,7 @@ function SubsystemsPage() {
       components: [
         'Solar Panels (Triple-junction GaAs cells)',
         'Battery Pack (Li-ion cells with protection circuits)',
-        'Power Distribution Unit',
+        'Load switches',
         'DC-DC Converters',
         'Power Management Controller'
       ],
