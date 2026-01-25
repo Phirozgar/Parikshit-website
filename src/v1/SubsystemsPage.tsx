@@ -61,40 +61,39 @@ function SubsystemsPage() {
       iconSrc: '/assets/Subsystem_Logos/ADCS.png',
       description: 'Responsible for determining and controlling the satellite\'s orientation in space.',
       details: [
+        'Stabilizes the satellite after deployment from the launch vehicle',
         'Utilizes sensors to determine the satellite\'s current orientation',
         'Implements control algorithms to maintain desired orientation',
-        'Controls reaction wheels and magnetorquers for precise positioning',
-        'Stabilizes the satellite after deployment from the launch vehicle'
-      ],
+        'Controls reaction wheels and magnetorquers for precise positioning'
+       ],
       components: [
-        'Sun Sensors',
-        'Magnetometers and IMU',
-        'Reaction Wheels (3-axis control)',
-        'Magnetorquers for detumbling',
-        'ADCS Control Software'
+        'Sensors - Sun sensors, Magnetometers, IMU ',
+        'Actuators - Reaction Wheel, Magnetorquers',
+        'Controllers - B-dot, PD, PID',
+        'Algorithms - QuEST, EKF'
       ],
-      imageSrc: 'https://example.com/images/adcs.jpg'
+      imageSrc: '/assets/subsystem_images/adcs.png'
     },
     {
       id: 'comms',
       name: 'Communications and Ground Station Subsystem',
       iconSrc: '/assets/Subsystem_Logos/COMMS.png',
-      description: 'Enables reliable data transmission between the satellite and ground stations.',
+      description: 'Enables reliable data transmission between the satellite and ground station.',
       details: [
-        'Establishes and maintains RF links with ground stations',
-        'Implements data encoding and error correction protocols',
+        'Establishes and maintains RF links with ground station',
         'Manages uplink command reception and verification',
         'Handles downlink telemetry and mission data transmission',
         'Optimizes bandwidth usage for efficient communication'
       ],
       components: [
         'UHF/VHF Transceiver',
-        'S-Band Transmitter for high-speed downlink',
         'RF Amplifiers and Filters',
         'Communication Antennas',
         'Modulation/Demodulation Systems'
       ],
-      imageSrc: 'https://example.com/images/comms.jpg'
+      imageSrc: '/assets/subsystem_images/comms.png'
+
+
     },
     {
       id: 'eps',
@@ -111,11 +110,11 @@ function SubsystemsPage() {
       components: [
         'Solar Panels (Triple-junction GaAs cells)',
         'Battery Pack (Li-ion cells with protection circuits)',
-        'Power Distribution Unit',
+        'Load switches',
         'DC-DC Converters',
         'Power Management Controller'
       ],
-      imageSrc: 'https://example.com/images/eps.jpg'
+      imageSrc: '/assets/subsystem_images/eps.png'
     },
     {
       id: 'odhs',
@@ -124,18 +123,18 @@ function SubsystemsPage() {
       description: 'The brain of our satellite, processing commands and managing data flow between all subsystems.',
       details: [
         'Implements command processing and execution for satellite operations',
-        'Manages data storage, processing, and transmission protocols',
+        '⁠Manages data collection, processing and storage',
         'Handles system health monitoring and status reporting',
-        'Coordinates and synchronizes all subsystems\' software'
+        'Facilitates interboard communication and coordination of all software'
       ],
       components: [
         'OnBoard Computer',
         'Real-time Operating System',
-        'Payload Data Storage',
+        'Payload data and telemetry storage',
         'Sensor Interfaces & Firmware',
         'Control Software'
       ],
-      imageSrc: 'https://example.com/images/odhs.jpg'
+      imageSrc: '/assets/subsystem_images/odhs.png'
     },
     {
       id: 'payload',
@@ -153,7 +152,7 @@ function SubsystemsPage() {
         'A Thermal Camera (Primary payload) ',
         'Electrodynamic Tether (Secondary payload)'
       ],
-      imageSrc: 'https://example.com/images/payload.jpg'
+      imageSrc: '/assets/subsystem_images/payload.png'
     },
     {
       id: 'research',
@@ -177,7 +176,7 @@ function SubsystemsPage() {
         'Conference & Publication Outreach',
         'Student Research Mentorship Program'
       ],
-      imageSrc: 'https://example.com/images/research.jpg'
+      imageSrc: '/assets/subsystem_images/research.png'
     },
     {
       id: 'stms',
@@ -186,19 +185,19 @@ function SubsystemsPage() {
       description: 'Ensures satellite structural integrity and thermal stability in the harsh space environment.',
       details: [
         'Designs and manufactures the satellite structure to withstand launch forces',
-        'Implements thermal control to maintain operational temperature ranges',
-        'Manages deployment mechanisms for antennas and solar panels',
-        'Conducts vibration and thermal vacuum testing',
-        'Ensures compliance with CubeSat dimensional standards'
+        'Maintains structural and thermal stability during space operations',
+        'Manages mounting and integration of antennas, solar panels and subsystems (non-deployable solar panels)',
+        'Ensures proper heat dissipation and passive thermal regulation',
+        'Ensures compliance with CubeSat dimensional and interface standards'
       ],
       components: [
         'Aluminum Alloy Frame Structure',
-        'Thermal Insulation Materials',
-        'Passive Thermal Control Elements',
-        'Deployment Mechanisms',
+        'Passive Thermal Control Elements (coatings, surface finishes & mounting layout)',
+        'Solar Panel Structural Mounts (fixed, non-deployable)',
+        'Subsystem Mounting Rails & Brackets',
         'Structural Reinforcements'
       ],
-      imageSrc: 'https://example.com/images/stms.jpg'
+      imageSrc: '/assets/subsystem_images/stms.png'
     },
     {
       id: 'admin',
@@ -206,20 +205,16 @@ function SubsystemsPage() {
       iconSrc: '/assets/Subsystem_Logos/Admin & OPS.png',
       description: 'Manages mission operations, ground control, and administrative functions of the satellite program.',
       details: [
-        'Coordinates mission planning and scheduling',
-        'Manages ground station operations and tracking',
-        'Handles satellite configuration and state management',
-        'Implements contingency and recovery procedures',
-        'Maintains mission documentation and operational logs'
+        'website maintenance and updation ',
+        'Reach out to companies and sponsors for partnerships',
+        'Do outreach for Parikshit inside and outside college',
+        '⁠Handle social media pages and graphic design',
+        'Handle permissions and negotiations with whichever organizations we are affiliated with - university, space agencies, sponsors, etc'
       ],
       components: [
-        'Mission Control Software',
-        'Ground Station Interface System',
-        'Configuration Management Tools',
-        'Operations Documentation System',
-        'Emergency Response Protocols'
+        
       ],
-      imageSrc: 'https://example.com/images/admin.jpg'
+      imageSrc: '/assets/subsystem_images/admin.png'
     }
   ];
   
@@ -391,27 +386,31 @@ function SubsystemsPage() {
                   ))}
                 </ul>
                 
-                <h3 className="text-xl font-bold mb-4 text-[#7AECEC]">Major Components</h3>
-                <ul className="space-y-2">
-                  {activeSystem.components.map((component, index) => (
-                    <li key={index} className="flex items-center">
-                      <div className="w-2 h-2 bg-[#7AECEC] rounded-full mr-3"></div>
-                      <span className="text-[rgba(122,236,236,0.8)]">{component}</span>
-                    </li>
-                  ))}
-                </ul>
+                {/* Only show Major Components if there are any */}
+                {activeSystem.components.length > 0 && (
+                  <>
+                    <h3 className="text-xl font-bold mb-4 text-[#7AECEC]">Major Components</h3>
+                    <ul className="space-y-2">
+                      {activeSystem.components.map((component, index) => (
+                        <li key={index} className="flex items-center">
+                          <div className="w-2 h-2 bg-[#7AECEC] rounded-full mr-3"></div>
+                          <span className="text-[rgba(122,236,236,0.8)]">{component}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+
               </div>
               
-              <div className="bg-[#0A0A0A] rounded-lg p-4 flex items-center justify-center border border-[rgba(122,236,236,0.2)]">
-                <div className="text-center">
-                  <p className="text-[rgba(122,236,236,0.6)] mb-2">Subsystem Illustration</p>
-                  <div className="bg-[#111111] p-4 rounded border border-[rgba(122,236,236,0.2)] inline-block">
-                    <div className="w-full h-64 bg-[#0A0A0A] border border-[rgba(122,236,236,0.2)] flex items-center justify-center">
-                      <p className="text-[rgba(122,236,236,0.6)]">Image of {activeSystem.name}</p>
-                    </div>
-                  </div>
-                </div>
+              <div className="bg-[#0A0A0A] rounded-lg p-4 flex items-center justify-center overflow-hidden">
+                <img
+                  src={activeSystem.imageSrc}
+                  alt={activeSystem.name}
+                  className="w-full h-80 object-cover rounded border border-[rgba(122,236,236,0.2)]"
+                />
               </div>
+
             </div>
           </section>
         )}
