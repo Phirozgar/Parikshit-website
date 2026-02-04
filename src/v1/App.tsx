@@ -5,7 +5,7 @@ import "./styles.css";
 import { BrowserRouter as Router, Routes, Route, Link, useLocation, useNavigate } from "react-router-dom";
 import SubsystemsPage from "./SubsystemsPage";
 import TeamPage from "./TeamPage";
-import ProjectsPage from "./ProjectsPage";
+// import ProjectsPage from "./ProjectsPage";
 import ResearchPage from "./ResearchPage";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { HeroSection } from "./HomePageComponents/HeroSection";
@@ -185,8 +185,8 @@ function App() {
                 <Link to="/team" className={getNavLinkClass("/team")}>TEAM</Link>
                 <Link to="/about-us" className={getNavLinkClass("/about-us")}>ABOUT US</Link>
                 <Link to="/subsystems" className={getNavLinkClass("/subsystems")}>SUBSYSTEMS</Link>
-                <Link to="/projects" className={getNavLinkClass("/projects")}>PROJECTS</Link>
                 <Link to="/research" className={getNavLinkClass("/research")}>RESEARCH</Link>
+                <button className="hover:text-white transition-colors bg-transparent" style={{ padding: 0, border: "none", background: "none" }} onClick={() => scrollToSection("projects")}>PROJECTS</button>
                 <button className="hover:text-white transition-colors bg-transparent" style={{ padding: 0, border: "none", background: "none" }} onClick={() => scrollToSection("faqs")}>FAQs</button>
                 {/* <Link 
                   to="/recruitments" 
@@ -227,18 +227,17 @@ function App() {
             {/* Navigation Menu Container */}
             <div className="space-y-2">
               {[
-                { to: "/", label: "HOME", delay: "0ms", icon: "🏠" },
-                { to: "/team", label: "TEAM", delay: "50ms", icon: "👥" },
-                { to: "/about-us", label: "ABOUT US", delay: "100ms", icon: "ℹ️" },
-                { to: "/subsystems", label: "SUBSYSTEMS", delay: "150ms", icon: "⚙️" },
-                { to: "/projects", label: "PROJECTS", delay: "200ms", icon: "🚧" },
-                { to: "/research", label: "RESEARCH", delay: "250ms", icon: "🔬" }
+                { to: "/", label: "HOME", delay: "0ms" },
+                { to: "/team", label: "TEAM", delay: "50ms" },
+                { to: "/about-us", label: "ABOUT US", delay: "100ms" },
+                { to: "/subsystems", label: "SUBSYSTEMS", delay: "150ms" },
+                { to: "/research", label: "RESEARCH", delay: "250ms" }
               ].map((item, index) => (
                 <Link
                   key={item.to}
                   to={item.to}
                   className={`mobile-nav-item group flex items-center px-4 py-3 rounded-xl transition-all duration-300 ${
-                    isActive(item.to) ? 'bg-[#7AECEC]/15 text-white border-l-4 border-[#7AECEC]' : 'text-[#7AECEC]'
+                    isActive(item.to) ? 'bg-[#7AECEC]/15 text-white border-l-4 border-[#7AECEC]' : 'text-[#7AECEC] hover:bg-[#7AECEC]/5'
                   }`}
                   style={{
                     animationDelay: isMenuOpen ? item.delay : '0ms',
@@ -248,19 +247,38 @@ function App() {
                   }}
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <span className="text-xl mr-4 transition-all duration-300">{item.icon}</span>
                   <span className="font-semibold tracking-wide">{item.label}</span>
                 </Link>
               ))}
-              
-              <Link
-                to="/#faqs"
-                className="mobile-nav-item group flex items-center w-full px-4 py-3 rounded-xl text-left transition-all duration-300 text-[#7AECEC]"
+
+              <button
+                className="mobile-nav-item group flex items-center w-full px-4 py-3 rounded-xl text-left transition-all duration-300 text-[#7AECEC] hover:bg-[#7AECEC]/5"
                 style={{
                   animationDelay: isMenuOpen ? '300ms' : '0ms',
                   transform: isMenuOpen ? 'translateX(0)' : 'translateX(-20px)',
                   opacity: isMenuOpen ? 1 : 0,
                   transition: 'all 0.3s ease-out 300ms'
+                }}
+                onClick={() => { 
+                  setIsMenuOpen(false); 
+                  // Navigate to home if not already there, then scroll to projects
+                  if (window.location.pathname !== "/") {
+                    navigate('/', { state: { scrollTo: 'projects' } });
+                  } else {
+                    scrollToSection("projects");
+                  }
+                }}
+              >
+                <span className="font-semibold tracking-wide">PROJECTS</span>
+              </button>
+            
+              <button
+                className="mobile-nav-item group flex items-center w-full px-4 py-3 rounded-xl text-left transition-all duration-300 text-[#7AECEC] hover:bg-[#7AECEC]/5"
+                style={{
+                  animationDelay: isMenuOpen ? '350ms' : '0ms',
+                  transform: isMenuOpen ? 'translateX(0)' : 'translateX(-20px)',
+                  opacity: isMenuOpen ? 1 : 0,
+                  transition: 'all 0.3s ease-out 350ms'
                 }}
                 onClick={() => { 
                   setIsMenuOpen(false); 
@@ -272,9 +290,8 @@ function App() {
                   }
                 }}
               >
-                <span className="text-xl mr-4 transition-all duration-300">❓</span>
                 <span className="font-semibold tracking-wide">FAQs</span>
-              </Link>
+              </button>
             </div>
             
             {/* Recruitments Button */}
@@ -283,17 +300,15 @@ function App() {
                 to="/recruitments"
                 className="block w-full px-6 py-4 bg-gradient-to-r from-[#7AECEC] via-[#5BC5C5] to-[#4ECDC4] text-black rounded-2xl font-bold text-center transition-all duration-500 shadow-lg transform active:scale-[0.95] relative overflow-hidden"
                 style={{
-                  animationDelay: isMenuOpen ? '350ms' : '0ms',
+                  animationDelay: isMenuOpen ? '400ms' : '0ms',
                   transform: isMenuOpen ? 'translateY(0) scale(1)' : 'translateY(20px) scale(0.9)',
                   opacity: isMenuOpen ? 1 : 0,
-                  transition: 'all 0.4s ease-out 350ms'
+                  transition: 'all 0.4s ease-out 400ms'
                 }}
                 onClick={() => setIsMenuOpen(false)}
               >
                 <span className="flex items-center justify-center">
-                  <span className="mr-2">🚀</span>
                   RECRUITMENTS
-                  <span className="ml-2">→</span>
                 </span>
               </Link>
             </div> */}
@@ -321,7 +336,7 @@ function App() {
               <Route path="/subsystems" element={<SubsystemsPage />} />
               <Route path="/about-us" element={<AboutUsGalleryPage />} />
               <Route path="/team" element={<TeamPage />} />
-              <Route path="/projects" element={<ProjectsPage />} />
+              {/* <Route path="/projects" element={<ProjectsPage />} /> */}
               <Route path="/research" element={<ResearchPage />} />
               <Route path="/recruitments" element={<RecruitmentsPage />} />
             </Routes>
