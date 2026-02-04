@@ -227,17 +227,17 @@ function App() {
             {/* Navigation Menu Container */}
             <div className="space-y-2">
               {[
-                { to: "/", label: "HOME", delay: "0ms", icon: "🏠" },
-                { to: "/team", label: "TEAM", delay: "50ms", icon: "👥" },
-                { to: "/about-us", label: "ABOUT US", delay: "100ms", icon: "ℹ️" },
-                { to: "/subsystems", label: "SUBSYSTEMS", delay: "150ms", icon: "⚙️" },
-                { to: "/research", label: "RESEARCH", delay: "250ms", icon: "🔬" }
+                { to: "/", label: "HOME", delay: "0ms" },
+                { to: "/team", label: "TEAM", delay: "50ms" },
+                { to: "/about-us", label: "ABOUT US", delay: "100ms" },
+                { to: "/subsystems", label: "SUBSYSTEMS", delay: "150ms" },
+                { to: "/research", label: "RESEARCH", delay: "250ms" }
               ].map((item, index) => (
                 <Link
                   key={item.to}
                   to={item.to}
                   className={`mobile-nav-item group flex items-center px-4 py-3 rounded-xl transition-all duration-300 ${
-                    isActive(item.to) ? 'bg-[#7AECEC]/15 text-white border-l-4 border-[#7AECEC]' : 'text-[#7AECEC]'
+                    isActive(item.to) ? 'bg-[#7AECEC]/15 text-white border-l-4 border-[#7AECEC]' : 'text-[#7AECEC] hover:bg-[#7AECEC]/5'
                   }`}
                   style={{
                     animationDelay: isMenuOpen ? item.delay : '0ms',
@@ -247,14 +247,12 @@ function App() {
                   }}
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <span className="text-xl mr-4 transition-all duration-300">{item.icon}</span>
                   <span className="font-semibold tracking-wide">{item.label}</span>
                 </Link>
               ))}
 
-              <Link
-                to="/#projects"
-                className="mobile-nav-item group flex items-center w-full px-4 py-3 rounded-xl text-left transition-all duration-300 text-[#7AECEC]"
+              <button
+                className="mobile-nav-item group flex items-center w-full px-4 py-3 rounded-xl text-left transition-all duration-300 text-[#7AECEC] hover:bg-[#7AECEC]/5"
                 style={{
                   animationDelay: isMenuOpen ? '300ms' : '0ms',
                   transform: isMenuOpen ? 'translateX(0)' : 'translateX(-20px)',
@@ -263,7 +261,7 @@ function App() {
                 }}
                 onClick={() => { 
                   setIsMenuOpen(false); 
-                  // Navigate to home if not already there, then scroll to FAQs
+                  // Navigate to home if not already there, then scroll to projects
                   if (window.location.pathname !== "/") {
                     navigate('/', { state: { scrollTo: 'projects' } });
                   } else {
@@ -271,18 +269,16 @@ function App() {
                   }
                 }}
               >
-                <span className="text-xl mr-4 transition-all duration-300">🚧</span>
                 <span className="font-semibold tracking-wide">PROJECTS</span>
-              </Link>
+              </button>
             
-              <Link
-                to="/#faqs"
-                className="mobile-nav-item group flex items-center w-full px-4 py-3 rounded-xl text-left transition-all duration-300 text-[#7AECEC]"
+              <button
+                className="mobile-nav-item group flex items-center w-full px-4 py-3 rounded-xl text-left transition-all duration-300 text-[#7AECEC] hover:bg-[#7AECEC]/5"
                 style={{
-                  animationDelay: isMenuOpen ? '300ms' : '0ms',
+                  animationDelay: isMenuOpen ? '350ms' : '0ms',
                   transform: isMenuOpen ? 'translateX(0)' : 'translateX(-20px)',
                   opacity: isMenuOpen ? 1 : 0,
-                  transition: 'all 0.3s ease-out 300ms'
+                  transition: 'all 0.3s ease-out 350ms'
                 }}
                 onClick={() => { 
                   setIsMenuOpen(false); 
@@ -294,9 +290,8 @@ function App() {
                   }
                 }}
               >
-                <span className="text-xl mr-4 transition-all duration-300">❓</span>
                 <span className="font-semibold tracking-wide">FAQs</span>
-              </Link>
+              </button>
             </div>
             
             {/* Recruitments Button */}
@@ -305,17 +300,15 @@ function App() {
                 to="/recruitments"
                 className="block w-full px-6 py-4 bg-gradient-to-r from-[#7AECEC] via-[#5BC5C5] to-[#4ECDC4] text-black rounded-2xl font-bold text-center transition-all duration-500 shadow-lg transform active:scale-[0.95] relative overflow-hidden"
                 style={{
-                  animationDelay: isMenuOpen ? '350ms' : '0ms',
+                  animationDelay: isMenuOpen ? '400ms' : '0ms',
                   transform: isMenuOpen ? 'translateY(0) scale(1)' : 'translateY(20px) scale(0.9)',
                   opacity: isMenuOpen ? 1 : 0,
-                  transition: 'all 0.4s ease-out 350ms'
+                  transition: 'all 0.4s ease-out 400ms'
                 }}
                 onClick={() => setIsMenuOpen(false)}
               >
                 <span className="flex items-center justify-center">
-                  <span className="mr-2">🚀</span>
                   RECRUITMENTS
-                  <span className="ml-2">→</span>
                 </span>
               </Link>
             </div> */}
