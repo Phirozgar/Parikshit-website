@@ -1,4 +1,5 @@
-import { Github, Linkedin } from "lucide-react";
+import { Github, Linkedin, ChevronDown } from "lucide-react";
+import { useState } from "react";
 
 interface TeamMember {
   name: string;
@@ -7,6 +8,8 @@ interface TeamMember {
   image: string;
   github?: string;
   linkedin?: string;
+  batch?: string; // For alumni - e.g., "Batch of 2024"
+  formerRole?: string; // Their designation when they were part of the team
 }
 
 function getImagePath(name: string) {
@@ -41,6 +44,8 @@ const allTeamMembers: TeamMember[] = [
   { name: "Saloni Bagra", role: "ODHS Team Member", image: getImagePath("saloni") },
   { name: "Harshit Srivastava", role: "ODHS Team Member", image: getImagePath("Harshit") },
   { name: "Krishang Jain", role: "ODHS Team Member", image: getImagePath("Krishang") },
+  { name: "Soham Singh", role: "ODHS Team Member", image: getImagePath("Soham Singh") },
+  { name: "Nishitha Kotagiri", role: "ODHS Team Member", image: getImagePath("Nishitha") },
 
   { name: "Dev Tandon", role: "Payload Team Member", image: getImagePath("Dev") },
   { name: "Anshika Goyal", role: "Payload Team Member", image: getImagePath("Anshika") },
@@ -48,14 +53,62 @@ const allTeamMembers: TeamMember[] = [
   { name: "Nandini Sah", role: "Administration Team Member", image: getImagePath("Nandini") },
   { name: "Rishitha Kantevari", role: "Administration Team Member", image: getImagePath("Rishitha") },
 
-  // Faculty Advisors
-  { name: "Dr. Shreesha Chokkadi", role: "Faculty Advisor",image: getImagePath("Shreesha"),
+  { name: "Dr. Shreesha Chokkadi", role: "Faculty Advisor",image: getImagePath("Shreesha Chokkadi"),
     department: "Electrical & Instrumentation Engineering" },
-  { name: "Dr. Balbir Singh", role: "Faculty Advisor", image: getImagePath("Balbir"),
+  { name: "Dr. Balbir Singh", role: "Faculty Advisor", image: getImagePath("Balbir Singh"),
     department: "Aeronautical Engineering" },
 ];
 
+// Sample alumni data - replace with your actual alumni
+const alumniData: TeamMember[] = [
+  { 
+    name: "John Doe", 
+    role: "Alumni", 
+    formerRole: "System Engineer",
+    image: getImagePath("John"), 
+    batch: "Batch of 2024", 
+    linkedin: "johndoe", 
+    github: "johndoe" 
+  },
+  { 
+    name: "Jane Smith", 
+    role: "Alumni", 
+    formerRole: "ADCS Lead",
+    image: getImagePath("Jane"), 
+    batch: "Batch of 2024", 
+    linkedin: "janesmith" 
+  },
+  { 
+    name: "Alex Johnson", 
+    role: "Alumni", 
+    formerRole: "EPS Lead",
+    image: getImagePath("Alex"), 
+    batch: "Batch of 2023", 
+    github: "alexj" 
+  },
+  { 
+    name: "Sarah Williams", 
+    role: "Alumni", 
+    formerRole: "COMMS Lead",
+    image: getImagePath("Sarah"), 
+    batch: "Batch of 2023", 
+    linkedin: "sarahw" 
+  },
+  { 
+    name: "Mike Brown", 
+    role: "Alumni", 
+    formerRole: "Payload Lead",
+    image: getImagePath("Mike"), 
+    batch: "Batch of 2022", 
+    linkedin: "mikeb", 
+    github: "mikebrown" 
+  },
+];
+
 function TeamPage() {
+  const [selectedBatch, setSelectedBatch] = useState<string>("all");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
   const executiveBoard = allTeamMembers.filter(
     (m) => m.role === "System Engineer" || m.role === "System Admin"
   );
@@ -102,6 +155,14 @@ function TeamPage() {
     },
   ];
 
+  // Get unique batches from alumni data and sort in descending order
+  const alumniBatches = Array.from(new Set(alumniData.map(a => a.batch))).sort().reverse();
+  
+  // Filter alumni based on selected batch
+  const filteredAlumni = selectedBatch === "all" 
+    ? alumniData 
+    : alumniData.filter(a => a.batch === selectedBatch);
+
   const MemberCard = ({ member }: { member: TeamMember }) => (
     <div className="bg-[#0A0A0A] rounded-lg overflow-hidden border border-[#7AECEC] group hover:border-white transition-all duration-300">
       <div className="aspect-square overflow-hidden bg-gray-800">
@@ -109,13 +170,21 @@ function TeamPage() {
           src={member.image}
           alt={member.name}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          onError={(e) => {
+            e.currentTarget.src = 'https://via.placeholder.com/300x300?text=' + member.name.split(' ')[0];
+          }}
         />
       </div>
       <div className="p-4 text-center">
         <h4 className="text-[#7AECEC] font-bold text-lg mb-1">
           {member.name}
         </h4>
-        <p className="text-gray-400 text-sm mb-3">{member.role}</p>
+        <p className="text-gray-400 text-sm mb-2">
+          {member.formerRole ? member.formerRole : member.role}
+        </p>
+        {member.batch && (
+          <p className="text-gray-500 text-xs mb-3">{member.batch}</p>
+        )}
         <div className="flex gap-3 justify-center">
           <a
             href={member.github ? `https://github.com/${member.github}` : undefined}
@@ -225,7 +294,7 @@ function TeamPage() {
           </section>
 
           {/* Faculty Advisors */}
-          <section className="mb-16">
+          <section className="mb-20">
             <h2 className="text-4xl font-bold mb-12 text-[#7AECEC] text-center">
               Faculty Advisors
             </h2>
@@ -240,6 +309,9 @@ function TeamPage() {
                       src={advisor.image}
                       alt={advisor.name}
                       className="w-32 h-32 object-cover rounded-full mb-4 border-2 border-[#7AECEC]"
+                      onError={(e) => {
+                        e.currentTarget.src = 'https://via.placeholder.com/300x300?text=' + advisor.name.split(' ')[0];
+                      }}
                     />
                     <h3 className="text-xl font-bold mb-2 text-[#7AECEC]">
                       {advisor.name}
@@ -252,6 +324,68 @@ function TeamPage() {
                 ))}
               </div>
             </div>
+          </section>
+
+          {/* Alumni Section */}
+          <section className="mb-16">
+            <h2 className="text-4xl font-bold mb-8 text-[#7AECEC] text-center">
+              Our Alumni
+            </h2>
+            <p className="text-gray-400 text-center mb-8 max-w-2xl mx-auto">
+              Celebrating the incredible individuals who have contributed to our journey and continue to inspire us.
+            </p>
+            
+            {/* Batch Filter Dropdown */}
+            <div className="flex justify-center mb-12">
+              <div className="relative">
+                <button
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                  className="bg-[#0A0A0A] border border-[#7AECEC] text-[#7AECEC] px-6 py-3 rounded-lg flex items-center gap-2 hover:bg-[#7AECEC] hover:text-black transition-all duration-300 min-w-[200px] justify-between"
+                >
+                  <span>{selectedBatch === "all" ? "All Batches" : selectedBatch}</span>
+                  <ChevronDown size={20} className={`transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
+                </button>
+                
+                {isDropdownOpen && (
+                  <div className="absolute top-full mt-2 w-full bg-[#0A0A0A] border border-[#7AECEC] rounded-lg overflow-hidden z-10">
+                    <button
+                      onClick={() => {
+                        setSelectedBatch("all");
+                        setIsDropdownOpen(false);
+                      }}
+                      className="w-full px-6 py-3 text-left text-[#7AECEC] hover:bg-[#7AECEC] hover:text-black transition-colors"
+                    >
+                      All Batches
+                    </button>
+                    {alumniBatches.map((batch) => (
+                      <button
+                        key={batch}
+                        onClick={() => {
+                          setSelectedBatch(batch);
+                          setIsDropdownOpen(false);
+                        }}
+                        className="w-full px-6 py-3 text-left text-[#7AECEC] hover:bg-[#7AECEC] hover:text-black transition-colors"
+                      >
+                        {batch}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Alumni Grid */}
+            <div className="flex justify-center">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl">
+                {filteredAlumni.map((alumni, index) => (
+                  <MemberCard key={index} member={alumni} />
+                ))}
+              </div>
+            </div>
+
+            {filteredAlumni.length === 0 && (
+              <p className="text-gray-500 text-center mt-8">No alumni found for this batch.</p>
+            )}
           </section>
         </main>
       </div>
