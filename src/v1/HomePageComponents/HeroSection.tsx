@@ -11,6 +11,7 @@ export function HeroSection() {
           autoPlay
           loop
           muted
+          playsInline
           className="w-full h-full object-cover"
           style={{ filter: 'brightness(0.4)' }}
         >

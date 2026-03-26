@@ -186,3 +186,32 @@
     font-size: 15px;
   }
 }
+
+/* Route fade transitions (used by react-transition-group with classNames="fade") */
+.fade-enter {
+  opacity: 0;
+  transform: translateY(8px);
+}
+.fade-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 400ms ease, transform 400ms ease;
+}
+.fade-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-exit-active {
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 400ms ease, transform 400ms ease;
+}
+.fade-route {
+  width: 100%;
+  height: 100%;
+}
+
+/* Make anchor scrolling avoid header overlap for common sections */
+#projects, #faqs {
+  scroll-margin-top: 5.5rem; /* ~88px: adjust if header height changes */
+}
