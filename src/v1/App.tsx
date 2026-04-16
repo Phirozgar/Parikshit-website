@@ -1,12 +1,14 @@
 import RecruitmentsPage from "./RecruitmentsPage";
 import AboutUsGalleryPage from "./AboutUsGalleryPage";
 import { useState, useEffect } from "react";
+
 import "./styles.css";
 import { BrowserRouter as Router, Routes, Route, Link, useLocation, useNavigate } from "react-router-dom";
 import SubsystemsPage from "./SubsystemsPage";
 import TeamPage from "./TeamPage";
 // import ProjectsPage from "./ProjectsPage";
 import ResearchPage from "./ResearchPage";
+import SponsorPage from "./SponsorPage";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { HeroSection } from "./HomePageComponents/HeroSection";
 import { AboutSection } from "./HomePageComponents/AboutSection";
@@ -187,6 +189,7 @@ function App() {
                 <Link to="/subsystems" className={getNavLinkClass("/subsystems")}>SUBSYSTEMS</Link>
                 <Link to="/research" className={getNavLinkClass("/research")}>RESEARCH</Link>
                 <button className="hover:text-white transition-colors bg-transparent" style={{ padding: 0, border: "none", background: "none" }} onClick={() => scrollToSection("projects")}>PROJECTS</button>
+                <Link to="/sponsor" className={getNavLinkClass("/sponsor")}>SPONSOR US</Link> 
                 <button className="hover:text-white transition-colors bg-transparent" style={{ padding: 0, border: "none", background: "none" }} onClick={() => scrollToSection("faqs")}>FAQs</button>
                 {/* <Link 
                   to="/recruitments" 
@@ -229,6 +232,7 @@ function App() {
               {[
                 { to: "/", label: "HOME", delay: "0ms" },
                 { to: "/team", label: "TEAM", delay: "50ms" },
+                { to: "/sponsor", label: "SPONSOR US", delay: "150ms" },
                 { to: "/about-us", label: "ABOUT US", delay: "100ms" },
                 { to: "/subsystems", label: "SUBSYSTEMS", delay: "150ms" },
                 { to: "/research", label: "RESEARCH", delay: "250ms" }
@@ -339,6 +343,7 @@ function App() {
               {/* <Route path="/projects" element={<ProjectsPage />} /> */}
               <Route path="/research" element={<ResearchPage />} />
               <Route path="/recruitments" element={<RecruitmentsPage />} />
+              <Route path="/sponsor" element={<SponsorPage />} />
             </Routes>
           </div>
         </CSSTransition>
