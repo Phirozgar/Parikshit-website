@@ -260,13 +260,6 @@ const papers: Paper[] = [
         link: "https://www.researchgate.net/publication/288993934_Protection_of_spacecraft_from_space_environmental_effects"
     },
     {
-        title: "Generation Of Power Using Commercially Available Thermoelectric Modules in Nanosatellites",
-        authors: "Aditya Shanker, Abhinandan Antony",
-        year: 2013,
-        venue: "2013 International Astronautical Congress, Paper id: IAC-13,C3,P,18.p1,x16986",
-        link: "https://www.iafastro.org/assets/files/publications/iac-publications/IAC2013_FinalProgramm_complete_Oct7_low-res.pdf"
-    },
-    {
         title: "Monitoring Storm time Relativistic Electron Enhancement in Low Earth Orbit on a Nanosatellite Platform",
         authors: "Pramit Dash, Rodney Gracian, Adheesh Boratkar, Pallavi Reddy, Soumitro Datta, Ishita Bisht",
         year: 2013,
