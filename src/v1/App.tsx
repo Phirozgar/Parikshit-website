@@ -32,27 +32,46 @@ function App() {
   // HomePage must be defined here so it can access setShowJoinModal
   function HomePage() {
     const location = useLocation();
+    const navigate = useNavigate();
+
+    type ScrollState = {
+      scrollTo?: string;
+    };  
     
     // Handle scrolling when navigated from another route
     useEffect(() => {
-      console.log('HomePage useEffect triggered', location.state);
-      if (location.state?.scrollTo) {
-        console.log('Attempting to scroll to:', location.state.scrollTo);
-        // Try multiple times with increasing delays to ensure DOM is ready
-        const attempts = [100, 300, 500, 1000];
-        attempts.forEach((delay, index) => {
-          setTimeout(() => {
-            const el = document.getElementById(location.state.scrollTo);
-            console.log(`Attempt ${index + 1}: Element found:`, el);
-            if (el) {
-              el.scrollIntoView({ behavior: "smooth", block: "start" });
-              // Clear the state after successful scroll
-              window.history.replaceState({}, '', '/');
-            }
-          }, delay);
-        });
-      }
-    }, [location]);
+      const target = (location.state as ScrollState | undefined)?.scrollTo;
+      if (!target) return;
+
+      let cancelled = false;
+
+      // Wait for the route fade transition to finish, then poll for the element.
+      const routeTransitionMs = 400; // should match CSSTransition timeout
+      const initialDelay = routeTransitionMs + 50; // small buffer
+      const maxWait = 2500; // max total wait time for element (ms)
+
+      const tryScroll = async () => {
+        // initial wait to let the DOM finish rendering and any transitions finish
+        await new Promise((res) => setTimeout(res, initialDelay));
+
+        const start = Date.now();
+        while (!cancelled && Date.now() - start < maxWait) {
+          const el = document.getElementById(target);
+          if (el) {
+            // Use smooth behavior and allow CSS scroll-margin-top to handle fixed header overlap
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
+            // Clear the state after successful scroll using react-router
+            navigate(location.pathname, { replace: true, state: undefined });
+            return;
+          }
+          // Yield to next frame and retry quickly for responsiveness
+          await new Promise((res) => requestAnimationFrame(res));
+        }
+      };
+
+      tryScroll();
+      return () => { cancelled = true; };
+    }, [location.state?.scrollTo, location.key, navigate, location.pathname]);
 
     // Also handle URL hash on initial load
     useEffect(() => {
@@ -141,7 +160,7 @@ function App() {
     const navigate = useNavigate();
     
     // Scroll to HomePage section by id from any route
-    function scrollToSection(sectionId: string) {
+    const scrollToSection = (sectionId: string) => {
       console.log('scrollToSection called with:', sectionId);
       console.log('Current pathname:', window.location.pathname);
       
@@ -211,109 +230,113 @@ function App() {
           </div>
         </div>
         
-        {/* Mobile menu overlay */}
-        <div 
-          className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden transition-all duration-300 ${
-            isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-          }`}
-          onClick={() => setIsMenuOpen(false)}
-        />
-        
-        {/* Mobile menu */}
-        <div className={`fixed top-16 left-0 right-0 bg-[#0D1117]/98 backdrop-blur-lg border-b border-[#7AECEC]/20 shadow-2xl z-45 lg:hidden transition-all duration-500 ease-out transform ${
-          isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
-        }`}>
-          <div className="px-6 py-8 bg-black/30">
-            {/* Navigation Menu Container */}
-            <div className="space-y-2">
-              {[
-                { to: "/", label: "HOME", delay: "0ms" },
-                { to: "/team", label: "TEAM", delay: "50ms" },
-                { to: "/about-us", label: "ABOUT US", delay: "100ms" },
-                { to: "/subsystems", label: "SUBSYSTEMS", delay: "150ms" },
-                { to: "/research", label: "RESEARCH", delay: "250ms" }
-              ].map((item, index) => (
-                <Link
-                  key={item.to}
-                  to={item.to}
-                  className={`mobile-nav-item group flex items-center px-4 py-3 rounded-xl transition-all duration-300 ${
-                    isActive(item.to) ? 'bg-[#7AECEC]/15 text-white border-l-4 border-[#7AECEC]' : 'text-[#7AECEC] hover:bg-[#7AECEC]/5'
-                  }`}
-                  style={{
-                    animationDelay: isMenuOpen ? item.delay : '0ms',
-                    transform: isMenuOpen ? 'translateX(0)' : 'translateX(-20px)',
-                    opacity: isMenuOpen ? 1 : 0,
-                    transition: `all 0.3s ease-out ${item.delay}`
-                  }}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  <span className="font-semibold tracking-wide">{item.label}</span>
-                </Link>
-              ))}
+        {(isMenuOpen || menuWasOpen) && (
+          <>
+            {/* Mobile menu overlay */}
+            <div 
+              className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden transition-all duration-300 ${
+                isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+              }`}
+              onClick={() => setIsMenuOpen(false)}
+            />
+            
+            {/* Mobile menu */}
+            <div className={`fixed top-16 left-0 right-0 bg-[#0D1117]/98 backdrop-blur-lg border-b border-[#7AECEC]/20 shadow-2xl z-45 lg:hidden transition-all duration-500 ease-out transform ${
+              isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
+            }`}>
+              <div className="px-6 py-8 bg-black/30">
+                {/* Navigation Menu Container */}
+                <div className="space-y-2">
+                  {[
+                    { to: "/", label: "HOME", delay: "0ms" },
+                    { to: "/team", label: "TEAM", delay: "50ms" },
+                    { to: "/about-us", label: "ABOUT US", delay: "100ms" },
+                    { to: "/subsystems", label: "SUBSYSTEMS", delay: "150ms" },
+                    { to: "/research", label: "RESEARCH", delay: "250ms" }
+                  ].map((item, index) => (
+                    <Link
+                      key={item.to}
+                      to={item.to}
+                      className={`mobile-nav-item group flex items-center px-4 py-3 rounded-xl transition-all duration-300 ${
+                        isActive(item.to) ? 'bg-[#7AECEC]/15 text-white border-l-4 border-[#7AECEC]' : 'text-[#7AECEC] hover:bg-[#7AECEC]/5'
+                      }`}
+                      style={{
+                        animationDelay: isMenuOpen ? item.delay : '0ms',
+                        transform: isMenuOpen ? 'translateX(0)' : 'translateX(-20px)',
+                        opacity: isMenuOpen ? 1 : 0,
+                        transition: `all 0.3s ease-out ${item.delay}`
+                      }}
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      <span className="font-semibold tracking-wide">{item.label}</span>
+                    </Link>
+                  ))}
 
-              <button
-                className="mobile-nav-item group flex items-center w-full px-4 py-3 rounded-xl text-left transition-all duration-300 text-[#7AECEC] hover:bg-[#7AECEC]/5"
-                style={{
-                  animationDelay: isMenuOpen ? '300ms' : '0ms',
-                  transform: isMenuOpen ? 'translateX(0)' : 'translateX(-20px)',
-                  opacity: isMenuOpen ? 1 : 0,
-                  transition: 'all 0.3s ease-out 300ms'
-                }}
-                onClick={() => { 
-                  setIsMenuOpen(false); 
-                  // Navigate to home if not already there, then scroll to projects
-                  if (window.location.pathname !== "/") {
-                    navigate('/', { state: { scrollTo: 'projects' } });
-                  } else {
-                    scrollToSection("projects");
-                  }
-                }}
-              >
-                <span className="font-semibold tracking-wide">PROJECTS</span>
-              </button>
-            
-              <button
-                className="mobile-nav-item group flex items-center w-full px-4 py-3 rounded-xl text-left transition-all duration-300 text-[#7AECEC] hover:bg-[#7AECEC]/5"
-                style={{
-                  animationDelay: isMenuOpen ? '350ms' : '0ms',
-                  transform: isMenuOpen ? 'translateX(0)' : 'translateX(-20px)',
-                  opacity: isMenuOpen ? 1 : 0,
-                  transition: 'all 0.3s ease-out 350ms'
-                }}
-                onClick={() => { 
-                  setIsMenuOpen(false); 
-                  // Navigate to home if not already there, then scroll to FAQs
-                  if (window.location.pathname !== "/") {
-                    navigate('/', { state: { scrollTo: 'faqs' } });
-                  } else {
-                    scrollToSection("faqs");
-                  }
-                }}
-              >
-                <span className="font-semibold tracking-wide">FAQs</span>
-              </button>
+                  <button
+                    className="mobile-nav-item group flex items-center w-full px-4 py-3 rounded-xl text-left transition-all duration-300 text-[#7AECEC] hover:bg-[#7AECEC]/5"
+                    style={{
+                      animationDelay: isMenuOpen ? '300ms' : '0ms',
+                      transform: isMenuOpen ? 'translateX(0)' : 'translateX(-20px)',
+                      opacity: isMenuOpen ? 1 : 0,
+                      transition: 'all 0.3s ease-out 300ms'
+                    }}
+                    onClick={() => { 
+                      setIsMenuOpen(false); 
+                      // Navigate to home if not already there, then scroll to projects
+                      if (window.location.pathname !== "/") {
+                        navigate('/', { state: { scrollTo: 'projects' } });
+                      } else {
+                        scrollToSection("projects");
+                      }
+                    }}
+                  >
+                    <span className="font-semibold tracking-wide">PROJECTS</span>
+                  </button>
+                
+                  <button
+                    className="mobile-nav-item group flex items-center w-full px-4 py-3 rounded-xl text-left transition-all duration-300 text-[#7AECEC] hover:bg-[#7AECEC]/5"
+                    style={{
+                      animationDelay: isMenuOpen ? '350ms' : '0ms',
+                      transform: isMenuOpen ? 'translateX(0)' : 'translateX(-20px)',
+                      opacity: isMenuOpen ? 1 : 0,
+                      transition: 'all 0.3s ease-out 350ms'
+                    }}
+                    onClick={() => { 
+                      setIsMenuOpen(false); 
+                      // Navigate to home if not already there, then scroll to FAQs
+                      if (window.location.pathname !== "/") {
+                        navigate('/', { state: { scrollTo: 'faqs' } });
+                      } else {
+                        scrollToSection("faqs");
+                      }
+                    }}
+                  >
+                    <span className="font-semibold tracking-wide">FAQs</span>
+                  </button>
+                </div>
+                
+                {/* Recruitments Button */}
+                {/* <div className="mt-8 pt-6 border-t border-[#21262C]">
+                  <Link
+                    to="/recruitments"
+                    className="block w-full px-6 py-4 bg-gradient-to-r from-[#7AECEC] via-[#5BC5C5] to-[#4ECDC4] text-black rounded-2xl font-bold text-center transition-all duration-500 shadow-lg transform active:scale-[0.95] relative overflow-hidden"
+                    style={{
+                      animationDelay: isMenuOpen ? '400ms' : '0ms',
+                      transform: isMenuOpen ? 'translateY(0) scale(1)' : 'translateY(20px) scale(0.9)',
+                      opacity: isMenuOpen ? 1 : 0,
+                      transition: 'all 0.4s ease-out 400ms'
+                    }}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <span className="flex items-center justify-center">
+                      RECRUITMENTS
+                    </span>
+                  </Link>
+                </div> */}
+              </div>
             </div>
-            
-            {/* Recruitments Button */}
-            {/* <div className="mt-8 pt-6 border-t border-[#21262C]">
-              <Link
-                to="/recruitments"
-                className="block w-full px-6 py-4 bg-gradient-to-r from-[#7AECEC] via-[#5BC5C5] to-[#4ECDC4] text-black rounded-2xl font-bold text-center transition-all duration-500 shadow-lg transform active:scale-[0.95] relative overflow-hidden"
-                style={{
-                  animationDelay: isMenuOpen ? '400ms' : '0ms',
-                  transform: isMenuOpen ? 'translateY(0) scale(1)' : 'translateY(20px) scale(0.9)',
-                  opacity: isMenuOpen ? 1 : 0,
-                  transition: 'all 0.4s ease-out 400ms'
-                }}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <span className="flex items-center justify-center">
-                  RECRUITMENTS
-                </span>
-              </Link>
-            </div> */}
-          </div>
-        </div>
+          </>
+        )} 
       </nav>
     );
   }
@@ -329,7 +352,7 @@ function App() {
     
     return (
       <TransitionGroup>
-        <CSSTransition key={location.pathname + location.search} classNames="fade" timeout={400}>
+        <CSSTransition key={location.key ?? location.pathname + location.search} classNames="fade" timeout={400}>
           <div className="fade-route">
             <Routes location={location}>
               <Route path="/" element={<HomePage />} />
@@ -348,7 +371,14 @@ function App() {
 
   // Keep menu mounted for exit animation
   useEffect(() => {
-    if (isMenuOpen) setMenuWasOpen(true);
+    let timer: number | undefined;
+    if (isMenuOpen) {
+      setMenuWasOpen(true);
+    } else {
+      // Wait for the CSS animation duration before unmounting
+      timer = window.setTimeout(() => setMenuWasOpen(false), 500);
+    }
+    return () => { if (timer) clearTimeout(timer); };
   }, [isMenuOpen]);
 
   return (
