@@ -53,6 +53,7 @@ const allTeamMembers: TeamMember[] = [
   { name: "Dev Tandon", role: "Payload Team Member", image: getImagePath("Dev") },
   { name: "Anshika Goyal", role: "Payload Team Member", image: getImagePath("Anshika") },
   { name: "Rahul Satyavaram", role: "Payload Team Member", image: getImagePath("rahul"), linkedin: "vasudeva-satyavaram-aa7492237", github: "vasudevasatyavaram-dev" },
+  {name: "Suvan Mallaya", role: "Payload Team Member", image: getImagePath("suvan"), linkedin: "suvan-mallya-5542b739b", github: "catonkeyboard07"},
 
   { name: "Malla Aryaman Srinivas", role: "COMMS Team Member", image: getImagePath("aryaman") },
   { name: "Sirish Saraf", role: "ODHS Team Member", image: getImagePath("sirish"), linkedin: "sirish-saraf", github: "Siri-shh" },
