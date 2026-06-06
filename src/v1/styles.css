@@ -212,6 +212,6 @@
 }
 
 /* Make anchor scrolling avoid header overlap for common sections */
-#projects, #faqs {
+#projects, #faqs, #sponsors {
   scroll-margin-top: 5.5rem; /* ~88px: adjust if header height changes */
 }

@@ -15,6 +15,7 @@ import { ProjectsSection } from "./HomePageComponents/ProjectsSection";
 import { ResearchHighlightsSection } from "./HomePageComponents/ResearchHighlightsSection";
 import { FAQsSection } from "./HomePageComponents/FAQsSection";
 import { TeamStatsSection } from "./HomePageComponents/TeamStatsSection";
+import { SponsorsSection } from "./HomePageComponents/SponsorsSection";
 // import { JoinUsSection } from "./HomePageComponents/JoinUsSection";
 import { JoinUsModal } from "./HomePageComponents/JoinUsModal";
 import { Mail } from "lucide-react";
@@ -28,6 +29,38 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [menuWasOpen, setMenuWasOpen] = useState(false);
   const [showJoinModal, setShowJoinModal] = useState(false);
+
+  // Helper for bulletproof smooth scrolling that works on all browsers and mobile devices
+  const performSmoothScroll = (targetId: string) => {
+    // 1. Remove focus from the clicked button to prevent browser focus-lock scroll cancellation
+    if (document.activeElement && typeof (document.activeElement as any).blur === 'function') {
+      (document.activeElement as HTMLElement).blur();
+    }
+
+    const el = document.getElementById(targetId);
+    if (!el) return;
+    
+    // 2. Attempt standard scrollIntoView
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+    
+    // 3. First Fallback: if browser transitions abort smooth scrolling, force scroll position smoothly
+    setTimeout(() => {
+      const rect = el.getBoundingClientRect();
+      const absoluteTop = rect.top + window.scrollY - 88; // 88px navbar offset
+      if (Math.abs(window.scrollY - absoluteTop) > 50) {
+        window.scrollTo({ top: absoluteTop, behavior: "smooth" });
+      }
+    }, 150);
+
+    // 4. Second Fallback (Fail-safe): if still not in position, force jump instantly
+    setTimeout(() => {
+      const rect = el.getBoundingClientRect();
+      const absoluteTop = rect.top + window.scrollY - 88;
+      if (Math.abs(window.scrollY - absoluteTop) > 50) {
+        window.scrollTo({ top: absoluteTop, behavior: "auto" });
+      }
+    }, 300);
+  };
 
   // HomePage must be defined here so it can access setShowJoinModal
   function HomePage() {
@@ -45,9 +78,8 @@ function App() {
 
       let cancelled = false;
 
-      // Wait for the route fade transition to finish, then poll for the element.
-      const routeTransitionMs = 400; // should match CSSTransition timeout
-      const initialDelay = routeTransitionMs + 50; // small buffer
+      // Wait for transitions and mobile menu to completely close/unmount
+      const initialDelay = 700; 
       const maxWait = 2500; // max total wait time for element (ms)
 
       const tryScroll = async () => {
@@ -58,8 +90,7 @@ function App() {
         while (!cancelled && Date.now() - start < maxWait) {
           const el = document.getElementById(target);
           if (el) {
-            // Use smooth behavior and allow CSS scroll-margin-top to handle fixed header overlap
-            el.scrollIntoView({ behavior: "smooth", block: "start" });
+            performSmoothScroll(target);
             // Clear the state after successful scroll using react-router
             navigate(location.pathname, { replace: true, state: undefined });
             return;
@@ -96,6 +127,7 @@ function App() {
         <ResearchHighlightsSection />
         <FAQsSection />
         <TeamStatsSection />
+        <SponsorsSection />
         {/* <JoinUsSection /> */}
       </>
     );
@@ -160,22 +192,20 @@ function App() {
     const navigate = useNavigate();
     
     // Scroll to HomePage section by id from any route
-    const scrollToSection = (sectionId: string) => {
+    const scrollToSection = (sectionId: string, delay = 0) => {
       console.log('scrollToSection called with:', sectionId);
-      console.log('Current pathname:', window.location.pathname);
+      console.log('Current pathname:', location.pathname);
       
-      if (window.location.pathname !== "/") {
+      if (location.pathname !== "/") {
         console.log('Navigating to home with scroll target');
         navigate('/', { state: { scrollTo: sectionId } });
         return;
       }
       
       console.log('Already on home, scrolling directly');
-      const el = document.getElementById(sectionId);
-      console.log('Element found:', el);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
+      setTimeout(() => {
+        performSmoothScroll(sectionId);
+      }, delay);
     }
     
     // Helper function to determine if a link is active
@@ -207,6 +237,7 @@ function App() {
                 <Link to="/research" className={getNavLinkClass("/research")}>RESEARCH</Link>
                 <button className="hover:text-white transition-colors bg-transparent" style={{ padding: 0, border: "none", background: "none" }} onClick={() => scrollToSection("projects")}>PROJECTS</button>
                 <button className="hover:text-white transition-colors bg-transparent" style={{ padding: 0, border: "none", background: "none" }} onClick={() => scrollToSection("faqs")}>FAQs</button>
+                <button className="hover:text-white transition-colors bg-transparent" style={{ padding: 0, border: "none", background: "none" }} onClick={() => scrollToSection("sponsors")}>SPONSORS</button>
                 {/* <Link 
                   to="/recruitments" 
                   className="relative inline-flex items-center px-6 py-2.5 bg-gradient-to-r from-[#7AECEC] to-[#4ECDC4] text-black font-bold rounded-full hover:from-white hover:to-[#F0F0F0] transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-[#7AECEC]/30 group overflow-hidden"
@@ -219,12 +250,14 @@ function App() {
             <div className="lg:hidden">
               <button 
                 onClick={() => setIsMenuOpen((open) => !open)} 
-                className={`hamburger${isMenuOpen ? " active" : ""} w-8 h-8 flex flex-col justify-center items-center bg-transparent border-none cursor-pointer relative transition-all duration-300 hover:scale-110`} 
+                className="w-10 h-10 flex flex-col justify-center items-center bg-transparent border-none cursor-pointer relative z-50 transition-all duration-300 hover:scale-110" 
                 aria-label="Toggle menu"
               >
-                <span className={`bar w-6 h-0.5 bg-[#7AECEC] transition-all duration-300 ease-in-out absolute ${isMenuOpen ? 'rotate-45' : '-translate-y-1.5'}`}></span>
-                <span className={`bar w-6 h-0.5 bg-[#7AECEC] transition-all duration-300 ease-in-out absolute ${isMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
-                <span className={`bar w-6 h-0.5 bg-[#7AECEC] transition-all duration-300 ease-in-out absolute ${isMenuOpen ? '-rotate-45' : 'translate-y-1.5'}`}></span>
+                <div className="w-6 h-5 flex flex-col justify-between relative">
+                  <span className={`w-full h-0.5 bg-[#7AECEC] rounded transition-all duration-300 origin-left ${isMenuOpen ? 'rotate-45 translate-x-1 -translate-y-0.5' : ''}`}></span>
+                  <span className={`w-full h-0.5 bg-[#7AECEC] rounded transition-all duration-300 ${isMenuOpen ? 'opacity-0 scale-0' : 'opacity-100'}`}></span>
+                  <span className={`w-full h-0.5 bg-[#7AECEC] rounded transition-all duration-300 origin-left ${isMenuOpen ? '-rotate-45 translate-x-1 translate-y-0.5' : ''}`}></span>
+                </div>
               </button>
             </div>
           </div>
@@ -283,10 +316,10 @@ function App() {
                     onClick={() => { 
                       setIsMenuOpen(false); 
                       // Navigate to home if not already there, then scroll to projects
-                      if (window.location.pathname !== "/") {
+                      if (location.pathname !== "/") {
                         navigate('/', { state: { scrollTo: 'projects' } });
                       } else {
-                        scrollToSection("projects");
+                        scrollToSection("projects", 500);
                       }
                     }}
                   >
@@ -304,14 +337,35 @@ function App() {
                     onClick={() => { 
                       setIsMenuOpen(false); 
                       // Navigate to home if not already there, then scroll to FAQs
-                      if (window.location.pathname !== "/") {
+                      if (location.pathname !== "/") {
                         navigate('/', { state: { scrollTo: 'faqs' } });
                       } else {
-                        scrollToSection("faqs");
+                        scrollToSection("faqs", 500);
                       }
                     }}
                   >
                     <span className="font-semibold tracking-wide">FAQs</span>
+                  </button>
+
+                  <button
+                    className="mobile-nav-item group flex items-center w-full px-4 py-3 rounded-xl text-left transition-all duration-300 text-[#7AECEC] hover:bg-[#7AECEC]/5"
+                    style={{
+                      animationDelay: isMenuOpen ? '380ms' : '0ms',
+                      transform: isMenuOpen ? 'translateX(0)' : 'translateX(-20px)',
+                      opacity: isMenuOpen ? 1 : 0,
+                      transition: 'all 0.3s ease-out 380ms'
+                    }}
+                    onClick={() => { 
+                      setIsMenuOpen(false); 
+                      // Navigate to home if not already there, then scroll to sponsors
+                      if (location.pathname !== "/") {
+                        navigate('/', { state: { scrollTo: 'sponsors' } });
+                      } else {
+                        scrollToSection("sponsors", 500);
+                      }
+                    }}
+                  >
+                    <span className="font-semibold tracking-wide">SPONSORS</span>
                   </button>
                 </div>
                 
@@ -386,7 +440,7 @@ function App() {
       <div className="min-h-screen bg-[#0A0A0A] text-[#7AECEC] font-sans">
         <Navigation />
         {/* Main Content */}
-        <div className={`transition-all duration-300 ${isMenuOpen ? 'blur-sm scale-95' : ''}`}>
+        <div className={`transition-all duration-300 ${isMenuOpen ? 'blur-sm' : ''}`}>
           <AnimatedRoutes />
         </div>
         {/* Common Footer for all pages */}
