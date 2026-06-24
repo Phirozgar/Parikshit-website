@@ -1,75 +1,5 @@
 import { Github, Linkedin } from "lucide-react";
-
-interface TeamMember {
-  name: string;
-  role: string;
-  department?: string;
-  image: string;
-  github?: string;
-  linkedin?: string;
-}
-
-function getImagePath(name: string) {
-  const first = name.split(" ")[0].toLowerCase();
-  return `../../assets/team-images/timages/${first}.jpg`;
-}
-
-const allTeamMembers: TeamMember[] = [
-  { name: "Shrihar Pande", role: "System Engineer", image: getImagePath("Shrihar Pande") },
-  { name: "Sudeeksha Bhattacharyya", role: "System Engineer", image: getImagePath("Sudeeksha Bhattacharyya"), 
-    linkedin: "sudeeksha-bhattacharyya", github: "Sudeeksha008" },
-    { name: "Rachit Pradip Takate", role: "System Engineer", image: getImagePath("Rachit Takate"), linkedin: "bluejet", github: "bluejet007" },
-  { name: "Roselin Maria T J", role: "System Admin", image: getImagePath("Roselin Maria") },
-
-  { name: "S Visalakshi", role: "ADCS Lead", image: getImagePath("Visalakshi S") },
-  { name: "Rushil Jindal", role: "ADCS Team Member", image: getImagePath("rushil") },
-  { name: "Nedheeish Khumaran", role: "COMMS Lead", image: getImagePath("nedheeish-khumaran"), linkedin: "nedheeish-khumaran-38002032a", github: "NedheeishKhumaran" },
-  { name: "Jayanth Krish Ramakrishnan", role: "EPS Lead", image: getImagePath("Jayanth-Krish"), linkedin: "jayanth-krish" },
-  { name: "Prakhar Agrawal", role: "EPS Lead", image: getImagePath("Prakhar") },
-  { name: "Radhika Sasindran", role: "STMS Lead", image: getImagePath("Radhika Sasindran") },
-  { name: "Diti Arunkumar", role: "STMS Team Member", image: getImagePath("diti-arunkumar"), linkedin: "diti-arunkumar-452397349", github: "ditiarunkumar" },
-  { name: "Vatsal Agarwal", role: "STMS Team Member", image: getImagePath("vatsal") },
-  
-  { name: "Diya Goel", role: "STMS Team Member", image: getImagePath("diya-goel") },
-  { name: "Rushat Yadav", role: "Payload Lead", image: getImagePath("Rushat") },
-  { name: "Phirozgar Irani", role: "Administration & Operations Lead", image: getImagePath("Phirozgar Irani"), linkedin: "phirozgarirani11", github: "Phirozgar"},
-  { name: "Naviya Puvvada", role: "ADCS Team Member", image: getImagePath("naviya"), linkedin: "naviya-devi-sri-787288374" },
-  { name: "Shreyash Ahlavat", role: "ADCS Team Member", image: getImagePath("shreyash"), linkedin: "shreyash-ahlavat-5aa3193aa", github: "shreyashahlavat" },
-
-  { name: "Nischal Nori", role: "ADCS Team Member", image: getImagePath("nischal-nori"), linkedin: "nischalnori" },
-  { name: "Samika", role: "ADCS Team Member", image: getImagePath("Samika") },
-  { name: "Ardra", role: "ADCS Team Member", image: getImagePath("Ardra") },
-
-  { name: "Akshay Sai", role: "EPS Team Member", image: getImagePath("Akshay Sai"), linkedin: "akshay-sai-99b57a27a" },
-
-  { name: "Om Kale", role: "COMMS Team Member", image: getImagePath("om-kale"), linkedin: "om-k4le" },  
-
-  { name: "Prathamesh Aggarwal", role: "ODHS Lead", image: getImagePath("Prathamesh") },
-  { name: "Saloni Bagra", role: "ODHS Team Member", image: getImagePath("saloni") },
-  { name: "Harshit Srivastava", role: "ODHS Team Member", image: getImagePath("Harshit") },
-  { name: "Purnima Manda", role: "ODHS Team Member", image: getImagePath("purnima-manda"), linkedin: "purnima-manda-68b853395", github: "PurnimaM-0012" },
-  { name: "Krishang Jain", role: "ODHS Team Member", image: getImagePath("Krishang") },
-
-  { name: "Dev Tandon", role: "Payload Team Member", image: getImagePath("Dev") },
-  { name: "Anshika Goyal", role: "Payload Team Member", image: getImagePath("Anshika") },
-  { name: "Rahul Satyavaram", role: "Payload Team Member", image: getImagePath("rahul"), linkedin: "vasudeva-satyavaram-aa7492237", github: "vasudevasatyavaram-dev" },
-  {name: "Suvan Mallaya", role: "Payload Team Member", image: getImagePath("suvan"), linkedin: "suvan-mallya-5542b739b", github: "catonkeyboard07"},
-
-  { name: "Malla Aryaman Srinivas", role: "COMMS Team Member", image: getImagePath("aryaman") },
-  { name: "Sirish Saraf", role: "ODHS Team Member", image: getImagePath("sirish"), linkedin: "sirish-saraf", github: "Siri-shh" },
-  { name: "Abhinav Raj", role: "ODHS Team Member", image: getImagePath("abhinav") },
-{ name: "Vamsi", role: "ODHS Team Member", image: getImagePath("vamsi") },
-  { name: "Nandini Sah", role: "Administration Team Member", image: getImagePath("Nandini") },
-  { name: "Mokshagna", role: "Administration Team Member", image: getImagePath("moksha") },
-  { name: "Rishitha Kantevari", role: "Administration Team Member", image: getImagePath("Rishitha") },
-  { name: "Arush Varun", role: "Administration Team Member", image: getImagePath("arush") },
-
-  // Faculty Advisors
-  { name: "Dr. Shreesha Chokkadi", role: "Faculty Advisor",image: getImagePath("Shreesha"),
-    department: "Electrical & Instrumentation Engineering" },
-  { name: "Dr. Balbir Singh", role: "Faculty Advisor", image: getImagePath("Balbir"),
-    department: "Aeronautical Engineering" },
-];
+import { allTeamMembers, TeamMember } from "../data/team";
 
 function TeamPage() {
   const executiveBoard = allTeamMembers.filter(
@@ -119,7 +49,7 @@ function TeamPage() {
   ];
 
   const MemberCard = ({ member }: { member: TeamMember }) => (
-    <div className="bg-[#0A0A0A] rounded-lg overflow-hidden border border-[#7AECEC] group hover:border-white transition-all duration-300">
+    <div className="w-[160px] sm:w-[240px] bg-[#0A0A0A] rounded-lg overflow-hidden border border-[#7AECEC] group hover:border-white transition-all duration-300 flex flex-col">
       <div className="aspect-square overflow-hidden bg-gray-800">
         <img
           src={member.image}
@@ -127,12 +57,16 @@ function TeamPage() {
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
       </div>
-      <div className="p-4 text-center">
-        <h4 className="text-[#7AECEC] font-bold text-lg mb-1">
-          {member.name}
-        </h4>
-        <p className="text-gray-400 text-sm mb-3">{member.role}</p>
-        <div className="flex gap-3 justify-center">
+      <div className="p-3 sm:p-4 text-center flex-grow flex flex-col justify-between">
+        <div>
+          <h4 className="text-[#7AECEC] font-bold text-sm sm:text-lg mb-1 leading-snug line-clamp-2">
+            {member.name}
+          </h4>
+          {(member.role === "System Engineer" || member.role === "System Admin") && (
+            <p className="text-gray-400 text-xs sm:text-sm mb-3">{member.role}</p>
+          )}
+        </div>
+        <div className="flex gap-3 justify-center mt-auto">
           <a
             href={member.github ? `https://github.com/${member.github}` : undefined}
             target="_blank"
@@ -186,7 +120,7 @@ function TeamPage() {
               Executive Board
             </h2>
             <div className="flex justify-center">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl">
+              <div className="flex flex-wrap justify-center gap-6 max-w-4xl">
                 {executiveBoard.map((member, index) => (
                   <MemberCard key={index} member={member} />
                 ))}
@@ -199,45 +133,50 @@ function TeamPage() {
             <h2 className="text-4xl font-bold mb-16 text-[#7AECEC] text-center">
               Our Subsystems
             </h2>
-            {subsystemsWithLeads.map((subsystem, idx) => (
-              <div key={idx} className="mb-20">
-                <h3 className="text-3xl font-bold mb-8 text-[#7AECEC] text-center border-b border-[#7AECEC] pb-4 max-w-2xl mx-auto">
-                  {subsystem.name}
-                </h3>
-                
-                {/* Lead(s) */}
-                <div className="mb-10">
-                  <h4 className="text-xl font-semibold mb-6 text-white text-center">Lead</h4>
-                  <div className="flex justify-center">
-                    {subsystem.leads ? (
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl">
-                        {subsystem.leads.map((lead, i) => (
-                          <MemberCard key={i} member={lead} />
-                        ))}
-                      </div>
-                    ) : subsystem.lead ? (
-                      <div className="max-w-xs">
-                        <MemberCard member={subsystem.lead} />
-                      </div>
-                    ) : null}
-                  </div>
-                </div>
-
-                {/* Team Members */}
-                {subsystem.members.length > 0 && (
-                  <div>
-                    <h4 className="text-xl font-semibold mb-6 text-white text-center">Team Members</h4>
-                    <div className="flex justify-center">
-                      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl">
-                        {subsystem.members.map((member, index) => (
-                          <MemberCard key={index} member={member} />
-                        ))}
+            {subsystemsWithLeads.map((subsystem, idx) => {
+              const hasLeads = (subsystem.leads && subsystem.leads.length > 0) || !!subsystem.lead;
+              return (
+                <div key={idx} className="mb-20">
+                  <h3 className="text-3xl font-bold mb-8 text-[#7AECEC] text-center border-b border-[#7AECEC] pb-4 max-w-2xl mx-auto">
+                    {subsystem.name}
+                  </h3>
+                  
+                  {/* Lead(s) */}
+                  {hasLeads && (
+                    <div className="mb-10">
+                      <h4 className="text-xl font-semibold mb-6 text-white text-center">Lead</h4>
+                      <div className="flex justify-center">
+                        {subsystem.leads ? (
+                          <div className="flex flex-wrap justify-center gap-6 max-w-2xl">
+                            {subsystem.leads.map((lead, i) => (
+                              <MemberCard key={i} member={lead} />
+                            ))}
+                          </div>
+                        ) : subsystem.lead ? (
+                          <div className="flex justify-center">
+                            <MemberCard member={subsystem.lead} />
+                          </div>
+                        ) : null}
                       </div>
                     </div>
-                  </div>
-                )}
-              </div>
-            ))}
+                  )}
+
+                  {/* Team Members */}
+                  {subsystem.members.length > 0 && (
+                    <div>
+                      <h4 className="text-xl font-semibold mb-6 text-white text-center">Team Members</h4>
+                      <div className="flex justify-center">
+                        <div className="flex flex-wrap justify-center gap-6 max-w-6xl">
+                          {subsystem.members.map((member, index) => (
+                            <MemberCard key={index} member={member} />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </section>
 
           {/* Faculty Advisors */}
