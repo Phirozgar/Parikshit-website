@@ -113,7 +113,7 @@ export const allTeamMembers: TeamMember[] = [
   },
   {
     name: "Nischal Nori",
-    role: "ADCS Team Member",
+    role: "ADCS Lead",
     image: getImagePath("nischal-nori"),
     linkedin: "nischalnori"
   },
@@ -208,8 +208,7 @@ export const allTeamMembers: TeamMember[] = [
   // STMS SUBSYSTEM
   // ==========================================
   {
-    name:
-      "Radhika Sasindran",
+    name: "Radhika Sasindran",
     role: "STMS Lead",
     image: getImagePath("Radhika Sasindran")
   },
