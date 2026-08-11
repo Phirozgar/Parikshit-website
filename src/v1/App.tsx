@@ -18,6 +18,7 @@ import { TeamStatsSection } from "./HomePageComponents/TeamStatsSection";
 import { SponsorsSection } from "./HomePageComponents/SponsorsSection";
 // import { JoinUsSection } from "./HomePageComponents/JoinUsSection";
 import { JoinUsModal } from "./HomePageComponents/JoinUsModal";
+import { ApplicationsPopupModal } from "./HomePageComponents/ApplicationsPopupModal";
 import { Mail } from "lucide-react";
 
 // Add global smooth scroll behavior
@@ -29,6 +30,7 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [menuWasOpen, setMenuWasOpen] = useState(false);
   const [showJoinModal, setShowJoinModal] = useState(false);
+  const [showApplicationsModal, setShowApplicationsModal] = useState(true);
 
   // Helper for bulletproof smooth scrolling that works on all browsers and mobile devices
   const performSmoothScroll = (targetId: string) => {
@@ -124,7 +126,7 @@ function App() {
         <AboutSection />
         <SubsystemsSection />
         <ProjectsSection />
-        <ResearchHighlightsSection />
+        {/* <ResearchHighlightsSection /> */}
         <FAQsSection />
         <TeamStatsSection />
         <SponsorsSection />
@@ -234,17 +236,16 @@ function App() {
                 <Link to="/team" className={getNavLinkClass("/team")}>TEAM</Link>
                 <Link to="/about-us" className={getNavLinkClass("/about-us")}>ABOUT US</Link>
                 <Link to="/subsystems" className={getNavLinkClass("/subsystems")}>SUBSYSTEMS</Link>
-                <Link to="/research" className={getNavLinkClass("/research")}>RESEARCH</Link>
+                {/* <Link to="/research" className={getNavLinkClass("/research")}>RESEARCH</Link> */}
                 <button className="hover:text-white transition-colors bg-transparent" style={{ padding: 0, border: "none", background: "none" }} onClick={() => scrollToSection("projects")}>PROJECTS</button>
                 <button className="hover:text-white transition-colors bg-transparent" style={{ padding: 0, border: "none", background: "none" }} onClick={() => scrollToSection("faqs")}>FAQs</button>
                 <button className="hover:text-white transition-colors bg-transparent" style={{ padding: 0, border: "none", background: "none" }} onClick={() => scrollToSection("sponsors")}>SPONSORS</button>
-                {/* <Link 
-                  to="/recruitments" 
-                  className="relative inline-flex items-center px-6 py-2.5 bg-gradient-to-r from-[#7AECEC] to-[#4ECDC4] text-black font-bold rounded-full hover:from-white hover:to-[#F0F0F0] transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-[#7AECEC]/30 group overflow-hidden"
+                <button 
+                  onClick={() => setShowApplicationsModal(true)}
+                  className="inline-flex items-center px-4 py-2 bg-[#7AECEC] hover:bg-white text-black font-bold text-xs sm:text-sm rounded-full transition-all duration-200 transform hover:scale-105 shadow-sm cursor-pointer"
                 >
-                  <span className="relative z-10">RECRUITMENTS</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#4ECDC4] to-[#7AECEC] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </Link> */}
+                  RECRUITMENTS
+                </button>
               </div>
             </div>
             <div className="lg:hidden">
@@ -274,8 +275,8 @@ function App() {
             />
             
             {/* Mobile menu */}
-            <div className={`fixed top-16 left-0 right-0 bg-[#0D1117]/98 backdrop-blur-lg border-b border-[#7AECEC]/20 shadow-2xl z-45 lg:hidden transition-all duration-500 ease-out transform ${
-              isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
+            <div className={`fixed top-16 left-0 right-0 max-h-[calc(100vh-4rem)] overflow-y-auto overscroll-contain bg-[#0D1117]/98 backdrop-blur-lg border-b border-[#7AECEC]/20 shadow-2xl z-45 lg:hidden transition-all duration-500 ease-out transform ${
+              isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
             }`}>
               <div className="px-6 py-8 bg-black/30">
                 {/* Navigation Menu Container */}
@@ -284,8 +285,8 @@ function App() {
                     { to: "/", label: "HOME", delay: "0ms" },
                     { to: "/team", label: "TEAM", delay: "50ms" },
                     { to: "/about-us", label: "ABOUT US", delay: "100ms" },
-                    { to: "/subsystems", label: "SUBSYSTEMS", delay: "150ms" },
-                    { to: "/research", label: "RESEARCH", delay: "250ms" }
+                    { to: "/subsystems", label: "SUBSYSTEMS", delay: "150ms" }
+                    // { to: "/research", label: "RESEARCH", delay: "250ms" }
                   ].map((item, index) => (
                     <Link
                       key={item.to}
@@ -370,23 +371,17 @@ function App() {
                 </div>
                 
                 {/* Recruitments Button */}
-                {/* <div className="mt-8 pt-6 border-t border-[#21262C]">
-                  <Link
-                    to="/recruitments"
-                    className="block w-full px-6 py-4 bg-gradient-to-r from-[#7AECEC] via-[#5BC5C5] to-[#4ECDC4] text-black rounded-2xl font-bold text-center transition-all duration-500 shadow-lg transform active:scale-[0.95] relative overflow-hidden"
-                    style={{
-                      animationDelay: isMenuOpen ? '400ms' : '0ms',
-                      transform: isMenuOpen ? 'translateY(0) scale(1)' : 'translateY(20px) scale(0.9)',
-                      opacity: isMenuOpen ? 1 : 0,
-                      transition: 'all 0.4s ease-out 400ms'
+                <div className="mt-6 pt-4 border-t border-[#21262C]">
+                  <button
+                    className="block w-full px-6 py-3.5 bg-[#7AECEC] hover:bg-white text-black rounded-xl font-bold text-center transition-all duration-200 shadow-md active:scale-95 cursor-pointer"
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      setShowApplicationsModal(true);
                     }}
-                    onClick={() => setIsMenuOpen(false)}
                   >
-                    <span className="flex items-center justify-center">
-                      RECRUITMENTS
-                    </span>
-                  </Link>
-                </div> */}
+                    RECRUITMENTS
+                  </button>
+                </div>
               </div>
             </div>
           </>
@@ -414,7 +409,7 @@ function App() {
               <Route path="/about-us" element={<AboutUsGalleryPage />} />
               <Route path="/team" element={<TeamPage />} />
               {/* <Route path="/projects" element={<ProjectsPage />} /> */}
-              <Route path="/research" element={<ResearchPage />} />
+              {/* <Route path="/research" element={<ResearchPage />} /> */}
               <Route path="/recruitments" element={<RecruitmentsPage />} />
             </Routes>
           </div>
@@ -428,11 +423,16 @@ function App() {
     let timer: number | undefined;
     if (isMenuOpen) {
       setMenuWasOpen(true);
+      document.body.style.overflow = 'hidden';
     } else {
+      document.body.style.overflow = '';
       // Wait for the CSS animation duration before unmounting
       timer = window.setTimeout(() => setMenuWasOpen(false), 500);
     }
-    return () => { if (timer) clearTimeout(timer); };
+    return () => { 
+      document.body.style.overflow = '';
+      if (timer) clearTimeout(timer); 
+    };
   }, [isMenuOpen]);
 
   return (
@@ -446,6 +446,10 @@ function App() {
         {/* Common Footer for all pages */}
         <Footer />
         <JoinUsModal open={showJoinModal} onClose={() => setShowJoinModal(false)} />
+        <ApplicationsPopupModal 
+          open={showApplicationsModal} 
+          onClose={() => setShowApplicationsModal(false)} 
+        />
       </div>
     </Router>
   );
