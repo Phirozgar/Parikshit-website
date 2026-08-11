@@ -154,6 +154,7 @@ function SubsystemsPage() {
       ],
       imageSrc: '/assets/subsystem_images/payload.png'
     },
+/*
     {
       id: 'research',
       name: 'Research Subsystem',
@@ -178,6 +179,7 @@ function SubsystemsPage() {
       ],
       imageSrc: '/assets/subsystem_images/research.png'
     },
+*/
     {
       id: 'stms',
       name: 'Structures, Thermal & Mechanics System (STMS)',
@@ -264,7 +266,7 @@ function SubsystemsPage() {
           {/* Stats/Numbers */}
           <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-[#7AECEC] mb-2">8</div>
+              <div className="text-3xl md:text-4xl font-bold text-[#7AECEC] mb-2">7</div>
               <div className="text-[#7AECEC]/60 text-sm uppercase tracking-wider">Subsystems</div>
             </div>
             <div className="text-center">
@@ -295,17 +297,17 @@ function SubsystemsPage() {
       {/* Rest of the page content */}
       <main className="container mx-auto px-4 py-12">
         <section className="mb-12">
-          <h2 className="text-3xl font-bold mb-8 text-[#7AECEC]">Subsystem Overview</h2>
-          <p className="text-lg mb-8 text-[rgba(122,236,236,0.8)]">
-            Our 2U CubeSat is comprised of eight primary subsystems, each responsible for critical functions that ensure mission success. These subsystems work together seamlessly to enable our satellite to operate in the harsh environment of space.
+          <h2 className="text-3xl font-bold mb-4 text-[#7AECEC] text-center">Subsystem Overview</h2>
+          <p className="text-lg mb-8 text-[rgba(122,236,236,0.8)] text-center max-w-3xl mx-auto leading-relaxed">
+            Our 2U CubeSat is comprised of seven primary subsystems, each responsible for critical functions that ensure mission success. These subsystems work together seamlessly to enable our satellite to operate in the harsh environment of space.
           </p>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+          <div className="flex flex-wrap justify-center gap-3 md:gap-4 max-w-6xl mx-auto">
             {subsystems.map(system => (
               <button
                 key={system.id}
                 ref={el => { cardRefs.current[system.id] = el; }}
-                className={`p-4 rounded-lg flex flex-col items-center text-center transition ${
+                className={`p-4 rounded-lg flex flex-col items-center text-center transition flex-1 min-w-[100px] sm:min-w-[120px] max-w-[150px] ${
                   activeSubsystem === system.id 
                     ? 'bg-[#7AECEC] text-[#0A0A0A] shadow-[0_0_10px_rgba(122,236,236,0.5)]' 
                     : 'bg-[#111111] text-[#7AECEC] border border-[rgba(122,236,236,0.2)] hover:shadow-[0_0_10px_rgba(122,236,236,0.2)] hover:border-[rgba(122,236,236,0.4)]'
