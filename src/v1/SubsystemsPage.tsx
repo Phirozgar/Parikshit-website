@@ -202,7 +202,7 @@ function SubsystemsPage() {
     },
     {
       id: 'admin',
-      name: 'Admin & Operations Subsystem',
+      name: 'Admin & Operations',
       iconSrc: '/assets/Subsystem_Logos/Admin & OPS.png',
       description: 'Manages administrative functions of the satellite program.',
       details: [
