@@ -279,12 +279,6 @@ export const allTeamMembers: TeamMember[] = [
   // FACULTY ADVISORS
   // ==========================================
   {
-    name: "Dr. Shreesha Chokkadi",
-    role: "Faculty Advisor",
-    image: getImagePath("Shreesha"),
-    department: "Electrical & Instrumentation Engineering"
-  },
-  {
     name: "Dr. Balbir Singh",
     role: "Faculty Advisor",
     image: getImagePath("Balbir"),
