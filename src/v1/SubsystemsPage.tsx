@@ -57,7 +57,7 @@ function SubsystemsPage() {
   const subsystems = [
     {
       id: 'adcs',
-      name: 'Attitude Determination & Control System (ADCS)',
+      name: 'Attitude Determination & Control Subsystem (ADCS)',
       iconSrc: '/assets/Subsystem_Logos/ADCS.png',
       description: 'Responsible for determining and controlling the satellite\'s orientation in space.',
       details: [
@@ -95,7 +95,7 @@ function SubsystemsPage() {
     },
     {
       id: 'eps',
-      name: 'Electrical & Power System (EPS)',
+      name: 'Electrical & Power Subsystem (EPS)',
       iconSrc: '/assets/Subsystem_Logos/EPS.png',
       description: 'Generates, stores, and distributes electrical power to all satellite subsystems.',
       details: [
@@ -116,12 +116,12 @@ function SubsystemsPage() {
     },
     {
       id: 'odhs',
-      name: 'Onboard Data Handling System (ODHS)',
+      name: 'Onboard Data Handling Subsystem (ODHS)',
       iconSrc: '/assets/Subsystem_Logos/ODHS.png',
       description: 'The brain of our satellite, processing commands and managing data flow between all subsystems.',
       details: [
         'Implements command processing and execution for satellite operations',
-        '⁠Manages data collection, processing and storage',
+        'Manages data collection, processing and storage',
         'Handles system health monitoring and status reporting',
         'Facilitates interboard communication and coordination of all software'
       ],
@@ -180,7 +180,7 @@ function SubsystemsPage() {
 */
     {
       id: 'stms',
-      name: 'Structures, Thermal & Mechanics System (STMS)',
+      name: 'Structures, Thermal & Mechanics Subsystem (STMS)',
       iconSrc: '/assets/Subsystem_Logos/STMS.png',
       description: 'Ensures the satellite\'s structural integrity, thermal stability, and reliable operation of its mechanical and deployment mechanisms throughout the mission',
       details: [
@@ -202,14 +202,14 @@ function SubsystemsPage() {
     },
     {
       id: 'admin',
-      name: 'Admin & Operations',
+      name: 'Admin & Operations Subsystem',
       iconSrc: '/assets/Subsystem_Logos/Admin & OPS.png',
-      description: 'Manages mission operations, ground control, and administrative functions of the satellite program.',
+      description: 'Manages administrative functions of the satellite program.',
       details: [
-        'website maintenance and updation ',
+        'Website maintenance and updation',
         'Reach out to companies and sponsors for partnerships',
         'Do outreach for Parikshit inside and outside college',
-        '⁠Handle social media pages and graphic design',
+        'Handle social media pages and graphic design',
         'Handle permissions and negotiations with whichever organizations we are affiliated with - university, space agencies, sponsors, etc'
       ],
       components: [

@@ -8,7 +8,7 @@ export function SubsystemsSection() {
     { id: "eps", name: "EPS", full: "Electrical & Power Subsystem", icon: "/assets/Subsystem_Logos/EPS.png" },
     { id: "odhs", name: "ODHS", full: "Onboard Data Handling Subsystem", icon: "/assets/Subsystem_Logos/ODHS.png" },
     { id: "payload", name: "PAYLOAD", full: "Payload Subsystem", icon: "/assets/Subsystem_Logos/PAYLOAD.png" },
-    { id: "stms", name: "STMS", full: "Structures, Thermals & Mechanics System", icon: "/assets/Subsystem_Logos/STMS.png" },
+    { id: "stms", name: "STMS", full: "Structures, Thermal & Mechanics Subsystem", icon: "/assets/Subsystem_Logos/STMS.png" },
     { id: "admin", name: "ADMIN", full: "Administration and Operations Subsystem", icon: "/assets/Subsystem_Logos/Admin & OPS.png" },
   ];
 
