@@ -1,3 +1,18 @@
+/* Global Smooth Scroll & Font Smoothing */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hardware Acceleration & Fluid Easing Utilities */
+.smooth-gpu {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
 .hamburger {
   display: flex;
   flex-direction: column;
@@ -8,7 +23,7 @@
   border: none;
   cursor: pointer;
   z-index: 60;
-  transition: all 0.3s ease;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   margin-right: 1rem;
   padding: 0.25rem;
 }
@@ -18,7 +33,7 @@
   height: 0.2rem;
   background: #7aecf4;
   border-radius: 0.125rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) ease-in-out;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   margin: 0.18rem 0;
   transform-origin: center;
 }
@@ -38,15 +53,15 @@
 }
 
 .mobile-nav-slide-in {
-  animation: slideInLeft 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: slideInLeft 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 .mobile-nav-slide-out {
-  animation: slideOutLeft 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: slideOutLeft 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .nav-links {
   position: fixed;
-  top: 64px; /* Height of the header (h-16 = 64px) */
+  top: 64px;
   left: 0;
   width: 100%;
   height: auto;
@@ -84,7 +99,7 @@
   color: #E5E7EB;
   cursor: pointer;
   border-radius: 6px;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
@@ -98,12 +113,12 @@
   background-color: #21262C;
   color: #FFFFFF;
   outline: none;
-  transform: translateX(2px);
+  transform: translateX(4px);
 }
 
 .mobile-nav-item:active {
   background-color: #1A1F24;
-  transform: translateX(2px) scale(0.98);
+  transform: translateX(2px) scale(0.99);
 }
 
 .mobile-nav-indicator {
@@ -115,7 +130,7 @@
   background: linear-gradient(135deg, #2F81F7, #7AECEC);
   border-radius: 2px;
   opacity: 0;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   transform: scaleY(0);
 }
 
@@ -128,10 +143,9 @@
 
 .mobile-nav-text {
   margin-left: 8px;
-  transition: color 0.2s ease-in-out;
+  transition: color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Active link styles - you might want to add this logic */
 .mobile-nav-item.active {
   background-color: #1A1F24;
   color: #7AECEC;
@@ -145,36 +159,35 @@
 
 /* Enhanced slide animations */
 .mobile-nav-slide-in {
-  animation: mobileNavSlideIn 0.3s ease-out forwards;
+  animation: mobileNavSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .mobile-nav-slide-out {
-  animation: mobileNavSlideOut 0.3s ease-in forwards;
+  animation: mobileNavSlideOut 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes mobileNavSlideIn {
   from {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translate3d(0, -16px, 0);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
 @keyframes mobileNavSlideOut {
   from {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
   to {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translate3d(0, -16px, 0);
   }
 }
 
-/* Responsive adjustments */
 @media (max-width: 480px) {
   .mobile-nav-container {
     max-width: 100%;
@@ -187,31 +200,60 @@
   }
 }
 
-/* Route fade transitions (used by react-transition-group with classNames="fade") */
+/* Route fade transitions with silk ease curve */
 .fade-enter {
   opacity: 0;
-  transform: translateY(8px);
+  transform: translate3d(0, 10px, 0);
 }
 .fade-enter-active {
   opacity: 1;
-  transform: translateY(0);
-  transition: opacity 400ms ease, transform 400ms ease;
+  transform: translate3d(0, 0, 0);
+  transition: opacity 300ms cubic-bezier(0.16, 1, 0.3, 1), transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 .fade-exit {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
 }
 .fade-exit-active {
   opacity: 0;
-  transform: translateY(-8px);
-  transition: opacity 400ms ease, transform 400ms ease;
+  transform: translate3d(0, -6px, 0);
+  transition: opacity 250ms cubic-bezier(0.16, 1, 0.3, 1), transform 250ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 .fade-route {
   width: 100%;
   height: 100%;
 }
 
-/* Make anchor scrolling avoid header overlap for common sections */
-#projects, #faqs, #sponsors {
-  scroll-margin-top: 5.5rem; /* ~88px: adjust if header height changes */
+/* Anchor scrolling vertical alignment */
+#projects, #faqs, #sponsors, #subsystems {
+  scroll-margin-top: 5.5rem;
+}
+
+/* Modal Pop & Backdrop Animations */
+@keyframes modalPopIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translate3d(0, 8px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes backdropFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-modal-pop {
+  animation: modalPopIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-backdrop-fade {
+  animation: backdropFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }

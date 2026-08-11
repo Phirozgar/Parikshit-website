@@ -41,13 +41,13 @@ export const ApplicationsPopupModal: React.FC<ApplicationsPopupModalProps> = ({
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
       {/* Dimmed Clean Backdrop */}
-      <div
-        className="fixed inset-0 bg-black/75 transition-opacity duration-200"
+      <div 
+        className="fixed inset-0 bg-black/75 animate-backdrop-fade"
         onClick={handleClose}
       />
 
       {/* Minimalist Modal Window */}
-      <div className="relative w-full max-w-lg bg-[#111111] border border-[#7AECEC]/30 rounded-2xl p-6 sm:p-8 shadow-2xl z-10 transition-all duration-200">
+      <div className="relative w-full max-w-lg bg-[#111111] border border-[#7AECEC]/30 rounded-2xl p-6 sm:p-8 shadow-2xl z-10 animate-modal-pop smooth-gpu">
 
         {/* Subtle Close Icon */}
         <button
