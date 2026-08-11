@@ -185,11 +185,11 @@ function TeamPage() {
               Faculty Advisors
             </h2>
             <div className="flex justify-center">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl">
+              <div className="flex flex-wrap justify-center gap-8 max-w-3xl w-full">
                 {facultyAdvisors.map((advisor, index) => (
                   <div
                     key={index}
-                    className="bg-[#0A0A0A] rounded-lg shadow-lg p-8 border border-[#7AECEC] flex flex-col items-center text-center"
+                    className="w-full max-w-[320px] bg-[#0A0A0A] rounded-lg shadow-lg p-8 border border-[#7AECEC] flex flex-col items-center text-center"
                   >
                     <img
                       src={advisor.image}

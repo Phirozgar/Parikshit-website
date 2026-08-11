@@ -57,20 +57,20 @@ function SubsystemsPage() {
   const subsystems = [
     {
       id: 'adcs',
-      name: 'Attitude Determination & Control System (ADCS)',
+      name: 'Attitude Determination & Control Subsystem (ADCS)',
       iconSrc: '/assets/Subsystem_Logos/ADCS.png',
       description: 'Responsible for determining and controlling the satellite\'s orientation in space.',
       details: [
         'Stabilizes the satellite after deployment from the launch vehicle',
         'Utilizes sensors to determine the satellite\'s current orientation',
         'Implements control algorithms to maintain desired orientation',
-        'Controls reaction wheels and magnetorquers for precise positioning'
-       ],
+        'Controls actuators for precise positioning'
+      ],
       components: [
-        'Sensors - Sun sensors, Magnetometers, IMU ',
-        'Actuators - Reaction Wheel, Magnetorquers',
-        'Controllers - B-dot, PD, PID',
-        'Algorithms - QuEST, EKF'
+        'Sensors - Sun sensors, Magnetometers, IMU',
+        'Actuators - Magnetorquers',
+        'Controllers - B-dot, PD',
+        'Algorithms - QuEST, EKF, MEKF, Orbit Propagator'
       ],
       imageSrc: '/assets/subsystem_images/adcs.png'
     },
@@ -78,26 +78,24 @@ function SubsystemsPage() {
       id: 'comms',
       name: 'Communications and Ground Station Subsystem',
       iconSrc: '/assets/Subsystem_Logos/COMMS.png',
-      description: 'Enables reliable data transmission between the satellite and ground station.',
+      description: 'Serves as the primary space-to-ground link, enabling reliable telemetry, tracking, and command (TT&C) operations.',
       details: [
-        'Establishes and maintains RF links with ground station',
-        'Manages uplink command reception and verification',
-        'Handles downlink telemetry and mission data transmission',
-        'Optimizes bandwidth usage for efficient communication'
+        'RF Link Establishment: Maintains high-reliability line-of-sight communications during ground station passes.',
+        'Command Verification: Receives, decodes, and validates incoming uplink telecommands.',
+        'Telemetry & Data Downlink: Transmits real-time satellite health telemetry and high-rate payload data.',
+        'Bandwidth & Link Optimization: Maximizes spectral efficiency and throughput to optimize link budget performance.'
       ],
       components: [
-        'UHF/VHF Transceiver',
-        'RF Amplifiers and Filters',
-        'Communication Antennas',
-        'Modulation/Demodulation Systems'
+        'UHF/VHF Transceivers',
+        'Amplifiers & Filters',
+        'Communications Antennas & Antenna Arrays',
+        'Digital Modulation & Demodulation'
       ],
       imageSrc: '/assets/subsystem_images/comms.png'
-
-
     },
     {
       id: 'eps',
-      name: 'Electrical & Power System (EPS)',
+      name: 'Electrical & Power Subsystem (EPS)',
       iconSrc: '/assets/Subsystem_Logos/EPS.png',
       description: 'Generates, stores, and distributes electrical power to all satellite subsystems.',
       details: [
@@ -118,21 +116,21 @@ function SubsystemsPage() {
     },
     {
       id: 'odhs',
-      name: 'Onboard Data Handling System (ODHS)',
+      name: 'Onboard Data Handling Subsystem (ODHS)',
       iconSrc: '/assets/Subsystem_Logos/ODHS.png',
       description: 'The brain of our satellite, processing commands and managing data flow between all subsystems.',
       details: [
         'Implements command processing and execution for satellite operations',
-        '⁠Manages data collection, processing and storage',
+        'Manages data collection, processing and storage',
         'Handles system health monitoring and status reporting',
         'Facilitates interboard communication and coordination of all software'
       ],
       components: [
         'OnBoard Computer',
-        'Real-time Operating System',
+        'Control state machine',
         'Payload data and telemetry storage',
         'Sensor Interfaces & Firmware',
-        'Control Software'
+        'Computer architecture'
       ],
       imageSrc: '/assets/subsystem_images/odhs.png'
     },
@@ -182,22 +180,23 @@ function SubsystemsPage() {
 */
     {
       id: 'stms',
-      name: 'Structures, Thermal & Mechanics System (STMS)',
+      name: 'Structures, Thermal & Mechanics Subsystem (STMS)',
       iconSrc: '/assets/Subsystem_Logos/STMS.png',
-      description: 'Ensures satellite structural integrity and thermal stability in the harsh space environment.',
+      description: 'Ensures the satellite\'s structural integrity, thermal stability, and reliable operation of its mechanical and deployment mechanisms throughout the mission',
       details: [
         'Designs and manufactures the satellite structure to withstand launch forces',
         'Maintains structural and thermal stability during space operations',
-        'Manages mounting and integration of antennas, solar panels and subsystems (non-deployable solar panels)',
-        'Ensures proper heat dissipation and passive thermal regulation',
-        'Ensures compliance with CubeSat dimensional and interface standards'
+        'Designs and integrates mechanical and deployment mechanisms for antennas and other deployable components',
+        'Manages heat transfer and passive thermal control through material selection, surface finishes, coatings, and component placement',
+        'Designs and verifies the satellite structure to withstand launch loads, vibration, and the mechanical environment encountered during the mission'
       ],
       components: [
-        'Aluminum Alloy Frame Structure',
-        'Passive Thermal Control Elements (coatings, surface finishes & mounting layout)',
-        'Solar Panel Structural Mounts (fixed, non-deployable)',
-        'Subsystem Mounting Rails & Brackets',
-        'Structural Reinforcements'
+        'Aluminum Alloy Primary & Secondary Structure',
+        'Mechanical & Deployment Mechanisms',
+        'Subsystem Mounting Rails, Brackets & Interfaces',
+        'Solar Panel Structural Mounts',
+        'Passive Thermal Control Elements',
+        'Structural Reinforcements & Load-Bearing Interfaces'
       ],
       imageSrc: '/assets/subsystem_images/stms.png'
     },
@@ -205,12 +204,12 @@ function SubsystemsPage() {
       id: 'admin',
       name: 'Admin & Operations',
       iconSrc: '/assets/Subsystem_Logos/Admin & OPS.png',
-      description: 'Manages mission operations, ground control, and administrative functions of the satellite program.',
+      description: 'Manages administrative functions of the satellite program.',
       details: [
-        'website maintenance and updation ',
+        'Website maintenance and updation',
         'Reach out to companies and sponsors for partnerships',
         'Do outreach for Parikshit inside and outside college',
-        '⁠Handle social media pages and graphic design',
+        'Handle social media pages and graphic design',
         'Handle permissions and negotiations with whichever organizations we are affiliated with - university, space agencies, sponsors, etc'
       ],
       components: [
