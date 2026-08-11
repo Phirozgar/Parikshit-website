@@ -88,7 +88,7 @@ export const ApplicationsPopupModal: React.FC<ApplicationsPopupModalProps> = ({
             {/* Info Cards */}
             <div className="space-y-3 mb-6">
               {/* 1st Year Option */}
-              <motion.div 
+              <motion.div
                 whileHover={{ scale: 1.01 }}
                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
                 className="p-4 rounded-xl bg-[#1A1A1A] border border-[#7AECEC]/15 hover:border-[#7AECEC]/40 transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-3"
@@ -115,7 +115,7 @@ export const ApplicationsPopupModal: React.FC<ApplicationsPopupModalProps> = ({
               </motion.div>
 
               {/* 2nd Year Option */}
-              <motion.div 
+              <motion.div
                 whileHover={{ scale: 1.01 }}
                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
                 className="p-4 rounded-xl bg-[#1A1A1A] border border-[#7AECEC]/15 hover:border-[#7AECEC]/40 transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-3"
@@ -140,17 +140,6 @@ export const ApplicationsPopupModal: React.FC<ApplicationsPopupModalProps> = ({
                   <ExternalLink className="w-3.5 h-3.5" />
                 </motion.a>
               </motion.div>
-            </div>
-
-            {/* Footer */}
-            <div className="flex items-center justify-between pt-4 border-t border-[#7AECEC]/10 text-xs">
-              <span className="text-[#7AECEC]/50">IIT Bombay Student Satellite Team</span>
-              <button
-                onClick={handleClose}
-                className="text-[#7AECEC]/70 hover:text-white font-medium transition-colors cursor-pointer"
-              >
-                Dismiss
-              </button>
             </div>
           </motion.div>
         </div>
