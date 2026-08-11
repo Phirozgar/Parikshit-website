@@ -127,10 +127,10 @@ function SubsystemsPage() {
       ],
       components: [
         'OnBoard Computer',
-        'Real-time Operating System',
+        'Control state machine',
         'Payload data and telemetry storage',
         'Sensor Interfaces & Firmware',
-        'Control Software'
+        'Computer architecture'
       ],
       imageSrc: '/assets/subsystem_images/odhs.png'
     },
