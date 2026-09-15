@@ -18,7 +18,7 @@ import { TeamStatsSection } from "./HomePageComponents/TeamStatsSection";
 import { SponsorsSection } from "./HomePageComponents/SponsorsSection";
 // import { JoinUsSection } from "./HomePageComponents/JoinUsSection";
 import { JoinUsModal } from "./HomePageComponents/JoinUsModal";
-import { ApplicationsPopupModal } from "./HomePageComponents/ApplicationsPopupModal";
+// import { ApplicationsPopupModal } from "./HomePageComponents/ApplicationsPopupModal";
 import { Mail } from "lucide-react";
 
 // Add global smooth scroll behavior
@@ -30,7 +30,6 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [menuWasOpen, setMenuWasOpen] = useState(false);
   const [showJoinModal, setShowJoinModal] = useState(false);
-  const [showApplicationsModal, setShowApplicationsModal] = useState(true);
 
   // Helper for bulletproof smooth scrolling that works on all browsers and mobile devices
   const performSmoothScroll = (targetId: string) => {
@@ -240,12 +239,6 @@ function App() {
                 <button className="hover:text-white transition-colors bg-transparent" style={{ padding: 0, border: "none", background: "none" }} onClick={() => scrollToSection("projects")}>PROJECTS</button>
                 <button className="hover:text-white transition-colors bg-transparent" style={{ padding: 0, border: "none", background: "none" }} onClick={() => scrollToSection("faqs")}>FAQs</button>
                 <button className="hover:text-white transition-colors bg-transparent" style={{ padding: 0, border: "none", background: "none" }} onClick={() => scrollToSection("sponsors")}>SPONSORS</button>
-                <button 
-                  onClick={() => setShowApplicationsModal(true)}
-                  className="inline-flex items-center px-4 py-2 bg-[#7AECEC] hover:bg-white text-black font-bold text-xs sm:text-sm rounded-full transition-all duration-200 transform hover:scale-105 shadow-sm cursor-pointer"
-                >
-                  RECRUITMENTS
-                </button>
               </div>
             </div>
             <div className="lg:hidden">
@@ -370,18 +363,6 @@ function App() {
                   </button>
                 </div>
                 
-                {/* Recruitments Button */}
-                <div className="mt-6 pt-4 border-t border-[#21262C]">
-                  <button
-                    className="block w-full px-6 py-3.5 bg-[#7AECEC] hover:bg-white text-black rounded-xl font-bold text-center transition-all duration-200 shadow-md active:scale-95 cursor-pointer"
-                    onClick={() => {
-                      setIsMenuOpen(false);
-                      setShowApplicationsModal(true);
-                    }}
-                  >
-                    RECRUITMENTS
-                  </button>
-                </div>
               </div>
             </div>
           </>
@@ -446,10 +427,6 @@ function App() {
         {/* Common Footer for all pages */}
         <Footer />
         <JoinUsModal open={showJoinModal} onClose={() => setShowJoinModal(false)} />
-        <ApplicationsPopupModal 
-          open={showApplicationsModal} 
-          onClose={() => setShowApplicationsModal(false)} 
-        />
       </div>
     </Router>
   );
